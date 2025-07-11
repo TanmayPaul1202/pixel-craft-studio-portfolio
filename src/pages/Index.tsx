@@ -1,12 +1,100 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState, useEffect } from 'react';
+import { PortfolioNavigation } from '@/components/PortfolioNavigation';
+import { HeroSection } from '@/components/HeroSection';
+import { AboutSection } from '@/components/AboutSection';
+import { SkillsSection } from '@/components/SkillsSection';
+import { ServicesSection } from '@/components/ServicesSection';
+import { ProjectsSection } from '@/components/ProjectsSection';
+import { ContactSection } from '@/components/ContactSection';
 
 const Index = () => {
+  const [activeSection, setActiveSection] = useState('home');
+
+  // Handle scroll animation reveals
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          // Update active section based on which section is in view
+          const sectionId = entry.target.id;
+          if (sectionId) {
+            setActiveSection(sectionId);
+          }
+        }
+      });
+    }, observerOptions);
+
+    // Observe all reveal elements and sections
+    const revealElements = document.querySelectorAll('.reveal-up');
+    const sections = document.querySelectorAll('section[id]');
+    
+    revealElements.forEach((el) => observer.observe(el));
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      revealElements.forEach((el) => observer.unobserve(el));
+      sections.forEach((section) => observer.unobserve(section));
+    };
+  }, []);
+
+  const scrollToProjects = () => {
+    const projectsSection = document.getElementById('projects');
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background text-foreground font-poppins">
+      {/* Navigation */}
+      <PortfolioNavigation 
+        activeSection={activeSection} 
+        onSectionChange={setActiveSection} 
+      />
+
+      {/* Main Content */}
+      <main>
+        <HeroSection 
+          onExploreWork={scrollToProjects}
+          onContact={scrollToContact}
+        />
+        <AboutSection />
+        <SkillsSection />
+        <ServicesSection />
+        <ProjectsSection />
+        <ContactSection />
+      </main>
+
+      {/* Footer */}
+      <footer className="py-8 border-t border-border">
+        <div className="container mx-auto px-6 text-center">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="mb-4 md:mb-0">
+              <span className="text-2xl font-bold">
+                <span className="text-neon-blue">Pixel</span>
+                <span className="text-neon-magenta">Craft</span>
+                <span className="text-neon-purple ml-2">Studio</span>
+              </span>
+            </div>
+            <div className="text-muted-foreground">
+              <p>&copy; 2024 Pixel Craft Studio. All rights reserved.</p>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
