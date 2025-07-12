@@ -40,35 +40,33 @@ export function PortfolioNavigation({ activeSection, onSectionChange }: Portfoli
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      isScrolled ? 'bg-background/95 backdrop-blur-xl border-b border-neon-blue/20 shadow-lg shadow-neon-blue/5' : 'bg-transparent'
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-background/95 backdrop-blur-sm border-b border-border' : 'bg-transparent'
     }`}>
-      <div className="container mx-auto px-6 py-6">
+      <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* New Logo */}
-          <div className="flex items-center space-x-4">
+          {/* Simplified Logo */}
+          <div className="flex items-center space-x-3">
             <img 
               src="/lovable-uploads/2c923ae7-2377-4856-ace5-b3b4159939ef.png" 
               alt="Pixel Craft Studio Logo" 
-              className="w-12 h-12 hover-scale transition-transform duration-300"
+              className="w-10 h-10 transition-transform duration-200 hover:scale-105"
             />
-            <div className="text-2xl font-bold">
-              <span className="text-neon-cyan">Pixel</span>
-              <span className="text-neon-magenta">Craft</span>
-              <span className="text-neon-purple ml-2">Studio</span>
+            <div className="text-xl font-semibold">
+              <span className="text-foreground">Pixel Craft Studio</span>
             </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1 bg-muted/30 rounded-full px-2 py-2 backdrop-blur-sm border border-border/50">
+          {/* Simplified Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-1 bg-muted/50 rounded-full px-2 py-1">
             {navigationItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
+                className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 ${
                   activeSection === item.id 
-                    ? 'bg-gradient-accent text-background shadow-lg shadow-neon-blue/20' 
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
+                    ? 'bg-primary text-primary-foreground' 
+                    : 'text-muted-foreground hover:text-foreground hover:bg-muted/70'
                 }`}
               >
                 {item.label}
@@ -80,7 +78,7 @@ export function PortfolioNavigation({ activeSection, onSectionChange }: Portfoli
           <Button
             variant="ghost"
             size="sm"
-            className="md:hidden border border-neon-blue/30 hover:border-neon-blue/60 hover:bg-neon-blue/10"
+            className="md:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -89,16 +87,16 @@ export function PortfolioNavigation({ activeSection, onSectionChange }: Portfoli
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden mt-6 pb-6 border-t border-border/30">
-            <div className="flex flex-col space-y-2 pt-6">
+          <div className="md:hidden mt-4 pb-4 border-t border-border/50">
+            <div className="flex flex-col space-y-1 pt-4">
               {navigationItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`text-left py-3 px-4 rounded-xl transition-all duration-300 ${
+                  className={`text-left py-3 px-4 rounded-lg transition-all duration-200 ${
                     activeSection === item.id
-                      ? 'text-neon-blue bg-gradient-to-r from-neon-blue/20 to-neon-purple/10 border border-neon-blue/30'
-                      : 'text-muted-foreground hover:text-foreground hover:bg-muted/30 hover:border hover:border-border/50'
+                      ? 'text-primary bg-muted'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
                   }`}
                 >
                   {item.label}
