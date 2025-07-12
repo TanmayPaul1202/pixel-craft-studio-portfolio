@@ -25,10 +25,12 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
           </div>
         </div>
 
-        {/* Simplified Studio Name */}
+        {/* Colorful Studio Name */}
         <div className="mb-6 reveal-up" style={{ animationDelay: '0.2s' }}>
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight text-foreground">
-            Pixel Craft Studio
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
+            <span className="text-neon-blue">Pixel</span>{' '}
+            <span className="text-neon-magenta">Craft</span>{' '}
+            <span className="text-neon-purple">Studio</span>
           </h1>
         </div>
 

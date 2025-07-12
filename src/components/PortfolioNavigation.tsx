@@ -45,7 +45,7 @@ export function PortfolioNavigation({ activeSection, onSectionChange }: Portfoli
     }`}>
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Simplified Logo */}
+          {/* Colorful Logo */}
           <div className="flex items-center space-x-3">
             <img 
               src="/lovable-uploads/2c923ae7-2377-4856-ace5-b3b4159939ef.png" 
@@ -53,7 +53,9 @@ export function PortfolioNavigation({ activeSection, onSectionChange }: Portfoli
               className="w-10 h-10 transition-transform duration-200 hover:scale-105"
             />
             <div className="text-xl font-semibold">
-              <span className="text-foreground">Pixel Craft Studio</span>
+              <span className="text-neon-blue">Pixel</span>{' '}
+              <span className="text-neon-magenta">Craft</span>{' '}
+              <span className="text-neon-purple">Studio</span>
             </div>
           </div>
 
