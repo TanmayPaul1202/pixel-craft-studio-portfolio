@@ -9,9 +9,16 @@ interface HeroSectionProps {
 
 export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative">
-      {/* Subtle Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20"></div>
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?ixlib=rb-4.0.3&auto=format&fit=crop&w=3880&q=80"
+          alt="Background"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-background/80 backdrop-blur-sm"></div>
+      </div>
 
       <div className="container mx-auto px-6 text-center relative z-10">
         {/* Clean Profile Logo */}
@@ -79,7 +86,7 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
 
         {/* Simplified Intro Text */}
         <div className="reveal-up" style={{ animationDelay: '1s' }}>
-          <div className="max-w-2xl mx-auto p-6 bg-muted/30 rounded-xl border border-border/50">
+          <div className="max-w-2xl mx-auto p-6 bg-muted/30 rounded-xl border border-border/50 backdrop-blur-sm">
             <p className="text-base text-muted-foreground leading-relaxed">
               Specializing in cinematic video editing, motion graphics, and brand identity design. 
               I transform your creative vision into compelling visual stories.
@@ -89,7 +96,7 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
       </div>
 
       {/* Simple Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
         <div className="w-5 h-10 border border-muted-foreground rounded-full flex justify-center">
           <div className="w-1 h-3 bg-muted-foreground rounded-full mt-2"></div>
         </div>
