@@ -1,5 +1,5 @@
 
-import { ArrowRight, MessageCircle, Play, Sparkles } from 'lucide-react';
+import { ArrowRight, MessageCircle, Play, Sparkles, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface HeroSectionProps {
@@ -10,81 +10,93 @@ interface HeroSectionProps {
 export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 bg-gradient-hero opacity-20"></div>
-      <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-neon-blue/30 blur-2xl float-animation"></div>
-      <div className="absolute bottom-20 right-10 w-40 h-40 rounded-full bg-neon-purple/30 blur-2xl float-animation" style={{ animationDelay: '2s' }}></div>
-      <div className="absolute top-1/2 left-1/4 w-24 h-24 rounded-full bg-neon-magenta/20 blur-xl float-animation" style={{ animationDelay: '4s' }}></div>
+      {/* Enhanced Animated Background */}
+      <div className="absolute inset-0 bg-gradient-hero opacity-30"></div>
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-neon-cyan/20 blur-3xl float-animation opacity-60"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-neon-purple/25 blur-3xl float-animation opacity-70" style={{ animationDelay: '2s' }}></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-neon-magenta/15 blur-2xl float-animation" style={{ animationDelay: '4s' }}></div>
 
       <div className="container mx-auto px-6 text-center relative z-10">
-        {/* Logo */}
+        {/* New Profile Logo */}
         <div className="mb-8 reveal-up">
-          <img 
-            src="/lovable-uploads/a91f2a74-b164-4c9d-b67b-1999638f0ce6.png" 
-            alt="Pixel Craft Studio Logo" 
-            className="w-32 h-32 mx-auto mb-4 hover-scale"
-          />
+          <div className="relative mx-auto w-40 h-40">
+            <img 
+              src="/lovable-uploads/2c923ae7-2377-4856-ace5-b3b4159939ef.png" 
+              alt="Profile Logo" 
+              className="w-full h-full hover-scale transition-all duration-500 drop-shadow-2xl"
+            />
+            <div className="absolute inset-0 rounded-full bg-gradient-accent opacity-20 blur-xl animate-pulse"></div>
+          </div>
         </div>
 
-        {/* Studio Name */}
-        <div className="mb-6 reveal-up" style={{ animationDelay: '0.2s' }}>
-          <h1 className="text-6xl md:text-8xl font-bold mb-4">
-            <span className="text-neon-blue neon-text">Pixel</span>
-            <span className="text-neon-magenta neon-text"> Craft</span>
-            <span className="text-neon-purple neon-text block md:inline md:ml-4">Studio</span>
+        {/* Enhanced Studio Name */}
+        <div className="mb-8 reveal-up" style={{ animationDelay: '0.2s' }}>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            <span className="text-neon-cyan neon-text drop-shadow-lg">Pixel</span>
+            <span className="text-neon-magenta neon-text drop-shadow-lg"> Craft</span>
+            <span className="text-neon-purple neon-text block md:inline md:ml-4 drop-shadow-lg">Studio</span>
           </h1>
         </div>
 
-        {/* Tagline */}
-        <div className="mb-8 reveal-up" style={{ animationDelay: '0.4s' }}>
-          <p className="text-2xl md:text-3xl font-light text-muted-foreground">
-            Our work is <span className="text-transparent bg-clip-text bg-gradient-accent font-semibold">more than you think</span>
+        {/* Enhanced Tagline */}
+        <div className="mb-10 reveal-up" style={{ animationDelay: '0.4s' }}>
+          <p className="text-xl md:text-2xl font-light text-muted-foreground mb-4">
+            Professional Video Editor & Creative Designer
+          </p>
+          <p className="text-lg md:text-xl text-muted-foreground">
+            Creating <span className="text-transparent bg-clip-text bg-gradient-accent font-semibold">visual magic</span> that exceeds expectations
           </p>
         </div>
 
-        {/* Profile Picture Placeholder */}
-        <div className="mb-8 reveal-up" style={{ animationDelay: '0.6s' }}>
-          <div className="w-32 h-32 rounded-full bg-gradient-card border-4 border-neon-blue/50 mx-auto flex items-center justify-center hover-scale">
-            <Sparkles className="h-12 w-12 text-neon-blue" />
+        {/* Rating/Testimonial */}
+        <div className="mb-10 reveal-up" style={{ animationDelay: '0.6s' }}>
+          <div className="flex items-center justify-center space-x-2 mb-2">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="h-5 w-5 text-neon-yellow fill-current" />
+            ))}
           </div>
-          <p className="text-sm text-muted-foreground mt-2">Professional Video Editor & Designer</p>
+          <p className="text-sm text-muted-foreground">Trusted by 100+ satisfied clients worldwide</p>
         </div>
 
-        {/* Call-to-Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center reveal-up" style={{ animationDelay: '0.8s' }}>
+        {/* Enhanced CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center reveal-up mb-12" style={{ animationDelay: '0.8s' }}>
           <Button
             size="lg"
             onClick={onExploreWork}
-            className="bg-gradient-accent hover:scale-105 transition-all duration-300 text-lg px-8 py-4 glow-blue group"
+            className="bg-gradient-accent hover:scale-110 transition-all duration-300 text-lg px-10 py-5 glow-blue group shadow-2xl border-0"
           >
-            <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-            Explore My Work
-            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            <Play className="mr-3 h-6 w-6 group-hover:scale-125 transition-transform" />
+            View My Portfolio
+            <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-2 transition-transform" />
           </Button>
           
           <Button
             variant="outline"
             size="lg"
             onClick={onContact}
-            className="border-neon-purple text-neon-purple hover:bg-neon-purple hover:text-background transition-all duration-300 text-lg px-8 py-4 hover:scale-105"
+            className="border-2 border-neon-purple/50 text-neon-purple hover:bg-neon-purple hover:text-background transition-all duration-300 text-lg px-10 py-5 hover:scale-110 shadow-xl backdrop-blur-sm"
           >
-            <MessageCircle className="mr-2 h-5 w-5" />
-            Get in Touch
+            <MessageCircle className="mr-3 h-6 w-6" />
+            Let's Collaborate
           </Button>
         </div>
 
-        {/* Animated Intro Text */}
-        <div className="mt-12 reveal-up" style={{ animationDelay: '1s' }}>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Professional video editing, graphic design, and content creation services that bring your vision to life with creativity and precision.
-          </p>
+        {/* Enhanced Intro Text */}
+        <div className="reveal-up" style={{ animationDelay: '1s' }}>
+          <div className="max-w-3xl mx-auto p-6 bg-muted/20 backdrop-blur-sm rounded-2xl border border-border/30">
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Specializing in cinematic video editing, motion graphics, and brand identity design. 
+              I transform your creative vision into compelling visual stories that captivate and inspire.
+            </p>
+          </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Enhanced Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-neon-blue rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-neon-blue rounded-full mt-2 animate-pulse"></div>
+        <div className="w-6 h-12 border-2 border-neon-cyan rounded-full flex justify-center relative overflow-hidden">
+          <div className="w-1 h-4 bg-neon-cyan rounded-full mt-2 animate-pulse shadow-lg shadow-neon-cyan/50"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-neon-cyan/20 rounded-full"></div>
         </div>
       </div>
     </section>
