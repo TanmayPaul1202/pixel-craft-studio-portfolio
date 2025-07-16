@@ -32,12 +32,21 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
           </div>
         </div>
 
-        {/* Colorful Studio Name */}
+        {/* Colorful Studio Name with Shine Effect */}
         <div className="mb-6 reveal-up" style={{ animationDelay: '0.2s' }}>
           <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
-            <span className="text-neon-blue">Pixel</span>{' '}
-            <span className="text-neon-magenta">Craft</span>{' '}
-            <span className="text-neon-purple">Studio</span>
+            <span className="relative inline-block text-neon-blue shine-effect">
+              Pixel
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shine"></div>
+            </span>{' '}
+            <span className="relative inline-block text-neon-magenta shine-effect">
+              Craft
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shine" style={{ animationDelay: '0.5s' }}></div>
+            </span>{' '}
+            <span className="relative inline-block text-neon-purple shine-effect">
+              Studio
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shine" style={{ animationDelay: '1s' }}></div>
+            </span>
           </h1>
         </div>
 
