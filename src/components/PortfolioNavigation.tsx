@@ -45,27 +45,13 @@ export function PortfolioNavigation({ activeSection, onSectionChange }: Portfoli
     }`}>
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Colorful Logo with Shine Effect */}
-          <div className="flex items-center space-x-3">
+          {/* Logo */}
+          <div className="flex items-center">
             <img 
-              src="/lovable-uploads/2c923ae7-2377-4856-ace5-b3b4159939ef.png" 
+              src="/lovable-uploads/pcs-logo.png" 
               alt="Pixel Craft Studio Logo" 
-              className="w-10 h-10 transition-transform duration-200 hover:scale-105"
+              className="h-10 w-auto transition-transform duration-200 hover:scale-105"
             />
-            <div className="text-xl font-semibold">
-              <span className="relative inline-block text-neon-blue shine-effect">
-                Pixel
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shine"></div>
-              </span>{' '}
-              <span className="relative inline-block text-neon-magenta shine-effect">
-                Craft
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shine" style={{ animationDelay: '0.3s' }}></div>
-              </span>{' '}
-              <span className="relative inline-block text-neon-purple shine-effect">
-                Studio
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shine" style={{ animationDelay: '0.6s' }}></div>
-              </span>
-            </div>
           </div>
 
           {/* Simplified Desktop Navigation */}
