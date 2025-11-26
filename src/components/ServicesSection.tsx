@@ -7,6 +7,24 @@ import { Badge } from '@/components/ui/badge';
 
 const services = [
   {
+    title: 'Graphic Design & Branding',
+    description: 'Professional graphic design services including wedding invitations, branding materials, and custom illustrations.',
+    features: ['Wedding Invitations', 'Logo Design', 'Business Cards', 'Brand Identity'],
+    price: 'Starting from ₹170',
+    color: 'neon-magenta',
+    icon: FileText,
+    detailedPricing: [
+      { service: 'Wedding Invitations', description: 'Custom designed wedding cards with traditional/modern themes', price: '₹399-₹680 per design' },
+      { service: 'Logo Design', description: 'Professional logo creation for businesses', price: '₹390' },
+      { service: 'Business Card', description: 'Professional business card design', price: '₹220' },
+      { service: 'Posters & Banners', description: 'Social media and print posters', price: '₹170-₹499' },
+      { service: 'Brochures', description: 'Multi-page brochure design', price: '₹399' },
+      { service: 'ID Cards', description: 'Employee or membership ID cards', price: '₹299' },
+      { service: 'Certificates', description: 'Award and achievement certificates', price: '₹220' },
+      { service: 'Bio Data/Resume', description: 'Professional resume design', price: '₹199-₹210 per page' }
+    ]
+  },
+  {
     title: 'Basic to Advanced Video Editing',
     description: 'Professional video editing services from simple cuts to complex multi-layer productions with advanced effects.',
     features: ['Multi-camera editing', 'Color correction', 'Audio enhancement', 'Motion graphics'],

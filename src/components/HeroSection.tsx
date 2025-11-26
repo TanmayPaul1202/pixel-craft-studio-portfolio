@@ -53,10 +53,10 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
         {/* Clean Tagline */}
         <div className="mb-8 reveal-up" style={{ animationDelay: '0.4s' }}>
           <p className="text-xl md:text-2xl font-light text-muted-foreground mb-3">
-            Professional Video Editor & Creative Designer
+            Professional Video Editor, Graphic Designer & Creative Artist
           </p>
           <p className="text-lg text-muted-foreground">
-            Creating visual stories that captivate and inspire
+            Creating visual stories and stunning designs that captivate and inspire
           </p>
         </div>
 
