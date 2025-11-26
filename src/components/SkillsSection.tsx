@@ -97,8 +97,8 @@ export function SkillsSection() {
           <h3 className="text-2xl font-semibold mb-8 text-neon-blue">Technical Expertise</h3>
           <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
             {[
-              'Adobe Premiere Pro', 'After Effects', 'Photoshop', 'Illustrator',
-              'DaVinci Resolve', 'Final Cut Pro', 'Cinema 4D', 'Blender',
+              'Adobe Premiere Pro', 'After Effects', 'Adobe Photoshop', 'Adobe Illustrator',
+              'Canva Designer', 'DaVinci Resolve', 'Final Cut Pro', 'Cinema 4D', 'Blender',
               'Figma', 'Motion Graphics', 'Sound Design', 'Color Theory'
             ].map((tech, index) => (
               <span
