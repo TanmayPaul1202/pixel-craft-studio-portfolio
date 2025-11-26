@@ -5,6 +5,86 @@ import { Badge } from '@/components/ui/badge';
 
 const projects = [
   {
+    title: 'Traditional Wedding Invitation',
+    category: 'Graphic Design',
+    description: 'Elegant multi-event wedding invitation with traditional Indian artwork and vibrant colors.',
+    tags: ['Print Design', 'Traditional', 'Multi-Event'],
+    image: '/lovable-uploads/graphic-design-1.jpg',
+    color: 'neon-magenta'
+  },
+  {
+    title: 'Haldi Ceremony Invitation',
+    category: 'Graphic Design',
+    description: 'Organic illustrated design with marigold garlands and traditional elements for Haldi celebration.',
+    tags: ['Illustration', 'Festive', 'Floral Design'],
+    image: '/lovable-uploads/graphic-design-2.jpg',
+    color: 'neon-yellow'
+  },
+  {
+    title: 'Royal Wedding Invitation',
+    category: 'Graphic Design',
+    description: 'Luxurious wedding card with ornate patterns, golden accents, and traditional Ganesha blessings.',
+    tags: ['Luxury Design', 'Ornate', 'Cultural'],
+    image: '/lovable-uploads/graphic-design-3.jpg',
+    color: 'neon-blue'
+  },
+  {
+    title: 'Modern Wedding Reception Card',
+    category: 'Graphic Design',
+    description: 'Contemporary illustrated couple design with elegant purple tones and floral decorations.',
+    tags: ['Modern', 'Illustration', 'Reception'],
+    image: '/lovable-uploads/graphic-design-4.jpg',
+    color: 'neon-purple'
+  },
+  {
+    title: 'Elegant Floral Save the Date',
+    category: 'Graphic Design',
+    description: 'Romantic save the date card with white roses, scenic venue backdrop, and elegant typography.',
+    tags: ['Save the Date', 'Floral', 'Elegant'],
+    image: '/lovable-uploads/graphic-design-5.jpg',
+    color: 'neon-cyan'
+  },
+  {
+    title: 'Premium Couple Invitation',
+    category: 'Graphic Design',
+    description: 'Sophisticated wedding invitation with couple illustration, floral frames, and traditional elements.',
+    tags: ['Premium', 'Couple Art', 'Floral Frame'],
+    image: '/lovable-uploads/graphic-design-6.jpg',
+    color: 'neon-magenta'
+  },
+  {
+    title: 'Traditional Arch Design Card',
+    category: 'Graphic Design',
+    description: 'Ornate arch-shaped invitation with tropical florals and decorative lanterns.',
+    tags: ['Arch Design', 'Tropical', 'Traditional'],
+    image: '/lovable-uploads/graphic-design-7.jpg',
+    color: 'neon-blue'
+  },
+  {
+    title: 'Purple Wisteria Wedding Card',
+    category: 'Graphic Design',
+    description: 'Dreamy invitation with cascading wisteria flowers and peaceful garden setting.',
+    tags: ['Floral', 'Garden Theme', 'Peaceful'],
+    image: '/lovable-uploads/graphic-design-8.jpg',
+    color: 'neon-purple'
+  },
+  {
+    title: 'Royal Gold Ceremony Invitation',
+    category: 'Graphic Design',
+    description: 'Majestic wedding card with golden motifs, traditional dancers, and peacock elements.',
+    tags: ['Royal', 'Golden', 'Cultural Dance'],
+    image: '/lovable-uploads/graphic-design-9.jpg',
+    color: 'neon-yellow'
+  },
+  {
+    title: 'Elegant White & Green Wedding',
+    category: 'Graphic Design',
+    description: 'Serene wedding invitation with watercolor florals, elephant motif, and soft pastels.',
+    tags: ['Watercolor', 'Elegant', 'Traditional Elements'],
+    image: '/lovable-uploads/graphic-design-10.jpg',
+    color: 'neon-cyan'
+  },
+  {
     title: 'Wedding Highlights - Mumbai',
     category: 'Wedding Video',
     description: 'Cinematic wedding story capturing the essence of traditional ceremonies with modern storytelling.',
@@ -19,38 +99,6 @@ const projects = [
     tags: ['Branding', 'Motion Graphics', 'Voice Over'],
     image: '🌱',
     color: 'neon-purple'
-  },
-  {
-    title: 'IT Company Explainer',
-    category: 'Explainer Video',
-    description: 'Animated explainer video showcasing software solutions with engaging visuals.',
-    tags: ['Animation', '2D Graphics', 'Scripting'],
-    image: '💻',
-    color: 'neon-magenta'
-  },
-  {
-    title: 'Hotel Promotional Video',
-    category: 'Commercial',
-    description: 'Luxury hotel showcase highlighting amenities and guest experiences.',
-    tags: ['Drone Footage', 'Luxury Edit', 'Music Sync'],
-    image: '🏨',
-    color: 'neon-cyan'
-  },
-  {
-    title: 'School Annual Event',
-    category: 'Event Coverage',
-    description: 'Complete coverage of annual school function with highlights reel and full ceremony.',
-    tags: ['Event Edit', 'Highlights', 'Multi-format'],
-    image: '🎓',
-    color: 'neon-yellow'
-  },
-  {
-    title: 'Fashion Brand Campaign',
-    category: 'Fashion Video',
-    description: 'Dynamic fashion campaign showcasing clothing collection with trendy editing.',
-    tags: ['Fashion Edit', 'Color Pop', 'Trendy Cuts'],
-    image: '👗',
-    color: 'neon-blue'
   }
 ];
 
@@ -74,7 +122,7 @@ export function ProjectsSection() {
 
         {/* Filter Categories */}
         <div className="flex flex-wrap justify-center gap-4 mb-12 reveal-up">
-          {['All', 'Wedding Video', 'Corporate Branding', 'Commercial', 'Event Coverage'].map((category, index) => (
+          {['All', 'Graphic Design', 'Wedding Video', 'Corporate Branding', 'Commercial'].map((category, index) => (
             <Button
               key={category}
               variant={index === 0 ? "default" : "outline"}
@@ -98,16 +146,24 @@ export function ProjectsSection() {
             >
               {/* Project Image/Placeholder */}
               <div className="relative h-48 bg-muted/20 flex items-center justify-center group-hover:scale-105 transition-transform duration-500 overflow-hidden">
-                <div className="text-6xl opacity-50 group-hover:opacity-70 transition-opacity duration-300">
-                  {project.image}
-                </div>
+                {project.image.startsWith('/') ? (
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="text-6xl opacity-50 group-hover:opacity-70 transition-opacity duration-300">
+                    {project.image}
+                  </div>
+                )}
                 
                 {/* Overlay on Hover */}
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <div className="flex space-x-3">
                     <Button size="sm" className="bg-white/20 hover:bg-white/30 text-white border-none">
                       <Play className="h-4 w-4 mr-2" />
-                      Preview
+                      View
                     </Button>
                     <Button size="sm" variant="outline" className="border-white/50 text-white hover:bg-white/20">
                       <ExternalLink className="h-4 w-4" />
@@ -169,6 +225,10 @@ export function ProjectsSection() {
         {/* Project Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 text-center reveal-up">
           <div>
+            <div className="text-3xl font-bold text-neon-magenta mb-2">50+</div>
+            <div className="text-muted-foreground">Graphic Designs</div>
+          </div>
+          <div>
             <div className="text-3xl font-bold text-neon-blue mb-2">15+</div>
             <div className="text-muted-foreground">Wedding Videos</div>
           </div>
@@ -177,12 +237,8 @@ export function ProjectsSection() {
             <div className="text-muted-foreground">Brand Projects</div>
           </div>
           <div>
-            <div className="text-3xl font-bold text-neon-magenta mb-2">40+</div>
+            <div className="text-3xl font-bold text-neon-cyan mb-2">40+</div>
             <div className="text-muted-foreground">Commercial Videos</div>
-          </div>
-          <div>
-            <div className="text-3xl font-bold text-neon-cyan mb-2">30+</div>
-            <div className="text-muted-foreground">Event Coverage</div>
           </div>
         </div>
       </div>
