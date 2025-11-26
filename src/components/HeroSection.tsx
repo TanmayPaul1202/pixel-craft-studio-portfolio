@@ -23,11 +23,11 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
       <div className="container mx-auto px-6 text-center relative z-10">
         {/* Clean Profile Logo */}
         <div className="mb-8 reveal-up">
-          <div className="relative mx-auto w-32 h-32">
+          <div className="relative mx-auto w-48 h-32">
             <img 
-              src="/lovable-uploads/2c923ae7-2377-4856-ace5-b3b4159939ef.png" 
-              alt="Profile Logo" 
-              className="w-full h-full transition-transform duration-300 hover:scale-105"
+              src="/lovable-uploads/pcs-logo.png" 
+              alt="Pixel Craft Studio Logo" 
+              className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
             />
           </div>
         </div>
