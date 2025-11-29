@@ -32,6 +32,8 @@ export default {
 				'neon-magenta': 'hsl(var(--neon-magenta))',
 				'neon-yellow': 'hsl(var(--neon-yellow))',
 				'neon-cyan': 'hsl(var(--neon-cyan))',
+				'theme-blue': 'hsl(220 90% 60%)',
+				'theme-purple': 'hsl(270 80% 65%)',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'

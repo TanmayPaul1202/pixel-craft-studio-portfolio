@@ -8,49 +8,50 @@
 
 @layer base {
   :root {
-    /* Dark Theme Base Colors */
-    --background: 220 13% 9%;
-    --foreground: 210 40% 98%;
+    /* Deep Purple/Blue Theme Base Colors */
+    --background: 250 45% 8%;
+    --foreground: 0 0% 98%;
     
-    /* Creative Accent Colors */
-    --neon-blue: 210 100% 56%;
-    --neon-purple: 270 100% 70%;
-    --neon-magenta: 320 100% 64%;
-    --neon-yellow: 54 100% 62%;
-    --neon-cyan: 180 100% 56%;
+    /* Creative Accent Colors - Purple/Blue Spectrum */
+    --neon-blue: 220 90% 60%;
+    --neon-purple: 270 80% 65%;
+    --neon-magenta: 310 70% 60%;
+    --neon-yellow: 48 100% 50%;
+    --neon-cyan: 180 100% 50%;
     
     /* Semantic Colors */
-    --primary: 210 100% 56%;
-    --primary-foreground: 220 13% 9%;
+    --primary: 220 90% 60%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 13% 15%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 270 80% 65%;
+    --secondary-foreground: 0 0% 100%;
     
-    --muted: 220 13% 20%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 250 35% 18%;
+    --muted-foreground: 240 15% 70%;
     
-    --card: 220 13% 12%;
-    --card-foreground: 210 40% 98%;
+    --card: 250 40% 12%;
+    --card-foreground: 0 0% 98%;
     
-    --accent: 270 100% 70%;
-    --accent-foreground: 220 13% 9%;
+    --accent: 220 90% 60%;
+    --accent-foreground: 0 0% 100%;
     
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
     
-    --border: 220 13% 20%;
-    --input: 220 13% 15%;
-    --ring: 210 100% 56%;
+    --border: 250 30% 20%;
+    --input: 250 35% 18%;
+    --ring: 220 90% 60%;
     
-    /* Creative gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(var(--neon-blue)) 0%, hsl(var(--neon-purple)) 50%, hsl(var(--neon-magenta)) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(220 13% 10%) 100%);
-    --gradient-accent: linear-gradient(90deg, hsl(var(--neon-cyan)) 0%, hsl(var(--neon-blue)) 100%);
+    /* Creative gradients - Purple to Blue */
+    --gradient-hero: linear-gradient(135deg, hsl(220 90% 60%) 0%, hsl(270 80% 65%) 50%, hsl(310 70% 60%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(250 40% 10%) 100%);
+    --gradient-accent: linear-gradient(90deg, hsl(200 90% 55%) 0%, hsl(220 90% 60%) 100%);
+    --gradient-background: linear-gradient(135deg, hsl(220 60% 20%), hsl(270 60% 25%));
     
-    /* Shadows with neon glow */
-    --shadow-neon: 0 0 20px hsl(var(--neon-blue) / 0.3);
-    --shadow-card: 0 8px 32px hsl(220 13% 5% / 0.5);
-    --shadow-float: 0 12px 40px hsl(220 13% 5% / 0.7);
+    /* Shadows with glow */
+    --shadow-neon: 0 0 30px rgba(96, 165, 250, 0.4);
+    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --shadow-float: 0 12px 40px rgba(0, 0, 0, 0.6);
     
     /* Animation timing */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -58,21 +59,14 @@
     
     --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 250 40% 12%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 220 90% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 250 35% 18%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 250 30% 20%;
+    --sidebar-ring: 220 90% 60%;
   }
 
   .dark {
@@ -122,6 +116,8 @@
   body {
     @apply bg-background text-foreground font-poppins;
     overflow-x: hidden;
+    background: linear-gradient(135deg, hsl(220 60% 20%), hsl(270 60% 25%));
+    background-attachment: fixed;
   }
   
   html {
