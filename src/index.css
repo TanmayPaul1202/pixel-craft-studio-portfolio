@@ -8,103 +8,111 @@
 
 @layer base {
   :root {
-    /* Deep Purple/Blue Theme Base Colors */
-    --background: 250 45% 8%;
+    /* Dark modern background - navy/black tones */
+    --background: 220 30% 6%;
     --foreground: 0 0% 98%;
-    
-    /* Creative Accent Colors - Purple/Blue Spectrum */
-    --neon-blue: 220 90% 60%;
-    --neon-purple: 270 80% 65%;
-    --neon-magenta: 310 70% 60%;
-    --neon-yellow: 48 100% 50%;
-    --neon-cyan: 180 100% 50%;
-    
-    /* Semantic Colors */
-    --primary: 220 90% 60%;
-    --primary-foreground: 0 0% 100%;
 
-    --secondary: 270 80% 65%;
-    --secondary-foreground: 0 0% 100%;
+    /* Orange → Blue gradient brand colors */
+    --primary: 25 95% 55%;        /* Warm orange */
+    --primary-foreground: 220 30% 6%;
     
-    --muted: 250 35% 18%;
-    --muted-foreground: 240 15% 70%;
+    --secondary: 210 100% 56%;    /* Cool blue */
+    --secondary-foreground: 220 30% 6%;
     
-    --card: 250 40% 12%;
+    --accent: 200 100% 50%;       /* Cyan accent */
+    --accent-foreground: 220 30% 6%;
+
+    --muted: 220 20% 14%;
+    --muted-foreground: 215 16% 65%;
+
+    --card: 220 25% 10%;
     --card-foreground: 0 0% 98%;
-    
-    --accent: 220 90% 60%;
-    --accent-foreground: 0 0% 100%;
-    
+
+    --popover: 220 25% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 25 95% 55%;
+
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    
-    --border: 250 30% 20%;
-    --input: 250 35% 18%;
-    --ring: 220 90% 60%;
-    
-    /* Creative gradients - Purple to Blue */
-    --gradient-hero: linear-gradient(135deg, hsl(220 90% 60%) 0%, hsl(270 80% 65%) 50%, hsl(310 70% 60%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(250 40% 10%) 100%);
-    --gradient-accent: linear-gradient(90deg, hsl(200 90% 55%) 0%, hsl(220 90% 60%) 100%);
-    --gradient-background: linear-gradient(135deg, hsl(220 60% 20%), hsl(270 60% 25%));
-    
-    /* Shadows with glow */
-    --shadow-neon: 0 0 30px rgba(96, 165, 250, 0.4);
-    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.5);
-    --shadow-float: 0 12px 40px rgba(0, 0, 0, 0.6);
-    
-    /* Animation timing */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    
-    --radius: 0.75rem;
 
-    --sidebar-background: 250 40% 12%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 220 90% 60%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 250 35% 18%;
+    --radius: 1rem;
+
+    /* Gradient definitions */
+    --gradient-primary: linear-gradient(135deg, hsl(25, 95%, 55%), hsl(210, 100%, 56%));
+    --gradient-subtle: linear-gradient(135deg, hsl(25, 95%, 55%) 0%, hsl(200, 100%, 50%) 50%, hsl(210, 100%, 56%) 100%);
+    --gradient-card: linear-gradient(135deg, hsla(220, 25%, 10%, 0.5), hsla(220, 25%, 12%, 0.8));
+    
+    /* Glassmorphism effects */
+    --glass-bg: hsla(220, 25%, 10%, 0.4);
+    --glass-border: hsla(0, 0%, 100%, 0.1);
+    
+    /* Shadows */
+    --shadow-glow: 0 0 60px hsla(25, 95%, 55%, 0.3);
+    --shadow-card: 0 8px 32px hsla(0, 0%, 0%, 0.3);
+    --shadow-soft: 0 4px 16px hsla(0, 0%, 0%, 0.2);
+
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+
+    --sidebar-background: 220 25% 8%;
+    --sidebar-foreground: 215 16% 65%;
+    --sidebar-primary: 25 95% 55%;
+    --sidebar-primary-foreground: 220 30% 6%;
+    --sidebar-accent: 220 20% 14%;
     --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 250 30% 20%;
-    --sidebar-ring: 220 90% 60%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 25 95% 55%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 220 30% 6%;
+    --foreground: 0 0% 98%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --primary: 25 95% 55%;
+    --primary-foreground: 220 30% 6%;
+    
+    --secondary: 210 100% 56%;
+    --secondary-foreground: 220 30% 6%;
+    
+    --accent: 200 100% 50%;
+    --accent-foreground: 220 30% 6%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --muted: 220 20% 14%;
+    --muted-foreground: 215 16% 65%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --card: 220 25% 10%;
+    --card-foreground: 0 0% 98%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --popover: 220 25% 10%;
+    --popover-foreground: 0 0% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 25 95% 55%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 220 25% 8%;
+    --sidebar-foreground: 215 16% 65%;
+    --sidebar-primary: 25 95% 55%;
+    --sidebar-primary-foreground: 220 30% 6%;
+    --sidebar-accent: 220 20% 14%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 25 95% 55%;
   }
 }
 
@@ -114,9 +122,9 @@
   }
 
   body {
-    @apply bg-background text-foreground font-poppins;
+    @apply text-foreground font-poppins;
     overflow-x: hidden;
-    background: linear-gradient(135deg, hsl(220 60% 20%), hsl(270 60% 25%));
+    background: linear-gradient(135deg, hsl(220, 40%, 5%) 0%, hsl(220, 35%, 8%) 50%, hsl(220, 30%, 6%) 100%);
     background-attachment: fixed;
   }
   
@@ -126,52 +134,43 @@
 }
 
 @layer components {
-  /* Neon glow effects */
-  .glow-blue {
-    box-shadow: 0 0 20px hsl(var(--neon-blue) / 0.4), 0 0 40px hsl(var(--neon-blue) / 0.2);
+  /* Glassmorphism Card */
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-card);
+    border-radius: var(--radius);
   }
-  
-  .glow-purple {
-    box-shadow: 0 0 20px hsl(var(--neon-purple) / 0.4), 0 0 40px hsl(var(--neon-purple) / 0.2);
+
+  /* Gradient Backgrounds */
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
   }
-  
-  .glow-magenta {
-    box-shadow: 0 0 20px hsl(var(--neon-magenta) / 0.4), 0 0 40px hsl(var(--neon-magenta) / 0.2);
+
+  .bg-gradient-subtle {
+    background: var(--gradient-subtle);
   }
-  
-  /* Gradient backgrounds */
-  .bg-gradient-hero {
-    background: var(--gradient-hero);
-  }
-  
+
   .bg-gradient-card {
     background: var(--gradient-card);
+    backdrop-filter: blur(10px);
   }
-  
-  .bg-gradient-accent {
-    background: var(--gradient-accent);
+
+  /* Glow Effects */
+  .glow-orange {
+    box-shadow: 0 0 40px hsla(25, 95%, 55%, 0.4);
   }
-  
-  /* Animated gradient background */
-  .animated-gradient {
-    background: linear-gradient(-45deg, 
-      hsl(var(--neon-blue)), 
-      hsl(var(--neon-purple)), 
-      hsl(var(--neon-magenta)), 
-      hsl(var(--neon-cyan))
-    );
-    background-size: 400% 400%;
-    animation: gradient-shift 8s ease infinite;
+
+  .glow-blue {
+    box-shadow: 0 0 40px hsla(210, 100%, 56%, 0.4);
   }
-  
-  /* Floating animation */
-  .float-animation {
-    animation: float 6s ease-in-out infinite;
-  }
-  
-  /* Pulse glow animation */
-  .pulse-glow {
-    animation: pulse-glow 3s ease-in-out infinite;
+
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   
   /* Reveal animation for scroll */
@@ -185,57 +184,13 @@
     opacity: 1;
     transform: translateY(0);
   }
-  
-  /* Scale on hover */
-  .hover-scale {
-    transition: var(--transition-smooth);
-  }
-  
-  .hover-scale:hover {
-    transform: scale(1.05);
-  }
-  
-  /* Neon text effect */
-  .neon-text {
-    text-shadow: 
-      0 0 5px currentColor,
-      0 0 10px currentColor,
-      0 0 15px currentColor,
-      0 0 20px currentColor;
-  }
-  
-  /* Shine effect */
-  .shine-effect {
-    overflow: hidden;
-  }
 }
 
 @layer utilities {
-  /* Custom animations */
-  @keyframes gradient-shift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-  
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-  }
-  
-  @keyframes pulse-glow {
-    0%, 100% { 
-      box-shadow: 0 0 20px hsl(var(--neon-blue) / 0.4);
-    }
-    50% { 
-      box-shadow: 0 0 30px hsl(var(--neon-blue) / 0.8), 0 0 60px hsl(var(--neon-blue) / 0.4);
-    }
-  }
-  
-  @keyframes fade-in-up {
+  @keyframes fade-in {
     from {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(20px);
     }
     to {
       opacity: 1;
@@ -243,52 +198,7 @@
     }
   }
   
-  @keyframes slide-in-left {
-    from {
-      opacity: 0;
-      transform: translateX(-30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  
-  @keyframes scale-in {
-    from {
-      opacity: 0;
-      transform: scale(0.9);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
-  /* Shine animation */
-  @keyframes shine {
-    0% {
-      transform: translateX(-100%) skewX(-15deg);
-    }
-    100% {
-      transform: translateX(200%) skewX(-15deg);
-    }
-  }
-  
-  /* Animation utility classes */
-  .animate-fade-in-up {
-    animation: fade-in-up 0.8s ease-out;
-  }
-  
-  .animate-slide-in-left {
-    animation: slide-in-left 0.8s ease-out;
-  }
-  
-  .animate-scale-in {
-    animation: scale-in 0.6s ease-out;
-  }
-  
-  .animate-shine {
-    animation: shine 2s ease-in-out infinite;
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out;
   }
 }
