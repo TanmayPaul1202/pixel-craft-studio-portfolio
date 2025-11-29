@@ -41,7 +41,15 @@ const designCategories = [
     icon: Palette,
     color: 'neon-blue',
     description: 'Professional brand identity and logo creation',
-    images: []
+    images: [
+      '/lovable-uploads/logo-nikitas.jpg',
+      '/lovable-uploads/logo-sneha-studio.jpg',
+      '/lovable-uploads/logo-catering.jpg',
+      '/lovable-uploads/logo-lalwani.jpg',
+      '/lovable-uploads/logo-radhe-store.jpg',
+      '/lovable-uploads/logo-krinas.jpg',
+      '/lovable-uploads/logo-sews-cafe.jpg'
+    ]
   },
   {
     id: 'brochure',
