@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { PortfolioNavigation } from '@/components/PortfolioNavigation';
 import { HeroSection } from '@/components/HeroSection';
 import { AboutSection } from '@/components/AboutSection';
-import { SkillsSection } from '@/components/SkillsSection';
 import { ServicesSection } from '@/components/ServicesSection';
 import { ProjectsSection } from '@/components/ProjectsSection';
 import { GraphicDesignGallery } from '@/components/GraphicDesignGallery';
+import { TestimonialsSection } from '@/components/TestimonialsSection';
 import { ContactSection } from '@/components/ContactSection';
 
 const Index = () => {
@@ -73,26 +73,22 @@ const Index = () => {
           onContact={scrollToContact}
         />
         <AboutSection />
-        <SkillsSection />
         <ServicesSection />
         <ProjectsSection />
         <GraphicDesignGallery />
+        <TestimonialsSection />
         <ContactSection />
       </main>
 
-      {/* Footer */}
-      <footer className="py-8 border-t border-border">
+      {/* Footer - Minimal */}
+      <footer className="py-12 border-t border-border/30">
         <div className="container mx-auto px-6 text-center">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <span className="text-2xl font-bold">
-                <span className="text-neon-blue">Pixel</span>
-                <span className="text-neon-magenta">Craft</span>
-                <span className="text-neon-purple ml-2">Studio</span>
-              </span>
+          <div className="flex flex-col items-center space-y-4">
+            <div className="text-2xl font-bold text-gradient">
+              Pixel Craft Studio
             </div>
-            <div className="text-muted-foreground">
-              <p>&copy; 2024 Pixel Craft Studio. All rights reserved.</p>
+            <div className="text-sm text-muted-foreground">
+              &copy; {new Date().getFullYear()} All rights reserved
             </div>
           </div>
         </div>
