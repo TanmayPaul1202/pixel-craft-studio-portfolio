@@ -46,10 +46,12 @@ export function AboutSection() {
           {/* Cards Section */}
           <div className="space-y-6 reveal-up">
             {/* Education Card */}
-            <Card className="bg-gradient-card border-border hover:border-neon-blue/50 transition-all duration-300 hover-scale">
-              <CardContent className="p-6">
+            <Card className="relative bg-gradient-card border-2 border-neon-blue/30 transition-all duration-300 hover-scale group overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-neon-blue/10 via-transparent to-neon-blue/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 shadow-[0_0_30px_rgba(59,130,246,0.3)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <CardContent className="p-6 relative z-10">
                 <div className="flex items-start space-x-4">
-                  <div className="p-3 bg-neon-blue/20 rounded-lg">
+                  <div className="p-3 bg-neon-blue/20 rounded-lg shadow-[0_0_20px_rgba(59,130,246,0.4)]">
                     <GraduationCap className="h-6 w-6 text-neon-blue" />
                   </div>
                   <div>
@@ -64,10 +66,12 @@ export function AboutSection() {
             </Card>
 
             {/* Studio Info Card */}
-            <Card className="bg-gradient-card border-border hover:border-neon-purple/50 transition-all duration-300 hover-scale">
-              <CardContent className="p-6">
+            <Card className="relative bg-gradient-card border-2 border-neon-purple/30 transition-all duration-300 hover-scale group overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-neon-purple/10 via-transparent to-neon-purple/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 shadow-[0_0_30px_rgba(168,85,247,0.3)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <CardContent className="p-6 relative z-10">
                 <div className="flex items-start space-x-4">
-                  <div className="p-3 bg-neon-purple/20 rounded-lg">
+                  <div className="p-3 bg-neon-purple/20 rounded-lg shadow-[0_0_20px_rgba(168,85,247,0.4)]">
                     <Award className="h-6 w-6 text-neon-purple" />
                   </div>
                   <div>
@@ -82,10 +86,12 @@ export function AboutSection() {
             </Card>
 
             {/* Mission Card */}
-            <Card className="bg-gradient-card border-border hover:border-neon-magenta/50 transition-all duration-300 hover-scale">
-              <CardContent className="p-6">
+            <Card className="relative bg-gradient-card border-2 border-neon-magenta/30 transition-all duration-300 hover-scale group overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-neon-magenta/10 via-transparent to-neon-magenta/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 shadow-[0_0_30px_rgba(236,72,153,0.3)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <CardContent className="p-6 relative z-10">
                 <div className="flex items-start space-x-4">
-                  <div className="p-3 bg-neon-magenta/20 rounded-lg">
+                  <div className="p-3 bg-neon-magenta/20 rounded-lg shadow-[0_0_20px_rgba(236,72,153,0.4)]">
                     <Target className="h-6 w-6 text-neon-magenta" />
                   </div>
                   <div>
