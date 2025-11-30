@@ -1,4 +1,4 @@
-import { Video, Palette, Zap, Camera } from 'lucide-react';
+import { Video, Palette, Zap, Camera, Film, Brush, Wand2, Image, Layers, Layout, Sparkles, Music, Eye } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const skills = [
@@ -95,20 +95,44 @@ export function SkillsSection() {
         {/* Additional Skills */}
         <div className="mt-16 text-center reveal-up">
           <h3 className="text-2xl font-semibold mb-8 text-neon-blue">Technical Expertise</h3>
-          <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
             {[
-              'Adobe Premiere Pro', 'After Effects', 'Adobe Photoshop', 'Adobe Illustrator',
-              'Canva Designer', 'DaVinci Resolve', 'Final Cut Pro', 'Cinema 4D', 'Blender',
-              'Figma', 'Motion Graphics', 'Sound Design', 'Color Theory'
-            ].map((tech, index) => (
-              <span
-                key={tech}
-                className="px-4 py-2 bg-muted/30 rounded-full text-sm border border-border hover:border-neon-blue/50 hover:bg-neon-blue/10 transition-all duration-300 cursor-default"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                {tech}
-              </span>
-            ))}
+              { name: 'Adobe Premiere Pro', icon: Film, color: 'neon-blue' },
+              { name: 'After Effects', icon: Zap, color: 'neon-purple' },
+              { name: 'Adobe Photoshop', icon: Image, color: 'neon-cyan' },
+              { name: 'Adobe Illustrator', icon: Brush, color: 'neon-magenta' },
+              { name: 'Canva Designer', icon: Palette, color: 'neon-blue' },
+              { name: 'DaVinci Resolve', icon: Video, color: 'neon-purple' },
+              { name: 'Final Cut Pro', icon: Film, color: 'neon-cyan' },
+              { name: 'Cinema 4D', icon: Layers, color: 'neon-magenta' },
+              { name: 'Blender', icon: Wand2, color: 'neon-blue' },
+              { name: 'Figma', icon: Layout, color: 'neon-purple' },
+              { name: 'Motion Graphics', icon: Sparkles, color: 'neon-cyan' },
+              { name: 'Sound Design', icon: Music, color: 'neon-magenta' },
+              { name: 'Color Theory', icon: Eye, color: 'neon-blue' }
+            ].map((tech, index) => {
+              const Icon = tech.icon;
+              return (
+                <div
+                  key={tech.name}
+                  className="group relative animate-float"
+                  style={{ 
+                    animationDelay: `${index * 0.2}s`
+                  }}
+                >
+                  <Card className={`relative bg-gradient-card border-2 border-${tech.color}/30 hover:border-${tech.color}/60 transition-all duration-300 overflow-hidden cursor-pointer`}>
+                    <div className={`absolute inset-0 bg-gradient-to-br from-${tech.color}/5 via-transparent to-${tech.color}/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                    <div className={`absolute inset-0 shadow-[0_0_25px_rgba(59,130,246,0.3)] opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                    <CardContent className="p-4 flex flex-col items-center gap-3 relative z-10 min-w-[140px]">
+                      <div className={`p-3 bg-${tech.color}/20 rounded-lg shadow-[0_0_15px_rgba(59,130,246,0.4)] group-hover:scale-110 transition-transform duration-300`}>
+                        <Icon className={`h-6 w-6 text-${tech.color}`} />
+                      </div>
+                      <p className="text-sm font-medium text-center leading-tight">{tech.name}</p>
+                    </CardContent>
+                  </Card>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
