@@ -1,6 +1,6 @@
-
 import { ArrowRight, MessageCircle, Play, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import heroBackground from '@/assets/hero-background.jpg';
 
 interface HeroSectionProps {
   onExploreWork: () => void;
@@ -13,7 +13,7 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?ixlib=rb-4.0.3&auto=format&fit=crop&w=3880&q=80"
+          src={heroBackground}
           alt="Background"
           className="w-full h-full object-cover"
         />
