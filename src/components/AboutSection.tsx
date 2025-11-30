@@ -18,29 +18,35 @@ export function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Bio Section */}
           <div className="reveal-up">
-            <h3 className="text-2xl font-semibold mb-6 text-neon-blue">Who I Am</h3>
-            <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              I am a professional video editor, graphic designer, and content creator. I'm passionate about creating work that not only meets but exceeds client expectations.
-            </p>
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              As the founder of Pixel Craft Studio, I promise creative, impactful work designed to impress. Every project is an opportunity to push creative boundaries and deliver something truly exceptional.
-            </p>
+            <Card className="relative bg-gradient-card border-2 border-neon-cyan/30 transition-all duration-300 group overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/10 via-transparent to-neon-blue/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 shadow-[0_0_40px_rgba(34,211,238,0.3)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <CardContent className="p-8 relative z-10">
+                <h3 className="text-3xl font-bold mb-6 text-neon-cyan">Who I Am</h3>
+                <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                  I am a professional video editor, graphic designer, and content creator. I'm passionate about creating work that not only meets but exceeds client expectations.
+                </p>
+                <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                  As the founder of Pixel Craft Studio, I promise creative, impactful work designed to impress. Every project is an opportunity to push creative boundaries and deliver something truly exceptional.
+                </p>
 
-            {/* Key Points */}
-            <div className="space-y-4">
-              <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-neon-purple rounded-full"></div>
-                <span className="text-foreground">Creative Excellence in Every Project</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-neon-magenta rounded-full"></div>
-                <span className="text-foreground">Client-Focused Approach</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-neon-cyan rounded-full"></div>
-                <span className="text-foreground">Cutting-Edge Techniques</span>
-              </div>
-            </div>
+                {/* Key Points */}
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3 group/item">
+                    <div className="w-3 h-3 bg-neon-purple rounded-full shadow-[0_0_10px_rgba(168,85,247,0.6)] group-hover/item:shadow-[0_0_15px_rgba(168,85,247,0.8)] transition-shadow"></div>
+                    <span className="text-foreground font-medium">Creative Excellence in Every Project</span>
+                  </div>
+                  <div className="flex items-center space-x-3 group/item">
+                    <div className="w-3 h-3 bg-neon-magenta rounded-full shadow-[0_0_10px_rgba(236,72,153,0.6)] group-hover/item:shadow-[0_0_15px_rgba(236,72,153,0.8)] transition-shadow"></div>
+                    <span className="text-foreground font-medium">Client-Focused Approach</span>
+                  </div>
+                  <div className="flex items-center space-x-3 group/item">
+                    <div className="w-3 h-3 bg-neon-cyan rounded-full shadow-[0_0_10px_rgba(34,211,238,0.6)] group-hover/item:shadow-[0_0_15px_rgba(34,211,238,0.8)] transition-shadow"></div>
+                    <span className="text-foreground font-medium">Cutting-Edge Techniques</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
 
           {/* Cards Section */}
