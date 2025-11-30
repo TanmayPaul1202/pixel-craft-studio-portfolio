@@ -1,74 +1,102 @@
-import { Sparkles } from 'lucide-react';
+import { GraduationCap, Award, Target } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-32 relative">
+    <section id="about" className="py-20 relative">
       <div className="container mx-auto px-6">
         {/* Section Header */}
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6">
-            About <span className="text-gradient">Me</span>
+        <div className="text-center mb-16 reveal-up">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            About <span className="text-transparent bg-clip-text bg-gradient-accent">Me</span>
           </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Passionate creator dedicated to bringing your vision to life through exceptional design and storytelling.
+          </p>
         </div>
 
-        <div className="max-w-5xl mx-auto">
-          {/* Main Content - Glassmorphism Card */}
-          <div className="glass-card p-12 relative overflow-hidden">
-            {/* Decorative elements */}
-            <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-40 h-40 bg-secondary/10 rounded-full blur-3xl"></div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Bio Section */}
+          <div className="reveal-up">
+            <h3 className="text-2xl font-semibold mb-6 text-neon-blue">Who I Am</h3>
+            <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+              I am a professional video editor, graphic designer, and content creator. I'm passionate about creating work that not only meets but exceeds client expectations.
+            </p>
+            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+              As the founder of Pixel Craft Studio, I promise creative, impactful work designed to impress. Every project is an opportunity to push creative boundaries and deliver something truly exceptional.
+            </p>
 
-            <div className="relative z-10">
-              {/* Profile Image Placeholder with Gradient Frame */}
-              <div className="flex justify-center mb-12">
-                <div className="relative">
-                  <div className="w-32 h-32 rounded-full bg-gradient-primary p-1">
-                    <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
-                      <Sparkles className="h-16 w-16 text-primary" />
-                    </div>
-                  </div>
-                  <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-secondary rounded-full flex items-center justify-center shadow-lg">
-                    <span className="text-2xl">✨</span>
-                  </div>
-                </div>
+            {/* Key Points */}
+            <div className="space-y-4">
+              <div className="flex items-center space-x-3">
+                <div className="w-2 h-2 bg-neon-purple rounded-full"></div>
+                <span className="text-foreground">Creative Excellence in Every Project</span>
               </div>
-
-              {/* Bio - Large Clean Typography */}
-              <div className="space-y-6 text-center">
-                <p className="text-xl md:text-2xl text-foreground/90 leading-relaxed font-light">
-                  Professional <span className="text-gradient font-semibold">Video Editor</span> and <span className="text-gradient font-semibold">Graphic Designer</span> with a passion for creating visual stories that captivate and inspire.
-                </p>
-                
-                <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-                  As the founder of <span className="text-primary font-medium">Pixel Craft Studio</span>, I specialize in transforming creative visions into stunning reality. Every project is an opportunity to push boundaries and deliver exceptional results that exceed expectations.
-                </p>
-
-                {/* Education Badge */}
-                <div className="inline-flex items-center gap-3 px-6 py-3 glass-card mt-8">
-                  <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                  <span className="text-sm text-muted-foreground">
-                    BA in Digital Film • Editing & VFX Specialist
-                  </span>
-                </div>
+              <div className="flex items-center space-x-3">
+                <div className="w-2 h-2 bg-neon-magenta rounded-full"></div>
+                <span className="text-foreground">Client-Focused Approach</span>
               </div>
-
-              {/* Key Points */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
-                {[
-                  { title: 'Creative Excellence', desc: 'Every project perfected' },
-                  { title: 'Client-Focused', desc: 'Your vision, realized' },
-                  { title: 'Modern Techniques', desc: 'Cutting-edge tools' }
-                ].map((point, index) => (
-                  <div key={point.title} className="text-center p-6 rounded-2xl bg-card/30 border border-primary/10 hover:border-primary/30 transition-all duration-300">
-                    <div className="text-3xl mb-3 text-gradient font-bold">
-                      {String(index + 1).padStart(2, '0')}
-                    </div>
-                    <h4 className="font-semibold text-foreground mb-2">{point.title}</h4>
-                    <p className="text-sm text-muted-foreground">{point.desc}</p>
-                  </div>
-                ))}
+              <div className="flex items-center space-x-3">
+                <div className="w-2 h-2 bg-neon-cyan rounded-full"></div>
+                <span className="text-foreground">Cutting-Edge Techniques</span>
               </div>
             </div>
+          </div>
+
+          {/* Cards Section */}
+          <div className="space-y-6 reveal-up">
+            {/* Education Card */}
+            <Card className="bg-gradient-card border-border hover:border-neon-blue/50 transition-all duration-300 hover-scale">
+              <CardContent className="p-6">
+                <div className="flex items-start space-x-4">
+                  <div className="p-3 bg-neon-blue/20 rounded-lg">
+                    <GraduationCap className="h-6 w-6 text-neon-blue" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-semibold mb-2">Education</h4>
+                    <p className="text-neon-blue font-medium mb-2">
+                      BA in Digital Film with Emphasis in Editing and Visual Effects
+                    </p>
+                    <p className="text-muted-foreground">Completed in 2022</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Studio Info Card */}
+            <Card className="bg-gradient-card border-border hover:border-neon-purple/50 transition-all duration-300 hover-scale">
+              <CardContent className="p-6">
+                <div className="flex items-start space-x-4">
+                  <div className="p-3 bg-neon-purple/20 rounded-lg">
+                    <Award className="h-6 w-6 text-neon-purple" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-semibold mb-2">Pixel Craft Studio</h4>
+                    <p className="text-neon-purple font-medium mb-2">Founder & Creative Director</p>
+                    <p className="text-muted-foreground">
+                      Leading a creative studio focused on delivering exceptional visual content and exceeding client expectations.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Mission Card */}
+            <Card className="bg-gradient-card border-border hover:border-neon-magenta/50 transition-all duration-300 hover-scale">
+              <CardContent className="p-6">
+                <div className="flex items-start space-x-4">
+                  <div className="p-3 bg-neon-magenta/20 rounded-lg">
+                    <Target className="h-6 w-6 text-neon-magenta" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-semibold mb-2">My Mission</h4>
+                    <p className="text-muted-foreground">
+                      To create visually stunning content that tells compelling stories, builds brands, and creates lasting impact for every client.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
-import { ArrowRight, Play } from 'lucide-react';
+
+import { ArrowRight, MessageCircle, Play, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface HeroSectionProps {
@@ -9,83 +10,104 @@ interface HeroSectionProps {
 export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Modern abstract background shapes */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 -left-20 w-96 h-96 rounded-full bg-primary/20 blur-[120px] animate-pulse"></div>
-        <div className="absolute bottom-1/4 -right-20 w-96 h-96 rounded-full bg-secondary/20 blur-[120px] animate-pulse" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-accent/10 blur-[100px]"></div>
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?ixlib=rb-4.0.3&auto=format&fit=crop&w=3880&q=80"
+          alt="Background"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-background/80 backdrop-blur-sm"></div>
       </div>
 
       <div className="container mx-auto px-6 text-center relative z-10">
-        {/* Logo */}
-        <div className="mb-12 animate-fade-in">
-          <div className="relative mx-auto w-48 h-32 transition-transform duration-300 hover:scale-105">
+        {/* Clean Profile Logo */}
+        <div className="mb-8 reveal-up">
+          <div className="relative mx-auto w-48 h-32">
             <img 
               src="/lovable-uploads/pcs-logo.png" 
               alt="Pixel Craft Studio Logo" 
-              className="w-full h-full object-contain drop-shadow-2xl"
+              className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
             />
           </div>
         </div>
 
-        {/* Main Headline - Bold & Large */}
-        <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 leading-tight tracking-tight">
-            <span className="text-gradient">
-              Video Editor &<br />Graphic Designer
+        {/* Colorful Studio Name with Shine Effect */}
+        <div className="mb-6 reveal-up" style={{ animationDelay: '0.2s' }}>
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
+            <span className="relative inline-block text-neon-blue shine-effect">
+              Pixel
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shine"></div>
+            </span>{' '}
+            <span className="relative inline-block text-neon-magenta shine-effect">
+              Craft
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shine" style={{ animationDelay: '0.5s' }}></div>
+            </span>{' '}
+            <span className="relative inline-block text-neon-purple shine-effect">
+              Studio
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shine" style={{ animationDelay: '1s' }}></div>
             </span>
           </h1>
         </div>
 
-        {/* Tagline */}
-        <div className="mb-12 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-          <p className="text-xl md:text-2xl font-light text-muted-foreground max-w-2xl mx-auto">
-            Creating premium visual stories that captivate,<br />inspire, and leave lasting impressions
+        {/* Clean Tagline */}
+        <div className="mb-8 reveal-up" style={{ animationDelay: '0.4s' }}>
+          <p className="text-xl md:text-2xl font-light text-muted-foreground mb-3">
+            Professional Video Editor, Graphic Designer & Creative Artist
+          </p>
+          <p className="text-lg text-muted-foreground">
+            Creating visual stories and stunning designs that captivate and inspire
           </p>
         </div>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+        {/* Simple Rating */}
+        <div className="mb-8 reveal-up" style={{ animationDelay: '0.6s' }}>
+          <div className="flex items-center justify-center space-x-1 mb-2">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="h-4 w-4 text-primary fill-current" />
+            ))}
+          </div>
+          <p className="text-sm text-muted-foreground">Trusted by 100+ satisfied clients</p>
+        </div>
+
+        {/* Clean CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center reveal-up mb-10" style={{ animationDelay: '0.8s' }}>
           <Button
             size="lg"
             onClick={onExploreWork}
-            className="bg-gradient-primary hover:opacity-90 text-background font-semibold text-lg px-10 py-7 rounded-full shadow-lg glow-orange transition-all duration-300 hover:scale-105"
+            className="bg-primary hover:bg-primary/90 transition-colors duration-200 text-lg px-8 py-3"
           >
-            <Play className="mr-2 h-6 w-6" />
-            View Work
+            <Play className="mr-2 h-5 w-5" />
+            View Portfolio
+            <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
           
           <Button
+            variant="outline"
             size="lg"
             onClick={onContact}
-            className="glass-card hover:bg-primary/10 text-foreground font-semibold text-lg px-10 py-7 rounded-full transition-all duration-300 hover:scale-105 border-2 border-primary/30"
+            className="border-border hover:bg-muted transition-colors duration-200 text-lg px-8 py-3"
           >
-            Hire Me
-            <ArrowRight className="ml-2 h-6 w-6" />
+            <MessageCircle className="mr-2 h-5 w-5" />
+            Get In Touch
           </Button>
         </div>
 
-        {/* Minimal Stats */}
-        <div className="flex flex-wrap justify-center gap-12 animate-fade-in" style={{ animationDelay: '0.8s' }}>
-          <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">100+</div>
-            <div className="text-sm text-muted-foreground uppercase tracking-wider">Projects</div>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">50+</div>
-            <div className="text-sm text-muted-foreground uppercase tracking-wider">Clients</div>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">5+</div>
-            <div className="text-sm text-muted-foreground uppercase tracking-wider">Years</div>
+        {/* Simplified Intro Text */}
+        <div className="reveal-up" style={{ animationDelay: '1s' }}>
+          <div className="max-w-2xl mx-auto p-6 bg-muted/30 rounded-xl border border-border/50 backdrop-blur-sm">
+            <p className="text-base text-muted-foreground leading-relaxed">
+              Specializing in cinematic video editing, motion graphics, and brand identity design. 
+              I transform your creative vision into compelling visual stories.
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center pt-2">
-          <div className="w-1 h-3 bg-primary rounded-full animate-pulse"></div>
+      {/* Simple Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
+        <div className="w-5 h-10 border border-muted-foreground rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-muted-foreground rounded-full mt-2"></div>
         </div>
       </div>
     </section>
