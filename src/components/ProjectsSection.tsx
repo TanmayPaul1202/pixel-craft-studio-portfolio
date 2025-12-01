@@ -2,6 +2,7 @@ import { ExternalLink, Play } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { useState, useEffect } from 'react';
 
 const projects = [
   {
@@ -103,13 +104,36 @@ const projects = [
 ];
 
 export function ProjectsSection() {
-  return (
-    <section id="projects" className="py-20 relative">
-      {/* Background Elements */}
-      <div className="absolute top-32 right-10 w-40 h-40 rounded-full bg-neon-magenta/10 blur-xl float-animation"></div>
-      <div className="absolute bottom-32 left-10 w-32 h-32 rounded-full bg-neon-cyan/10 blur-xl float-animation" style={{ animationDelay: '2s' }}></div>
+  const [scrollY, setScrollY] = useState(0);
 
-      <div className="container mx-auto px-6">
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <section id="projects" className="py-20 relative overflow-hidden">
+      {/* Parallax Background Elements */}
+      <div 
+        className="absolute top-32 right-10 w-40 h-40 rounded-full bg-neon-magenta/10 blur-xl"
+        style={{
+          transform: `translate(${(scrollY - 3200) * 0.1}px, ${(scrollY - 3200) * 0.15}px)`,
+          transition: 'transform 0.1s ease-out'
+        }}
+      ></div>
+      <div 
+        className="absolute bottom-32 left-10 w-32 h-32 rounded-full bg-neon-cyan/10 blur-xl"
+        style={{
+          transform: `translate(${(scrollY - 3200) * -0.08}px, ${(scrollY - 3200) * -0.12}px)`,
+          transition: 'transform 0.1s ease-out'
+        }}
+      ></div>
+
+      <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16 reveal-up">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">

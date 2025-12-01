@@ -1,5 +1,6 @@
 import { ArrowRight, MessageCircle, Play, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useState, useEffect } from 'react';
 import heroBackground from '@/assets/hero-background.jpg';
 
 interface HeroSectionProps {
@@ -8,14 +9,29 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Background Image with Overlay */}
+      {/* Parallax Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
           src={heroBackground}
           alt="Background"
           className="w-full h-full object-cover"
+          style={{
+            transform: `translateY(${scrollY * 0.5}px)`,
+            transition: 'transform 0.1s ease-out'
+          }}
         />
         <div className="absolute inset-0 bg-background/80 backdrop-blur-sm"></div>
       </div>
