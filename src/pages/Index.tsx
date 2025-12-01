@@ -85,7 +85,7 @@ const Index = () => {
         <div className="container mx-auto px-6 text-center">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <span className="text-2xl font-bold">
+              <span className="text-2xl font-bold font-orbitron">
                 <span className="text-neon-blue">Pixel</span>
                 <span className="text-neon-magenta">Craft</span>
                 <span className="text-neon-purple ml-2">Studio</span>

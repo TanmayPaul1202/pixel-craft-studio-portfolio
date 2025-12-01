@@ -34,7 +34,7 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
 
         {/* Colorful Studio Name with Shine Effect */}
         <div className="mb-6 reveal-up" style={{ animationDelay: '0.2s' }}>
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight font-orbitron">
             <span className="relative inline-block text-neon-blue shine-effect">
               Pixel
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shine"></div>
