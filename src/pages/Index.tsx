@@ -14,8 +14,8 @@ const Index = () => {
   // Handle scroll animation reveals
   useEffect(() => {
     const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
+      threshold: 0.15,
+      rootMargin: '0px 0px -80px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -34,6 +34,22 @@ const Index = () => {
     // Observe all reveal elements and sections
     const revealElements = document.querySelectorAll('.reveal-up');
     const sections = document.querySelectorAll('section[id]');
+    
+    // Apply different animation classes to different sections
+    sections.forEach((section, index) => {
+      const sectionId = section.id;
+      
+      // Alternate animation patterns for visual variety
+      if (sectionId === 'home') {
+        section.classList.add('section-fade');
+      } else if (index % 3 === 0) {
+        section.classList.add('section-slide-left');
+      } else if (index % 3 === 1) {
+        section.classList.add('section-zoom');
+      } else {
+        section.classList.add('section-slide-right');
+      }
+    });
     
     revealElements.forEach((el) => observer.observe(el));
     sections.forEach((section) => observer.observe(section));
