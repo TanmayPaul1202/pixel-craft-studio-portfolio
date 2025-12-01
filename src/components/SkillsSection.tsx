@@ -97,21 +97,16 @@ export function SkillsSection() {
           <h3 className="text-2xl font-semibold mb-8 text-neon-blue">Technical Expertise</h3>
           <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
             {[
-              { name: 'Adobe Premiere Pro', icon: Film, color: 'neon-blue' },
-              { name: 'After Effects', icon: Zap, color: 'neon-purple' },
-              { name: 'Adobe Photoshop', icon: Image, color: 'neon-cyan' },
-              { name: 'Adobe Illustrator', icon: Brush, color: 'neon-magenta' },
-              { name: 'Canva Designer', icon: Palette, color: 'neon-blue' },
-              { name: 'DaVinci Resolve', icon: Video, color: 'neon-purple' },
-              { name: 'Final Cut Pro', icon: Film, color: 'neon-cyan' },
-              { name: 'Cinema 4D', icon: Layers, color: 'neon-magenta' },
-              { name: 'Blender', icon: Wand2, color: 'neon-blue' },
-              { name: 'Figma', icon: Layout, color: 'neon-purple' },
-              { name: 'Motion Graphics', icon: Sparkles, color: 'neon-cyan' },
-              { name: 'Sound Design', icon: Music, color: 'neon-magenta' },
-              { name: 'Color Theory', icon: Eye, color: 'neon-blue' }
+              { name: 'Canva Designer', logo: '/lovable-uploads/logo-canva.jpg', color: 'neon-blue' },
+              { name: 'Adobe Photoshop', logo: '/lovable-uploads/logo-photoshop.jpg', color: 'neon-cyan' },
+              { name: 'After Effects', logo: '/lovable-uploads/logo-after-effects.jpg', color: 'neon-purple' },
+              { name: 'Adobe Illustrator', logo: '/lovable-uploads/logo-illustrator.jpg', color: 'neon-magenta' },
+              { name: 'Final Cut Pro', logo: '/lovable-uploads/logo-final-cut-pro.jpg', color: 'neon-cyan' },
+              { name: 'Figma', logo: '/lovable-uploads/logo-figma.jpg', color: 'neon-purple' },
+              { name: 'Cinema 4D', logo: '/lovable-uploads/logo-cinema-4d.jpg', color: 'neon-magenta' },
+              { name: 'Blender', logo: '/lovable-uploads/logo-blender.jpg', color: 'neon-blue' },
+              { name: 'Adobe Premiere Pro', logo: '/lovable-uploads/logo-premiere-pro.jpg', color: 'neon-purple' }
             ].map((tech, index) => {
-              const Icon = tech.icon;
               return (
                 <div
                   key={tech.name}
@@ -124,8 +119,8 @@ export function SkillsSection() {
                     <div className={`absolute inset-0 bg-gradient-to-br from-${tech.color}/5 via-transparent to-${tech.color}/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
                     <div className={`absolute inset-0 shadow-[0_0_25px_rgba(59,130,246,0.3)] opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
                     <CardContent className="p-4 flex flex-col items-center gap-3 relative z-10 min-w-[140px]">
-                      <div className={`p-3 bg-${tech.color}/20 rounded-lg shadow-[0_0_15px_rgba(59,130,246,0.4)] group-hover:scale-110 transition-transform duration-300`}>
-                        <Icon className={`h-6 w-6 text-${tech.color}`} />
+                      <div className="p-3 bg-background/50 rounded-lg shadow-[0_0_15px_rgba(59,130,246,0.4)] group-hover:scale-110 transition-transform duration-300">
+                        <img src={tech.logo} alt={tech.name} className="h-12 w-12 object-contain" />
                       </div>
                       <p className="text-sm font-medium text-center leading-tight">{tech.name}</p>
                     </CardContent>
