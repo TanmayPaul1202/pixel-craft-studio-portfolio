@@ -1,5 +1,6 @@
 import { Video, Palette, Zap, Camera, Film, Brush, Wand2, Image, Layers, Layout, Sparkles, Music, Eye } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { useState, useEffect } from 'react';
 
 const skills = [
   {
@@ -33,13 +34,36 @@ const skills = [
 ];
 
 export function SkillsSection() {
-  return (
-    <section id="skills" className="py-20 relative">
-      {/* Background Elements */}
-      <div className="absolute top-20 right-10 w-32 h-32 rounded-full bg-neon-blue/10 blur-xl"></div>
-      <div className="absolute bottom-20 left-10 w-40 h-40 rounded-full bg-neon-purple/10 blur-xl"></div>
+  const [scrollY, setScrollY] = useState(0);
 
-      <div className="container mx-auto px-6">
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <section id="skills" className="py-20 relative overflow-hidden">
+      {/* Parallax Background Elements */}
+      <div 
+        className="absolute top-20 right-10 w-32 h-32 rounded-full bg-neon-blue/10 blur-xl"
+        style={{
+          transform: `translate(${(scrollY - 1600) * 0.08}px, ${(scrollY - 1600) * 0.12}px)`,
+          transition: 'transform 0.1s ease-out'
+        }}
+      ></div>
+      <div 
+        className="absolute bottom-20 left-10 w-40 h-40 rounded-full bg-neon-purple/10 blur-xl"
+        style={{
+          transform: `translate(${(scrollY - 1600) * -0.06}px, ${(scrollY - 1600) * -0.1}px)`,
+          transition: 'transform 0.1s ease-out'
+        }}
+      ></div>
+
+      <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16 reveal-up">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">

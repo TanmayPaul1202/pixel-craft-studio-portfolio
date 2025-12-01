@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Play, Star, Clock, Package, ChevronDown, ChevronUp, Download, FileText } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -122,18 +122,40 @@ export function ServicesSection() {
   const [showPricing, setShowPricing] = useState(false);
   const [showBranding, setShowBranding] = useState(false);
   const [showPersonal, setShowPersonal] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleService = (index: number) => {
     setExpandedService(expandedService === index ? null : index);
   };
 
   return (
-    <section id="services" className="py-20 relative">
-      {/* Background Elements */}
-      <div className="absolute top-10 left-20 w-24 h-24 rounded-full bg-neon-purple/20 blur-xl float-animation"></div>
-      <div className="absolute bottom-10 right-20 w-32 h-32 rounded-full bg-neon-blue/20 blur-xl float-animation" style={{ animationDelay: '3s' }}></div>
+    <section id="services" className="py-20 relative overflow-hidden">
+      {/* Parallax Background Elements */}
+      <div 
+        className="absolute top-10 left-20 w-24 h-24 rounded-full bg-neon-purple/20 blur-xl"
+        style={{
+          transform: `translate(${(scrollY - 2400) * -0.05}px, ${(scrollY - 2400) * 0.1}px)`,
+          transition: 'transform 0.1s ease-out'
+        }}
+      ></div>
+      <div 
+        className="absolute bottom-10 right-20 w-32 h-32 rounded-full bg-neon-blue/20 blur-xl"
+        style={{
+          transform: `translate(${(scrollY - 2400) * 0.08}px, ${(scrollY - 2400) * -0.12}px)`,
+          transition: 'transform 0.1s ease-out'
+        }}
+      ></div>
 
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16 reveal-up">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">

@@ -1,10 +1,38 @@
 import { GraduationCap, Award, Target } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { useState, useEffect } from 'react';
 
 export function AboutSection() {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <section id="about" className="py-20 relative">
-      <div className="container mx-auto px-6">
+    <section id="about" className="py-20 relative overflow-hidden">
+      {/* Parallax Background Elements */}
+      <div 
+        className="absolute top-10 right-20 w-64 h-64 rounded-full bg-neon-cyan/10 blur-3xl"
+        style={{
+          transform: `translateY(${(scrollY - 800) * 0.15}px)`,
+          transition: 'transform 0.1s ease-out'
+        }}
+      ></div>
+      <div 
+        className="absolute bottom-10 left-20 w-80 h-80 rounded-full bg-neon-purple/10 blur-3xl"
+        style={{
+          transform: `translateY(${(scrollY - 800) * -0.1}px)`,
+          transition: 'transform 0.1s ease-out'
+        }}
+      ></div>
+
+      <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16 reveal-up">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
