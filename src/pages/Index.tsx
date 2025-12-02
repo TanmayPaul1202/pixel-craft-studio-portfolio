@@ -7,6 +7,7 @@ import { ServicesSection } from '@/components/ServicesSection';
 import { ProjectsSection } from '@/components/ProjectsSection';
 import { GraphicDesignGallery } from '@/components/GraphicDesignGallery';
 import { ContactSection } from '@/components/ContactSection';
+import { CustomCursor } from '@/components/CustomCursor';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -75,7 +76,9 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-poppins">
+    <div className="min-h-screen bg-background text-foreground font-poppins cursor-none">
+      {/* Custom Cursor */}
+      <CustomCursor />
       {/* Navigation */}
       <PortfolioNavigation 
         activeSection={activeSection} 
