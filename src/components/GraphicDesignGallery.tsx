@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
-import { Palette, Heart, FileText, DollarSign, Youtube, Sparkles, X, ChevronLeft, ChevronRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Palette, Heart, FileText, DollarSign, Youtube, Sparkles } from 'lucide-react';
+import { ImageLightbox } from './ImageLightbox';
 
 const designCategories = [
   {
@@ -195,61 +196,15 @@ export function GraphicDesignGallery() {
         </DialogContent>
       </Dialog>
 
-      {/* Full Size Image Lightbox */}
-      {fullSizeImage && (
-        <div 
-          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center"
-          onClick={() => setFullSizeImage(null)}
-        >
-          {/* Close button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="absolute top-4 right-4 text-white hover:bg-white/20 z-10"
-            onClick={() => setFullSizeImage(null)}
-          >
-            <X className="h-8 w-8" />
-          </Button>
-
-          {/* Previous button */}
-          {selectedCategory && selectedCategory.images.length > 1 && (
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute left-4 text-white hover:bg-white/20 z-10"
-              onClick={(e) => { e.stopPropagation(); navigateImage('prev'); }}
-            >
-              <ChevronLeft className="h-10 w-10" />
-            </Button>
-          )}
-
-          {/* Image */}
-          <img
-            src={fullSizeImage.url}
-            alt="Full size view"
-            className="max-w-[90vw] max-h-[90vh] object-contain animate-scale-in"
-            onClick={(e) => e.stopPropagation()}
-          />
-
-          {/* Next button */}
-          {selectedCategory && selectedCategory.images.length > 1 && (
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute right-4 text-white hover:bg-white/20 z-10"
-              onClick={(e) => { e.stopPropagation(); navigateImage('next'); }}
-            >
-              <ChevronRight className="h-10 w-10" />
-            </Button>
-          )}
-
-          {/* Image counter */}
-          {selectedCategory && (
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/80 text-sm">
-              {fullSizeImage.index + 1} / {selectedCategory.images.length}
-            </div>
-          )}
-        </div>
+      {/* Full Size Image Lightbox - rendered via portal */}
+      {createPortal(
+        <ImageLightbox
+          image={fullSizeImage}
+          images={selectedCategory?.images || []}
+          onClose={() => setFullSizeImage(null)}
+          onNavigate={navigateImage}
+        />,
+        document.body
       )}
     </section>
   );
