@@ -73,7 +73,12 @@ const designCategories = [
     icon: Youtube,
     color: 'neon-magenta',
     description: 'Eye-catching thumbnails for social media',
-    images: []
+    images: [
+      '/lovable-uploads/thumbnail-noodles.jpg',
+      '/lovable-uploads/thumbnail-gaming.jpg',
+      '/lovable-uploads/thumbnail-travel.jpg',
+      '/lovable-uploads/thumbnail-analysis.jpg'
+    ]
   }
 ];
 
