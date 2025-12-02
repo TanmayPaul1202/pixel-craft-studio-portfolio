@@ -119,39 +119,49 @@ export function SkillsSection() {
         {/* Additional Skills */}
         <div className="mt-16 text-center reveal-up">
           <h3 className="text-2xl font-semibold mb-8 text-neon-blue">Technical Expertise</h3>
-          <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
-            {[
-              { name: 'Canva Designer', logo: '/lovable-uploads/logo-canva.jpg', color: 'neon-blue' },
-              { name: 'Adobe Photoshop', logo: '/lovable-uploads/logo-photoshop.jpg', color: 'neon-cyan' },
-              { name: 'After Effects', logo: '/lovable-uploads/logo-after-effects.jpg', color: 'neon-purple' },
-              { name: 'Adobe Illustrator', logo: '/lovable-uploads/logo-illustrator.jpg', color: 'neon-magenta' },
-              { name: 'Final Cut Pro', logo: '/lovable-uploads/logo-final-cut-pro.jpg', color: 'neon-cyan' },
-              { name: 'Figma', logo: '/lovable-uploads/logo-figma.jpg', color: 'neon-purple' },
-              { name: 'Cinema 4D', logo: '/lovable-uploads/logo-cinema-4d.jpg', color: 'neon-magenta' },
-              { name: 'Blender', logo: '/lovable-uploads/logo-blender.jpg', color: 'neon-blue' },
-              { name: 'Adobe Premiere Pro', logo: '/lovable-uploads/logo-premiere-pro.jpg', color: 'neon-purple' }
-            ].map((tech, index) => {
-              return (
-                <div
-                  key={tech.name}
-                  className="group relative animate-float"
-                  style={{ 
-                    animationDelay: `${index * 0.2}s`
-                  }}
-                >
-                  <Card className={`relative bg-gradient-card border-2 border-${tech.color}/30 hover:border-${tech.color}/60 transition-all duration-300 overflow-hidden cursor-pointer`}>
-                    <div className={`absolute inset-0 bg-gradient-to-br from-${tech.color}/5 via-transparent to-${tech.color}/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-                    <div className={`absolute inset-0 shadow-[0_0_25px_rgba(59,130,246,0.3)] opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-                    <CardContent className="p-4 flex flex-col items-center gap-3 relative z-10 min-w-[140px]">
-                      <div className="p-3 bg-background/50 rounded-lg shadow-[0_0_15px_rgba(59,130,246,0.4)] group-hover:scale-110 transition-transform duration-300">
-                        <img src={tech.logo} alt={tech.name} className="h-12 w-12 object-contain" />
-                      </div>
-                      <p className="text-sm font-medium text-center leading-tight">{tech.name}</p>
-                    </CardContent>
-                  </Card>
+          <div className="relative overflow-hidden">
+            {/* Gradient overlays for fade effect */}
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none"></div>
+            
+            {/* Marquee container */}
+            <div className="flex animate-marquee">
+              {[...Array(2)].map((_, setIndex) => (
+                <div key={setIndex} className="flex gap-6 pr-6">
+                  {[
+                    { name: 'Canva Designer', logo: '/lovable-uploads/logo-canva.jpg', color: 'neon-blue' },
+                    { name: 'Adobe Photoshop', logo: '/lovable-uploads/logo-photoshop.jpg', color: 'neon-cyan' },
+                    { name: 'After Effects', logo: '/lovable-uploads/logo-after-effects.jpg', color: 'neon-purple' },
+                    { name: 'Adobe Illustrator', logo: '/lovable-uploads/logo-illustrator.jpg', color: 'neon-magenta' },
+                    { name: 'Final Cut Pro', logo: '/lovable-uploads/logo-final-cut-pro.jpg', color: 'neon-cyan' },
+                    { name: 'Figma', logo: '/lovable-uploads/logo-figma.jpg', color: 'neon-purple' },
+                    { name: 'Cinema 4D', logo: '/lovable-uploads/logo-cinema-4d.jpg', color: 'neon-magenta' },
+                    { name: 'Blender', logo: '/lovable-uploads/logo-blender.jpg', color: 'neon-blue' },
+                    { name: 'Adobe Premiere Pro', logo: '/lovable-uploads/logo-premiere-pro.jpg', color: 'neon-purple' },
+                    { name: 'Sketch', logo: '/lovable-uploads/logo-sketch.png', color: 'neon-yellow' },
+                    { name: 'Adobe XD', logo: '/lovable-uploads/logo-adobe-xd.png', color: 'neon-magenta' },
+                    { name: 'Creative Cloud', logo: '/lovable-uploads/logo-creative-cloud.png', color: 'neon-cyan' },
+                    { name: 'Adobe InDesign', logo: '/lovable-uploads/logo-indesign.png', color: 'neon-magenta' }
+                  ].map((tech) => (
+                    <div
+                      key={`${setIndex}-${tech.name}`}
+                      className="group relative flex-shrink-0"
+                    >
+                      <Card className={`relative bg-gradient-card border-2 border-${tech.color}/30 hover:border-${tech.color}/60 transition-all duration-300 overflow-hidden cursor-pointer`}>
+                        <div className={`absolute inset-0 bg-gradient-to-br from-${tech.color}/5 via-transparent to-${tech.color}/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                        <div className={`absolute inset-0 shadow-[0_0_25px_rgba(59,130,246,0.3)] opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                        <CardContent className="p-4 flex flex-col items-center gap-3 relative z-10 min-w-[140px]">
+                          <div className="p-3 bg-background/50 rounded-lg shadow-[0_0_15px_rgba(59,130,246,0.4)] group-hover:scale-110 transition-transform duration-300">
+                            <img src={tech.logo} alt={tech.name} className="h-12 w-12 object-contain" />
+                          </div>
+                          <p className="text-sm font-medium text-center leading-tight">{tech.name}</p>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  ))}
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
         </div>
       </div>
