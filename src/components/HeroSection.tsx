@@ -1,4 +1,4 @@
-import { ArrowRight, MessageCircle, Play, Star } from 'lucide-react';
+import { ArrowRight, MessageCircle, Play, Star, Sparkles, MousePointer, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
 import heroBackground from '@/assets/hero-background.jpg';
@@ -8,8 +8,11 @@ interface HeroSectionProps {
   onContact: () => void;
 }
 
+const roles = ['Video Editor', 'Graphic Designer', 'Motion Artist', 'Brand Creator'];
+
 export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
   const [scrollY, setScrollY] = useState(0);
+  const [currentRole, setCurrentRole] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,110 +23,193 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Role text animation
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentRole((prev) => (prev + 1) % roles.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Parallax Background Image with Overlay */}
+      {/* Animated Background */}
       <div className="absolute inset-0 z-0">
         <img 
           src={heroBackground}
           alt="Background"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover scale-110"
           style={{
-            transform: `translateY(${scrollY * 0.5}px)`,
+            transform: `translateY(${scrollY * 0.3}px) scale(1.1)`,
             transition: 'transform 0.1s ease-out'
           }}
         />
-        <div className="absolute inset-0 bg-background/80 backdrop-blur-sm"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/70 to-background"></div>
+        
+        {/* Animated Gradient Orbs */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-blue/20 rounded-full blur-[120px] animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-neon-purple/20 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-neon-magenta/10 rounded-full blur-[150px] animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      <div className="container mx-auto px-6 text-center relative z-10">
-        {/* Clean Profile Logo */}
-        <div className="mb-8 reveal-up">
-          <div className="relative mx-auto w-48 h-32">
-            <img 
-              src="/lovable-uploads/pcs-logo.png" 
-              alt="Pixel Craft Studio Logo" 
-              className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
-            />
+      {/* Floating Particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-neon-blue/50 rounded-full animate-float"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${3 + Math.random() * 4}s`
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Main Content */}
+      <div className="container mx-auto px-6 relative z-10 pt-20">
+        <div className="max-w-5xl mx-auto">
+          {/* Badge */}
+          <div className="flex justify-center mb-8 reveal-up">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-neon-blue/10 border border-neon-blue/30 backdrop-blur-sm">
+              <Sparkles className="w-4 h-4 text-neon-blue" />
+              <span className="text-sm font-medium text-neon-blue">Creative Studio</span>
+            </div>
           </div>
-        </div>
 
-        {/* Colorful Studio Name with Shine Effect */}
-        <div className="mb-6 reveal-up" style={{ animationDelay: '0.2s' }}>
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight font-orbitron">
-            <span className="relative inline-block text-neon-blue shine-effect">
-              Pixel
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shine"></div>
-            </span>{' '}
-            <span className="relative inline-block text-neon-magenta shine-effect">
-              Craft
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shine" style={{ animationDelay: '0.5s' }}></div>
-            </span>{' '}
-            <span className="relative inline-block text-neon-purple shine-effect">
-              Studio
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shine" style={{ animationDelay: '1s' }}></div>
-            </span>
-          </h1>
-        </div>
-
-        {/* Clean Tagline */}
-        <div className="mb-8 reveal-up" style={{ animationDelay: '0.4s' }}>
-          <p className="text-xl md:text-2xl font-light text-muted-foreground mb-3">
-            Professional Video Editor, Graphic Designer & Creative Artist
-          </p>
-          <p className="text-lg text-muted-foreground">
-            Creating visual stories and stunning designs that captivate and inspire
-          </p>
-        </div>
-
-        {/* Simple Rating */}
-        <div className="mb-8 reveal-up" style={{ animationDelay: '0.6s' }}>
-          <div className="flex items-center justify-center space-x-1 mb-2">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="h-4 w-4 text-primary fill-current" />
-            ))}
+          {/* Logo */}
+          <div className="flex justify-center mb-10 reveal-up" style={{ animationDelay: '0.1s' }}>
+            <div className="relative group">
+              <div className="absolute -inset-4 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta rounded-3xl blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
+              <img 
+                src="/lovable-uploads/pcs-logo.png" 
+                alt="Pixel Craft Studio Logo" 
+                className="relative h-24 md:h-32 w-auto transition-transform duration-500 group-hover:scale-110"
+              />
+            </div>
           </div>
-          <p className="text-sm text-muted-foreground">Trusted by 100+ satisfied clients</p>
-        </div>
 
-        {/* Clean CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center reveal-up mb-10" style={{ animationDelay: '0.8s' }}>
-          <Button
-            size="lg"
-            onClick={onExploreWork}
-            className="bg-primary hover:bg-primary/90 transition-colors duration-200 text-lg px-8 py-3"
-          >
-            <Play className="mr-2 h-5 w-5" />
-            View Portfolio
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-          
-          <Button
-            variant="outline"
-            size="lg"
-            onClick={onContact}
-            className="border-border hover:bg-muted transition-colors duration-200 text-lg px-8 py-3"
-          >
-            <MessageCircle className="mr-2 h-5 w-5" />
-            Get In Touch
-          </Button>
-        </div>
+          {/* Main Title */}
+          <div className="text-center mb-8 reveal-up" style={{ animationDelay: '0.2s' }}>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight font-orbitron">
+              <span className="relative inline-block">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta">
+                  Pixel
+                </span>
+              </span>
+              <span className="text-foreground mx-4">Craft</span>
+              <span className="relative inline-block">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-magenta via-neon-purple to-neon-blue">
+                  Studio
+                </span>
+              </span>
+            </h1>
+          </div>
 
-        {/* Simplified Intro Text */}
-        <div className="reveal-up" style={{ animationDelay: '1s' }}>
-          <div className="max-w-2xl mx-auto p-6 bg-muted/30 rounded-xl border border-border/50 backdrop-blur-sm">
-            <p className="text-base text-muted-foreground leading-relaxed">
-              Specializing in cinematic video editing, motion graphics, and brand identity design. 
-              I transform your creative vision into compelling visual stories.
+          {/* Animated Role */}
+          <div className="text-center mb-6 reveal-up h-12" style={{ animationDelay: '0.3s' }}>
+            <div className="relative overflow-hidden h-full flex items-center justify-center">
+              <p className="text-2xl md:text-3xl font-light text-muted-foreground">
+                Professional{' '}
+                <span 
+                  key={currentRole}
+                  className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple font-semibold animate-fade-in"
+                >
+                  {roles[currentRole]}
+                </span>
+              </p>
+            </div>
+          </div>
+
+          {/* Tagline */}
+          <div className="text-center mb-12 reveal-up" style={{ animationDelay: '0.4s' }}>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Transforming ideas into <span className="text-foreground font-medium">stunning visuals</span> that captivate, 
+              inspire, and leave a lasting impression
+            </p>
+          </div>
+
+          {/* Stats Row */}
+          <div className="flex flex-wrap justify-center gap-8 md:gap-16 mb-12 reveal-up" style={{ animationDelay: '0.5s' }}>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple">100+</div>
+              <div className="text-sm text-muted-foreground mt-1">Happy Clients</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-purple to-neon-magenta">500+</div>
+              <div className="text-sm text-muted-foreground mt-1">Projects Done</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-magenta to-neon-blue">5+</div>
+              <div className="text-sm text-muted-foreground mt-1">Years Experience</div>
+            </div>
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center reveal-up mb-12" style={{ animationDelay: '0.6s' }}>
+            <Button
+              size="lg"
+              onClick={onExploreWork}
+              className="group relative bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta hover:opacity-90 text-background font-semibold text-lg px-8 py-6 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-neon-purple/30"
+            >
+              <Play className="mr-2 h-5 w-5 transition-transform group-hover:scale-110" />
+              View Portfolio
+              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </Button>
+            
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={onContact}
+              className="group border-2 border-neon-purple/50 text-foreground hover:bg-neon-purple/10 hover:border-neon-purple text-lg px-8 py-6 rounded-full transition-all duration-300 hover:scale-105"
+            >
+              <MessageCircle className="mr-2 h-5 w-5 transition-transform group-hover:rotate-12" />
+              Let's Connect
+            </Button>
+          </div>
+
+          {/* Rating */}
+          <div className="flex flex-col items-center gap-3 reveal-up" style={{ animationDelay: '0.7s' }}>
+            <div className="flex items-center gap-1">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="h-5 w-5 text-neon-yellow fill-neon-yellow" />
+              ))}
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Rated <span className="text-foreground font-semibold">5.0</span> by our amazing clients
             </p>
           </div>
         </div>
       </div>
 
-      {/* Simple Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
-        <div className="w-5 h-10 border border-muted-foreground rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-muted-foreground rounded-full mt-2"></div>
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+        <div className="flex flex-col items-center gap-2 animate-bounce">
+          <span className="text-xs text-muted-foreground tracking-widest uppercase">Scroll</span>
+          <div className="w-6 h-10 border-2 border-muted-foreground/50 rounded-full flex justify-center p-2">
+            <div className="w-1.5 h-1.5 bg-neon-blue rounded-full animate-pulse"></div>
+          </div>
+        </div>
+      </div>
+
+      {/* Side Decorations */}
+      <div className="absolute left-8 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-4">
+        {['01', '02', '03'].map((num, i) => (
+          <div key={num} className="w-8 h-8 rounded-full border border-border/50 flex items-center justify-center text-xs text-muted-foreground hover:border-neon-blue hover:text-neon-blue transition-colors cursor-pointer">
+            {num}
+          </div>
+        ))}
+      </div>
+
+      <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:block">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-px h-20 bg-gradient-to-b from-transparent via-muted-foreground/50 to-transparent"></div>
+          <span className="text-xs text-muted-foreground tracking-widest uppercase" style={{ writingMode: 'vertical-rl' }}>
+            Est. 2022
+          </span>
+          <div className="w-px h-20 bg-gradient-to-b from-transparent via-muted-foreground/50 to-transparent"></div>
         </div>
       </div>
     </section>
