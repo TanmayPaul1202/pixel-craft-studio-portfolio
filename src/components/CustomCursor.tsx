@@ -10,8 +10,8 @@ export function CustomCursor() {
 
   const animate = useCallback(() => {
     // Smooth follow for the ring (lerp)
-    ringPos.current.x += (mousePos.current.x - ringPos.current.x) * 0.15;
-    ringPos.current.y += (mousePos.current.y - ringPos.current.y) * 0.15;
+    ringPos.current.x += (mousePos.current.x - ringPos.current.x) * 0.25;
+    ringPos.current.y += (mousePos.current.y - ringPos.current.y) * 0.25;
 
     if (dotRef.current) {
       dotRef.current.style.left = `${mousePos.current.x}px`;
@@ -84,19 +84,19 @@ export function CustomCursor() {
       {/* Main cursor dot */}
       <div
         ref={dotRef}
-        className="fixed pointer-events-none z-[9999] mix-blend-difference opacity-0"
+        className="fixed pointer-events-none z-[9999] opacity-0"
         style={{ transform: 'translate(-50%, -50%)' }}
       >
-        <div className="w-3 h-3 rounded-full bg-white transition-transform duration-150 ease-out" />
+        <div className="w-3 h-3 rounded-full bg-neon-blue transition-transform duration-150 ease-out" />
       </div>
       
       {/* Cursor ring */}
       <div
         ref={ringRef}
-        className="fixed pointer-events-none z-[9998] mix-blend-difference opacity-0"
+        className="fixed pointer-events-none z-[9998] opacity-0"
         style={{ transform: 'translate(-50%, -50%)' }}
       >
-        <div className="w-8 h-8 rounded-full border-2 border-white transition-transform duration-200 ease-out opacity-50" />
+        <div className="w-8 h-8 rounded-full border-2 border-neon-blue transition-transform duration-200 ease-out opacity-50" />
       </div>
     </>
   );
