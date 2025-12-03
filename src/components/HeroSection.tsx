@@ -9,10 +9,13 @@ interface HeroSectionProps {
 }
 
 const roles = ['Video Editor', 'Graphic Designer', 'Motion Artist', 'Brand Creator'];
+const tagline = "Transforming ideas into stunning visuals that captivate, inspire, and leave a lasting impression";
 
 export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
   const [scrollY, setScrollY] = useState(0);
   const [currentRole, setCurrentRole] = useState(0);
+  const [displayedText, setDisplayedText] = useState('');
+  const [isTyping, setIsTyping] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +32,25 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
       setCurrentRole((prev) => (prev + 1) % roles.length);
     }, 3000);
     return () => clearInterval(interval);
+  }, []);
+
+  // Typewriter effect for tagline
+  useEffect(() => {
+    let index = 0;
+    setDisplayedText('');
+    setIsTyping(true);
+    
+    const typeInterval = setInterval(() => {
+      if (index < tagline.length) {
+        setDisplayedText(tagline.slice(0, index + 1));
+        index++;
+      } else {
+        setIsTyping(false);
+        clearInterval(typeInterval);
+      }
+    }, 40);
+
+    return () => clearInterval(typeInterval);
   }, []);
 
   return (
@@ -123,11 +145,13 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
             </div>
           </div>
 
-          {/* Tagline */}
+          {/* Tagline with Typing Effect */}
           <div className="text-center mb-12 reveal-up" style={{ animationDelay: '0.4s' }}>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Transforming ideas into <span className="text-foreground font-medium">stunning visuals</span> that captivate, 
-              inspire, and leave a lasting impression
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed min-h-[60px]">
+              {displayedText}
+              {isTyping && (
+                <span className="inline-block w-0.5 h-5 bg-neon-blue ml-1 animate-pulse"></span>
+              )}
             </p>
           </div>
 
