@@ -368,6 +368,14 @@
     transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
+  /* Mobile: show sections immediately to prevent visibility issues */
+  @media (max-width: 768px) {
+    section {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+  
   section.section-fade-in {
     animation: fade-in 1s ease-out forwards;
   }
