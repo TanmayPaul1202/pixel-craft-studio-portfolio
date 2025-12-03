@@ -1,6 +1,5 @@
-
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface PortfolioNavigationProps {
@@ -40,68 +39,124 @@ export function PortfolioNavigation({ activeSection, onSectionChange }: Portfoli
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-background/95 backdrop-blur-sm border-b border-border' : 'bg-transparent'
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      isScrolled 
+        ? 'bg-background/80 backdrop-blur-xl border-b border-neon-blue/20 shadow-lg shadow-neon-blue/5' 
+        : 'bg-gradient-to-b from-background/60 to-transparent'
     }`}>
-      <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center">
-            <img 
-              src="/lovable-uploads/pcs-logo.png" 
-              alt="Pixel Craft Studio Logo" 
-              className="h-10 w-auto transition-transform duration-200 hover:scale-105"
-            />
+      <div className="container mx-auto px-4 md:px-8">
+        <div className="flex items-center justify-between h-20 md:h-24">
+          {/* Logo Section */}
+          <div 
+            className="flex items-center gap-3 group cursor-pointer"
+            onClick={() => scrollToSection('home')}
+          >
+            <div className="relative">
+              <div className="absolute -inset-2 bg-gradient-to-r from-neon-blue/20 via-neon-purple/20 to-neon-magenta/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <img 
+                src="/lovable-uploads/pcs-logo.png" 
+                alt="Pixel Craft Studio Logo" 
+                className="relative h-14 md:h-16 w-auto transition-all duration-300 group-hover:scale-110"
+              />
+            </div>
+            <div className="hidden sm:flex flex-col">
+              <span className="text-xl md:text-2xl font-bold font-orbitron tracking-tight">
+                <span className="text-neon-blue">Pixel</span>
+                <span className="text-neon-magenta">Craft</span>
+              </span>
+              <span className="text-xs text-muted-foreground tracking-[0.2em] uppercase">Studio</span>
+            </div>
           </div>
 
-          {/* Simplified Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1 bg-muted/50 rounded-full px-2 py-1">
-            {navigationItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 ${
-                  activeSection === item.id 
-                    ? 'bg-primary text-primary-foreground' 
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted/70'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center">
+            <div className="flex items-center gap-1 bg-muted/30 backdrop-blur-md rounded-full px-2 py-2 border border-border/50">
+              {navigationItems.map((item, index) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`relative px-5 py-2.5 text-sm font-medium rounded-full transition-all duration-300 overflow-hidden group ${
+                    activeSection === item.id 
+                      ? 'text-background' 
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  {/* Active Background */}
+                  {activeSection === item.id && (
+                    <span className="absolute inset-0 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta rounded-full animate-pulse"></span>
+                  )}
+                  {/* Hover Effect */}
+                  <span className={`absolute inset-0 rounded-full transition-all duration-300 ${
+                    activeSection !== item.id ? 'bg-muted/0 group-hover:bg-muted/50' : ''
+                  }`}></span>
+                  <span className="relative z-10">{item.label}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA Button - Desktop */}
+          <div className="hidden lg:flex items-center gap-4">
+            <Button 
+              onClick={() => scrollToSection('contact')}
+              className="bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta hover:opacity-90 text-background font-semibold px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-neon-purple/30"
+            >
+              <Sparkles className="w-4 h-4 mr-2" />
+              Let's Talk
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <Button
             variant="ghost"
-            size="sm"
-            className="md:hidden"
+            size="icon"
+            className="lg:hidden relative w-12 h-12 rounded-full bg-muted/30 border border-border/50 hover:bg-muted/50 hover:border-neon-blue/30"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            <span className={`absolute transition-all duration-300 ${isMenuOpen ? 'rotate-90 opacity-0' : 'rotate-0 opacity-100'}`}>
+              <Menu className="h-5 w-5" />
+            </span>
+            <span className={`absolute transition-all duration-300 ${isMenuOpen ? 'rotate-0 opacity-100' : '-rotate-90 opacity-0'}`}>
+              <X className="h-5 w-5" />
+            </span>
           </Button>
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-border/50">
-            <div className="flex flex-col space-y-1 pt-4">
-              {navigationItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`text-left py-3 px-4 rounded-lg transition-all duration-200 ${
-                    activeSection === item.id
-                      ? 'text-primary bg-muted'
-                      : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
+        <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${
+          isMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+        }`}>
+          <div className="py-6 space-y-2 border-t border-border/30">
+            {navigationItems.map((item, index) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                style={{ animationDelay: `${index * 50}ms` }}
+                className={`w-full text-left py-4 px-6 rounded-xl transition-all duration-300 flex items-center gap-3 ${
+                  activeSection === item.id
+                    ? 'bg-gradient-to-r from-neon-blue/20 via-neon-purple/20 to-neon-magenta/20 text-foreground border border-neon-purple/30'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-muted/30 hover:pl-8'
+                }`}
+              >
+                {activeSection === item.id && (
+                  <span className="w-2 h-2 rounded-full bg-gradient-to-r from-neon-blue to-neon-purple"></span>
+                )}
+                <span className="font-medium">{item.label}</span>
+              </button>
+            ))}
+            
+            {/* Mobile CTA */}
+            <div className="pt-4">
+              <Button 
+                onClick={() => scrollToSection('contact')}
+                className="w-full bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta hover:opacity-90 text-background font-semibold py-4 rounded-xl"
+              >
+                <Sparkles className="w-4 h-4 mr-2" />
+                Let's Talk
+              </Button>
             </div>
           </div>
-        )}
+        </div>
       </div>
     </nav>
   );
