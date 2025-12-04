@@ -124,39 +124,34 @@ export function SkillsSection() {
             <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none"></div>
             <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none"></div>
             
-            {/* Marquee container */}
-            <div className="flex animate-marquee">
-              {[...Array(2)].map((_, setIndex) => (
-                <div key={setIndex} className="flex gap-6 pr-6">
+            {/* Marquee container - logos only, fast moving */}
+            <div className="flex animate-marquee-fast">
+              {[...Array(3)].map((_, setIndex) => (
+                <div key={setIndex} className="flex gap-4 md:gap-6 pr-4 md:pr-6">
                   {[
-                    { name: 'Canva Designer', logo: '/lovable-uploads/logo-canva.jpg', color: 'neon-blue' },
-                    { name: 'Adobe Photoshop', logo: '/lovable-uploads/logo-photoshop.jpg', color: 'neon-cyan' },
-                    { name: 'After Effects', logo: '/lovable-uploads/logo-after-effects.jpg', color: 'neon-purple' },
-                    { name: 'Adobe Illustrator', logo: '/lovable-uploads/logo-illustrator.jpg', color: 'neon-magenta' },
-                    { name: 'Final Cut Pro', logo: '/lovable-uploads/logo-final-cut-pro.jpg', color: 'neon-cyan' },
-                    { name: 'Figma', logo: '/lovable-uploads/logo-figma.jpg', color: 'neon-purple' },
-                    { name: 'Cinema 4D', logo: '/lovable-uploads/logo-cinema-4d.jpg', color: 'neon-magenta' },
-                    { name: 'Blender', logo: '/lovable-uploads/logo-blender.jpg', color: 'neon-blue' },
-                    { name: 'Adobe Premiere Pro', logo: '/lovable-uploads/logo-premiere-pro.jpg', color: 'neon-purple' },
-                    { name: 'Sketch', logo: '/lovable-uploads/logo-sketch.png', color: 'neon-yellow' },
-                    { name: 'Adobe XD', logo: '/lovable-uploads/logo-adobe-xd.png', color: 'neon-magenta' },
-                    { name: 'Creative Cloud', logo: '/lovable-uploads/logo-creative-cloud.png', color: 'neon-cyan' },
-                    { name: 'Adobe InDesign', logo: '/lovable-uploads/logo-indesign.png', color: 'neon-magenta' }
+                    { name: 'Canva Designer', logo: '/lovable-uploads/logo-canva.jpg' },
+                    { name: 'Adobe Photoshop', logo: '/lovable-uploads/logo-photoshop.jpg' },
+                    { name: 'After Effects', logo: '/lovable-uploads/logo-after-effects.jpg' },
+                    { name: 'Adobe Illustrator', logo: '/lovable-uploads/logo-illustrator.jpg' },
+                    { name: 'Final Cut Pro', logo: '/lovable-uploads/logo-final-cut-pro.jpg' },
+                    { name: 'Figma', logo: '/lovable-uploads/logo-figma.jpg' },
+                    { name: 'Cinema 4D', logo: '/lovable-uploads/logo-cinema-4d.jpg' },
+                    { name: 'Blender', logo: '/lovable-uploads/logo-blender.jpg' },
+                    { name: 'Adobe Premiere Pro', logo: '/lovable-uploads/logo-premiere-pro.jpg' },
+                    { name: 'Sketch', logo: '/lovable-uploads/logo-sketch.png' },
+                    { name: 'Adobe XD', logo: '/lovable-uploads/logo-adobe-xd.png' },
+                    { name: 'Creative Cloud', logo: '/lovable-uploads/logo-creative-cloud.png' },
+                    { name: 'Adobe InDesign', logo: '/lovable-uploads/logo-indesign.png' }
                   ].map((tech) => (
                     <div
                       key={`${setIndex}-${tech.name}`}
-                      className="group relative flex-shrink-0"
+                      className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-xl bg-background/80 border border-border/50 p-2 md:p-3 hover:scale-110 hover:border-neon-blue/50 transition-all duration-300 shadow-lg"
                     >
-                      <Card className={`relative bg-gradient-card border-2 border-${tech.color}/30 hover:border-${tech.color}/60 transition-all duration-300 overflow-hidden cursor-pointer`}>
-                        <div className={`absolute inset-0 bg-gradient-to-br from-${tech.color}/5 via-transparent to-${tech.color}/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-                        <div className={`absolute inset-0 shadow-[0_0_25px_rgba(59,130,246,0.3)] opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-                        <CardContent className="p-4 flex flex-col items-center gap-3 relative z-10 min-w-[140px]">
-                          <div className="p-3 bg-background/50 rounded-lg shadow-[0_0_15px_rgba(59,130,246,0.4)] group-hover:scale-110 transition-transform duration-300">
-                            <img src={tech.logo} alt={tech.name} className="h-12 w-12 object-contain" />
-                          </div>
-                          <p className="text-sm font-medium text-center leading-tight">{tech.name}</p>
-                        </CardContent>
-                      </Card>
+                      <img 
+                        src={tech.logo} 
+                        alt={tech.name} 
+                        className="w-full h-full object-contain rounded-lg"
+                      />
                     </div>
                   ))}
                 </div>
