@@ -368,12 +368,12 @@
   }
   
   .animate-marquee-fast {
-    animation: marquee-fast 8s linear infinite;
+    animation: marquee-fast 1.5s linear infinite;
   }
   
   @media (max-width: 768px) {
     .animate-marquee-fast {
-      animation: marquee-fast 5s linear infinite;
+      animation: marquee-fast 1s linear infinite;
     }
   }
   
