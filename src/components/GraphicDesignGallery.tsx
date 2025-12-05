@@ -3,8 +3,35 @@ import { createPortal } from 'react-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
-import { Palette, Heart, FileText, DollarSign, Youtube, Sparkles } from 'lucide-react';
+import { Palette, Heart, FileText, DollarSign, Youtube, Sparkles, Play, Video } from 'lucide-react';
 import { ImageLightbox } from './ImageLightbox';
+
+const videoShowcase = [
+  {
+    id: 'haldi',
+    title: 'Haldi Ceremony',
+    src: '/videos/haldi-ceremony.mp4',
+    description: 'Traditional Haldi Ceremony Invitation'
+  },
+  {
+    id: 'wedding-colorful',
+    title: 'Wedding Invitation',
+    src: '/videos/wedding-invitation-colorful.mp4',
+    description: 'Colorful Traditional Indian Wedding'
+  },
+  {
+    id: 'wedding-green',
+    title: 'Wedding Reel',
+    src: '/videos/wedding-invitation-green.mp4',
+    description: 'Indian Style Wedding Instagram Reel'
+  },
+  {
+    id: 'digital',
+    title: 'Digital Invitation',
+    src: '/videos/digital-invitation.mp4',
+    description: 'Modern Digital Video Invitation'
+  }
+];
 
 const designCategories = [
   {
@@ -158,6 +185,66 @@ export function GraphicDesignGallery() {
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        {/* Video Showcase Section */}
+        <div className="mt-24 reveal-up">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-3 mb-4">
+              <Video className="h-8 w-8 text-neon-purple" />
+              <h3 className="text-3xl md:text-4xl font-bold">
+                Video <span className="text-transparent bg-clip-text bg-gradient-accent">Invitations</span>
+              </h3>
+            </div>
+            <p className="text-muted-foreground max-w-xl mx-auto">
+              Stunning animated video invitations for weddings and special occasions
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {videoShowcase.map((video, index) => (
+              <div
+                key={video.id}
+                className="relative group rounded-2xl overflow-hidden bg-gradient-card border border-border hover:border-neon-purple/50 transition-all duration-500"
+                style={{ animationDelay: `${index * 0.15}s` }}
+              >
+                {/* Video Container */}
+                <div className="aspect-[9/16] relative">
+                  <video
+                    src={video.src}
+                    className="w-full h-full object-cover"
+                    muted
+                    loop
+                    playsInline
+                    onMouseEnter={(e) => e.currentTarget.play()}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.pause();
+                      e.currentTarget.currentTime = 0;
+                    }}
+                  />
+                  
+                  {/* Play Icon Overlay */}
+                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-100 group-hover:opacity-0 transition-opacity duration-300">
+                    <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
+                      <Play className="h-8 w-8 text-white fill-white ml-1" />
+                    </div>
+                  </div>
+
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/80 to-transparent" />
+                </div>
+
+                {/* Video Info */}
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <h4 className="text-lg font-semibold text-white mb-1">{video.title}</h4>
+                  <p className="text-sm text-white/70">{video.description}</p>
+                </div>
+
+                {/* Hover Glow Effect */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-neon-purple/0 via-neon-purple/10 to-neon-magenta/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
