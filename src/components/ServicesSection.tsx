@@ -263,24 +263,36 @@ export function ServicesSection() {
 
         {/* Branding Services */}
         <div className="mb-16 reveal-up">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-semibold mb-4 text-neon-blue">Branding Services</h3>
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-3 mb-4">
+              <div className="h-px w-12 bg-gradient-to-r from-transparent to-blue-500"></div>
+              <h3 className="text-3xl font-bold">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Branding</span> Services
+              </h3>
+              <div className="h-px w-12 bg-gradient-to-l from-transparent to-cyan-500"></div>
+            </div>
             <Button
               variant="outline"
               onClick={() => setShowBranding(!showBranding)}
-              className="border-neon-blue text-neon-blue hover:bg-neon-blue hover:text-background"
+              className="border-blue-500/50 text-blue-400 hover:bg-blue-500/20 hover:border-blue-400 backdrop-blur-sm"
             >
-              {showBranding ? 'Hide Branding Services' : 'Show Branding Services'}
+              {showBranding ? 'Hide Services' : 'Explore Services'}
+              {showBranding ? <ChevronUp className="ml-2 h-4 w-4" /> : <ChevronDown className="ml-2 h-4 w-4" />}
             </Button>
           </div>
           
           {showBranding && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 animate-fade-in-up">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 animate-fade-in-up">
               {brandingServices.map((service, index) => (
-                <div key={service.service} className="p-4 bg-gradient-card rounded-lg border border-neon-blue/20">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm">{service.service}</span>
-                    <span className="text-neon-blue font-semibold">{service.price}</span>
+                <div 
+                  key={service.service} 
+                  className="group relative p-5 rounded-2xl bg-gradient-to-br from-blue-500/10 to-cyan-500/5 border border-blue-500/20 hover:border-blue-400/50 transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/10 hover:-translate-y-1"
+                  style={{ animationDelay: `${index * 0.05}s` }}
+                >
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/0 to-cyan-500/0 group-hover:from-blue-500/5 group-hover:to-cyan-500/10 transition-all duration-500"></div>
+                  <div className="relative">
+                    <p className="text-foreground font-medium mb-2">{service.service}</p>
+                    <p className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">{service.price}</p>
                   </div>
                 </div>
               ))}
@@ -290,24 +302,36 @@ export function ServicesSection() {
 
         {/* Personal Services */}
         <div className="mb-16 reveal-up">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-semibold mb-4 text-neon-purple">Personal Services</h3>
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-3 mb-4">
+              <div className="h-px w-12 bg-gradient-to-r from-transparent to-purple-500"></div>
+              <h3 className="text-3xl font-bold">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Personal</span> Services
+              </h3>
+              <div className="h-px w-12 bg-gradient-to-l from-transparent to-pink-500"></div>
+            </div>
             <Button
               variant="outline"
               onClick={() => setShowPersonal(!showPersonal)}
-              className="border-neon-purple text-neon-purple hover:bg-neon-purple hover:text-background"
+              className="border-purple-500/50 text-purple-400 hover:bg-purple-500/20 hover:border-purple-400 backdrop-blur-sm"
             >
-              {showPersonal ? 'Hide Personal Services' : 'Show Personal Services'}
+              {showPersonal ? 'Hide Services' : 'Explore Services'}
+              {showPersonal ? <ChevronUp className="ml-2 h-4 w-4" /> : <ChevronDown className="ml-2 h-4 w-4" />}
             </Button>
           </div>
           
           {showPersonal && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 animate-fade-in-up">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 animate-fade-in-up">
               {personalServices.map((service, index) => (
-                <div key={service.service} className="p-4 bg-gradient-card rounded-lg border border-neon-purple/20">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm">{service.service}</span>
-                    <span className="text-neon-purple font-semibold">{service.price}</span>
+                <div 
+                  key={service.service} 
+                  className="group relative p-5 rounded-2xl bg-gradient-to-br from-purple-500/10 to-pink-500/5 border border-purple-500/20 hover:border-purple-400/50 transition-all duration-500 hover:shadow-lg hover:shadow-purple-500/10 hover:-translate-y-1"
+                  style={{ animationDelay: `${index * 0.05}s` }}
+                >
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500/0 to-pink-500/0 group-hover:from-purple-500/5 group-hover:to-pink-500/10 transition-all duration-500"></div>
+                  <div className="relative">
+                    <p className="text-foreground font-medium mb-2">{service.service}</p>
+                    <p className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">{service.price}</p>
                   </div>
                 </div>
               ))}
@@ -315,53 +339,105 @@ export function ServicesSection() {
           )}
         </div>
 
-        {/* Additional Services */}
-        <div className="text-center reveal-up mb-16">
-          <h3 className="text-2xl font-semibold mb-8 text-neon-magenta">Additional Services & Benefits</h3>
-          <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto mb-8">
+        {/* Additional Services & Benefits */}
+        <div className="mb-16 reveal-up">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-3 mb-4">
+              <div className="h-px w-12 bg-gradient-to-r from-transparent to-pink-500"></div>
+              <h3 className="text-3xl font-bold">
+                Additional <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-orange-400">Services & Benefits</span>
+              </h3>
+              <div className="h-px w-12 bg-gradient-to-l from-transparent to-orange-500"></div>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto mb-12">
             {additionalServices.map((service, index) => (
-              <Badge
+              <div 
                 key={service}
-                variant="outline"
-                className="px-4 py-2 text-sm border-neon-magenta/50 text-neon-magenta hover:bg-neon-magenta hover:text-background transition-all duration-300"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="group relative p-4 rounded-xl bg-gradient-to-br from-pink-500/10 to-orange-500/5 border border-pink-500/20 hover:border-pink-400/50 transition-all duration-500 hover:shadow-lg hover:shadow-pink-500/10"
+                style={{ animationDelay: `${index * 0.05}s` }}
               >
-                {service}
-              </Badge>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-gradient-to-r from-pink-400 to-orange-400"></div>
+                  <p className="text-sm text-foreground">{service}</p>
+                </div>
+              </div>
             ))}
           </div>
 
           {/* Why Choose Section */}
-          <div className="bg-gradient-card p-6 rounded-lg border border-neon-cyan/20 mb-8">
-            <h4 className="text-xl font-semibold mb-4 text-neon-cyan">Why Choose Pixel Craft Studio?</h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
-              <div className="space-y-2">
-                <p className="text-muted-foreground">• Unique & Modern Designs</p>
-                <p className="text-muted-foreground">• Quick Turnaround Time</p>
+          <div className="relative max-w-5xl mx-auto">
+            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-3xl blur-lg opacity-20"></div>
+            <div className="relative bg-card/80 backdrop-blur-xl rounded-3xl p-8 md:p-10 border border-border/50">
+              <div className="text-center mb-8">
+                <h4 className="text-2xl md:text-3xl font-bold mb-2">
+                  Why Choose <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">Pixel Craft Studio</span>?
+                </h4>
+                <p className="text-muted-foreground">Experience excellence in every project</p>
               </div>
-              <div className="space-y-2">
-                <p className="text-muted-foreground">• Affordable & Transparent Pricing</p>
-                <p className="text-muted-foreground">• 100% Client Satisfaction</p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                {[
+                  { title: 'Unique & Modern', subtitle: 'Designs', icon: '✨', gradient: 'from-cyan-400 to-blue-400' },
+                  { title: 'Quick Turnaround', subtitle: 'Time', icon: '⚡', gradient: 'from-blue-400 to-purple-400' },
+                  { title: 'Affordable & Transparent', subtitle: 'Pricing', icon: '💎', gradient: 'from-purple-400 to-pink-400' },
+                  { title: '100% Client', subtitle: 'Satisfaction', icon: '🎯', gradient: 'from-pink-400 to-orange-400' }
+                ].map((item, index) => (
+                  <div 
+                    key={item.title}
+                    className="group text-center p-6 rounded-2xl bg-background/50 border border-border/30 hover:border-primary/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
+                    <p className={`font-bold text-transparent bg-clip-text bg-gradient-to-r ${item.gradient}`}>{item.title}</p>
+                    <p className="text-muted-foreground text-sm">{item.subtitle}</p>
+                  </div>
+                ))}
               </div>
-            </div>
-            <div className="mt-4 p-3 bg-neon-magenta/10 rounded">
-              <p className="text-neon-magenta font-semibold">Special Offer: Get 10% OFF on your first order - Limited Time Only!</p>
+              
+              {/* Special Offer */}
+              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-blue-500/20 p-6 border border-pink-500/30">
+                <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-blue-500/10 animate-pulse"></div>
+                <div className="relative flex flex-col md:flex-row items-center justify-center gap-4 text-center md:text-left">
+                  <div className="text-4xl">🎉</div>
+                  <div>
+                    <p className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400">
+                      Special Offer: Get 10% OFF on your first order!
+                    </p>
+                    <p className="text-muted-foreground text-sm">Limited Time Only - Don't Miss Out!</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* Important Notes */}
-          <div className="bg-muted/10 p-6 rounded-lg text-left max-w-2xl mx-auto">
-            <h4 className="font-semibold mb-3 text-center">Important Notes:</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>• Final prices depend on project complexity, duration, and client requirements</li>
-              <li>• Client briefing: Ensure a clear understanding of the project before starting</li>
-              <li>• Payment terms: Consider upfront payment (50%) and the rest upon delivery</li>
-              <li>• 50% advance payment is required to start the project</li>
-              <li>• Revisions are available (first revision is free; ₹300 for additional revisions)</li>
-              <li>• Final delivery will be provided upon full payment</li>
-              <li>• Mode of Payment: UPI / Gpay / Phonepe / Paytm Only</li>
-            </ul>
-          </div>
+        {/* Important Notes */}
+        <div className="bg-card/50 backdrop-blur-sm p-8 rounded-2xl text-left max-w-3xl mx-auto border border-border/30 reveal-up">
+          <h4 className="font-semibold mb-4 text-center text-lg">Important Notes</h4>
+          <ul className="space-y-3 text-sm text-muted-foreground">
+            <li className="flex items-start gap-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+              Final prices depend on project complexity, duration, and client requirements
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+              Client briefing: Ensure a clear understanding of the project before starting
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+              Payment terms: Consider upfront payment (50%) and the rest upon delivery
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+              Revisions are available (first revision is free; ₹300 for additional revisions)
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+              Mode of Payment: UPI / Gpay / Phonepe / Paytm Only
+            </li>
+          </ul>
         </div>
 
         {/* Service Highlights */}
