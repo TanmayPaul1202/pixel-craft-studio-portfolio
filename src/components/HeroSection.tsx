@@ -60,18 +60,20 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
         <img 
           src={heroBackground}
           alt="Background"
-          className="w-full h-full object-cover scale-110"
+          className="w-full h-full object-cover"
           style={{
-            transform: `translateY(${scrollY * 0.3}px) scale(1.1)`,
+            transform: `translateY(${scrollY * 0.2}px) scale(1.15)`,
             transition: 'transform 0.1s ease-out'
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/70 to-background"></div>
+        {/* Gradient Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-r from-neon-purple/10 via-transparent to-neon-blue/10" />
         
         {/* Animated Gradient Orbs */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-blue/20 rounded-full blur-[120px] animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-neon-purple/20 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-neon-magenta/10 rounded-full blur-[150px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-gradient-to-r from-neon-blue/25 to-neon-cyan/15 rounded-full blur-[100px] animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-gradient-to-r from-neon-purple/25 to-neon-magenta/15 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-r from-neon-magenta/10 to-neon-purple/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
       </div>
 
       {/* Floating Particles */}
