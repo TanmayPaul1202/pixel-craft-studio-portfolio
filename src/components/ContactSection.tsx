@@ -9,6 +9,7 @@ export function ContactSection() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     subject: '',
     message: ''
   });
@@ -39,7 +40,7 @@ export function ContactSection() {
       description: "Thank you for reaching out. I'll get back to you soon!",
     });
 
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
   };
 
   const contactMethods = [
@@ -227,6 +228,30 @@ export function ContactSection() {
                         required
                       />
                     </div>
+                  </div>
+
+                  {/* Phone Field */}
+                  <div className="relative">
+                    <label 
+                      htmlFor="phone" 
+                      className={`absolute left-4 transition-all duration-300 pointer-events-none ${
+                        focusedField === 'phone' || formData.phone 
+                          ? '-top-2.5 text-xs bg-card px-2 text-primary' 
+                          : 'top-4 text-muted-foreground'
+                      }`}
+                    >
+                      Phone Number
+                    </label>
+                    <Input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      onFocus={() => setFocusedField('phone')}
+                      onBlur={() => setFocusedField(null)}
+                      className="h-14 bg-background/50 border-border/50 rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 px-4"
+                    />
                   </div>
 
                   {/* Subject Field */}
