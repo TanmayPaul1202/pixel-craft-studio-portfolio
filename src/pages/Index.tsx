@@ -12,52 +12,83 @@ import { CustomCursor } from '@/components/CustomCursor';
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
 
-  // Handle scroll animation reveals
+  // Handle scroll animation reveals with enhanced effects
   useEffect(() => {
-    const observerOptions = {
-      threshold: 0.15,
-      rootMargin: '0px 0px -80px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
+    // Section observer for main section transitions
+    const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
-          // Update active section based on which section is in view
           const sectionId = entry.target.id;
           if (sectionId) {
             setActiveSection(sectionId);
           }
         }
       });
-    }, observerOptions);
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
 
-    // Observe all reveal elements and sections
-    const revealElements = document.querySelectorAll('.reveal-up');
+    // Element observer for individual reveal animations
+    const elementObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Add staggered delay for multiple elements
+          const delay = entry.target.getAttribute('data-delay');
+          if (delay) {
+            setTimeout(() => {
+              entry.target.classList.add('active');
+            }, parseInt(delay));
+          } else {
+            entry.target.classList.add('active');
+          }
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -30px 0px'
+    });
+
     const sections = document.querySelectorAll('section[id]');
+    const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .reveal-rotate, .reveal-stagger');
     
-    // Apply different animation classes to different sections
+    // Animation pattern assignments
+    const animationPatterns = ['section-fade', 'section-slide-left', 'section-zoom', 'section-slide-right', 'section-clip', 'section-flip'];
+    
     sections.forEach((section, index) => {
       const sectionId = section.id;
       
-      // Alternate animation patterns for visual variety
       if (sectionId === 'home') {
         section.classList.add('section-fade');
-      } else if (index % 3 === 0) {
-        section.classList.add('section-slide-left');
-      } else if (index % 3 === 1) {
-        section.classList.add('section-zoom');
       } else {
-        section.classList.add('section-slide-right');
+        const patternIndex = index % animationPatterns.length;
+        section.classList.add(animationPatterns[patternIndex]);
       }
+      
+      sectionObserver.observe(section);
     });
     
-    revealElements.forEach((el) => observer.observe(el));
-    sections.forEach((section) => observer.observe(section));
+    revealElements.forEach((el) => elementObserver.observe(el));
+
+    // Smooth parallax effect on scroll
+    const handleScroll = () => {
+      const scrolled = window.scrollY;
+      const parallaxElements = document.querySelectorAll('.parallax-element');
+      
+      parallaxElements.forEach((el) => {
+        const speed = parseFloat(el.getAttribute('data-speed') || '0.5');
+        const yPos = -(scrolled * speed);
+        (el as HTMLElement).style.transform = `translateY(${yPos}px)`;
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
-      revealElements.forEach((el) => observer.unobserve(el));
-      sections.forEach((section) => observer.unobserve(section));
+      sections.forEach((section) => sectionObserver.unobserve(section));
+      revealElements.forEach((el) => elementObserver.unobserve(el));
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
