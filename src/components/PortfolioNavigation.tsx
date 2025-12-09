@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 interface PortfolioNavigationProps {
   activeSection: string;
@@ -95,8 +96,9 @@ export function PortfolioNavigation({ activeSection, onSectionChange }: Portfoli
             </div>
           </div>
 
-          {/* CTA Button - Desktop */}
-          <div className="hidden lg:flex items-center gap-4">
+          {/* Theme Toggle & CTA Button - Desktop */}
+          <div className="hidden lg:flex items-center gap-3">
+            <ThemeToggle />
             <Button 
               onClick={() => scrollToSection('contact')}
               className="bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta hover:opacity-90 text-background font-semibold px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-neon-purple/30"
@@ -106,20 +108,23 @@ export function PortfolioNavigation({ activeSection, onSectionChange }: Portfoli
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="lg:hidden relative w-12 h-12 rounded-full bg-muted/30 border border-border/50 hover:bg-muted/50 hover:border-neon-blue/30"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            <span className={`absolute transition-all duration-300 ${isMenuOpen ? 'rotate-90 opacity-0' : 'rotate-0 opacity-100'}`}>
-              <Menu className="h-5 w-5" />
-            </span>
-            <span className={`absolute transition-all duration-300 ${isMenuOpen ? 'rotate-0 opacity-100' : '-rotate-90 opacity-0'}`}>
-              <X className="h-5 w-5" />
-            </span>
-          </Button>
+          {/* Mobile Menu Button & Theme Toggle */}
+          <div className="lg:hidden flex items-center gap-2">
+            <ThemeToggle />
+            <Button
+              variant="ghost"
+              size="icon"
+              className="relative w-12 h-12 rounded-full bg-muted/30 border border-border/50 hover:bg-muted/50 hover:border-neon-blue/30"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              <span className={`absolute transition-all duration-300 ${isMenuOpen ? 'rotate-90 opacity-0' : 'rotate-0 opacity-100'}`}>
+                <Menu className="h-5 w-5" />
+              </span>
+              <span className={`absolute transition-all duration-300 ${isMenuOpen ? 'rotate-0 opacity-100' : '-rotate-90 opacity-0'}`}>
+                <X className="h-5 w-5" />
+              </span>
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
