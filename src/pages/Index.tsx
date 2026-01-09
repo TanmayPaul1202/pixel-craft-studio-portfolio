@@ -7,6 +7,7 @@ import { ServicesSection } from '@/components/ServicesSection';
 import { ProjectsSection } from '@/components/ProjectsSection';
 import { GraphicDesignGallery } from '@/components/GraphicDesignGallery';
 import { ContactSection } from '@/components/ContactSection';
+import { TestimonialsSection } from '@/components/TestimonialsSection';
 import { CustomCursor } from '@/components/CustomCursor';
 
 const Index = () => {
@@ -127,6 +128,7 @@ const Index = () => {
         <ServicesSection />
         <ProjectsSection />
         <GraphicDesignGallery />
+        <TestimonialsSection />
         <ContactSection />
       </main>
 
