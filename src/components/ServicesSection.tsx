@@ -412,25 +412,94 @@ export function ServicesSection() {
         </div>
 
         {/* Important Notes */}
-        <div className="mt-16 bg-card/50 backdrop-blur-sm p-8 rounded-2xl text-left max-w-3xl mx-auto border border-border/30 reveal-up">
-          <h4 className="font-semibold mb-4 text-center text-lg flex items-center justify-center gap-2">
-            <FileText className="h-5 w-5 text-primary" />
-            Important Notes
-          </h4>
-          <ul className="space-y-3 text-sm text-muted-foreground">
-            {[
-              'Final prices depend on project complexity, duration, and client requirements',
-              'Client briefing: Ensure a clear understanding of the project before starting',
-              'Payment terms: Consider upfront payment (50%) and the rest upon delivery',
-              'Revisions are available (first revision is free; ₹300 for additional revisions)',
-              'Mode of Payment: UPI / Gpay / Phonepe / Paytm Only'
-            ].map((note, idx) => (
-              <li key={idx} className="flex items-start gap-3">
-                <Check className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                {note}
-              </li>
-            ))}
-          </ul>
+        <div className="mt-20 relative reveal-up">
+          {/* Background glow effects */}
+          <div className="absolute -inset-4 bg-gradient-to-r from-neon-blue/10 via-neon-purple/10 to-neon-magenta/10 rounded-3xl blur-3xl opacity-50" />
+          
+          <div className="relative max-w-5xl mx-auto">
+            {/* Header */}
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-neon-blue/20 via-neon-purple/20 to-neon-magenta/20 backdrop-blur-sm rounded-full border border-border/50 mb-4">
+                <FileText className="h-5 w-5 text-neon-purple" />
+                <span className="text-sm font-medium text-neon-purple uppercase tracking-wider">Terms & Guidelines</span>
+              </div>
+              <h3 className="text-3xl md:text-4xl font-bold font-orbitron">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta">
+                  Important Notes
+                </span>
+              </h3>
+            </div>
+
+            {/* Notes Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {[
+                { 
+                  icon: '💰', 
+                  title: 'Pricing', 
+                  note: 'Final prices depend on project complexity, duration, and client requirements',
+                  gradient: 'from-blue-500/20 to-cyan-500/20',
+                  borderColor: 'border-blue-500/30',
+                  iconBg: 'bg-blue-500/20'
+                },
+                { 
+                  icon: '📋', 
+                  title: 'Client Briefing', 
+                  note: 'Ensure a clear understanding of the project before starting',
+                  gradient: 'from-purple-500/20 to-pink-500/20',
+                  borderColor: 'border-purple-500/30',
+                  iconBg: 'bg-purple-500/20'
+                },
+                { 
+                  icon: '💳', 
+                  title: 'Payment Terms', 
+                  note: 'Consider upfront payment (50%) and the rest upon delivery',
+                  gradient: 'from-green-500/20 to-emerald-500/20',
+                  borderColor: 'border-green-500/30',
+                  iconBg: 'bg-green-500/20'
+                },
+                { 
+                  icon: '🔄', 
+                  title: 'Revisions', 
+                  note: 'First revision is free; ₹300 for additional revisions',
+                  gradient: 'from-orange-500/20 to-amber-500/20',
+                  borderColor: 'border-orange-500/30',
+                  iconBg: 'bg-orange-500/20'
+                },
+                { 
+                  icon: '📱', 
+                  title: 'Payment Mode', 
+                  note: 'UPI / Gpay / Phonepe / Paytm Only',
+                  gradient: 'from-pink-500/20 to-rose-500/20',
+                  borderColor: 'border-pink-500/30',
+                  iconBg: 'bg-pink-500/20'
+                },
+              ].map((item, idx) => (
+                <div 
+                  key={idx} 
+                  className={`group relative p-5 rounded-2xl bg-gradient-to-br ${item.gradient} backdrop-blur-sm border ${item.borderColor} hover:scale-[1.02] transition-all duration-300 hover:shadow-lg hover:shadow-primary/10`}
+                  style={{ animationDelay: `${idx * 100}ms` }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className={`flex-shrink-0 w-12 h-12 rounded-xl ${item.iconBg} flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300`}>
+                      {item.icon}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-semibold text-foreground mb-1 text-sm uppercase tracking-wide">{item.title}</h4>
+                      <p className="text-muted-foreground text-sm leading-relaxed">{item.note}</p>
+                    </div>
+                  </div>
+                  
+                  {/* Hover glow effect */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                </div>
+              ))}
+            </div>
+
+            {/* Bottom accent line */}
+            <div className="mt-8 flex justify-center">
+              <div className="h-1 w-32 rounded-full bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta opacity-50" />
+            </div>
+          </div>
         </div>
 
         {/* Service Highlights */}
