@@ -527,12 +527,12 @@
     }
   }
   
-  @keyframes marquee-fast {
+  @keyframes scroll-infinite {
     0% {
       transform: translateX(0);
     }
     100% {
-      transform: translateX(-33.333%);
+      transform: translateX(-50%);
     }
   }
   
@@ -541,17 +541,16 @@
   }
   
   .animate-marquee-fast {
-    animation: marquee-fast 1.5s linear infinite;
+    animation: marquee 20s linear infinite;
   }
   
-  @media (max-width: 768px) {
-    .animate-marquee-fast {
-      animation: marquee-fast 1s linear infinite;
-    }
+  .animate-scroll-infinite {
+    animation: scroll-infinite 25s linear infinite;
   }
   
   .animate-marquee:hover,
-  .animate-marquee-fast:hover {
+  .animate-marquee-fast:hover,
+  .animate-scroll-infinite:hover {
     animation-play-state: paused;
   }
   
