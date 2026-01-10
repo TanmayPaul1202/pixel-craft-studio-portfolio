@@ -68,7 +68,7 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
               <img 
                 src="/lovable-uploads/pcs-logo.png" 
                 alt="Pixel Craft Studio Logo" 
-                className="relative h-24 md:h-32 w-auto transition-transform duration-500 group-hover:scale-110"
+                className="relative h-40 md:h-52 w-auto transition-transform duration-500 group-hover:scale-110"
               />
             </div>
           </div>
