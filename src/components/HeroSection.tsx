@@ -1,7 +1,6 @@
-import { ArrowRight, MessageCircle, Play, Star, Sparkles, MousePointer, ChevronDown } from 'lucide-react';
+import { ArrowRight, MessageCircle, Play, Star, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
-import heroBackground from '@/assets/hero-background.jpg';
 
 interface HeroSectionProps {
   onExploreWork: () => void;
@@ -12,19 +11,9 @@ const roles = ['Video Editor', 'Graphic Designer', 'Motion Artist', 'Brand Creat
 const tagline = "Transforming ideas into stunning visuals that captivate, inspire, and leave a lasting impression";
 
 export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
-  const [scrollY, setScrollY] = useState(0);
   const [currentRole, setCurrentRole] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Role text animation
   useEffect(() => {
@@ -55,41 +44,10 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src={heroBackground}
-          alt="Background"
-          className="w-full h-full object-cover"
-          style={{
-            transform: `translateY(${scrollY * 0.2}px) scale(1.15)`,
-            transition: 'transform 0.1s ease-out'
-          }}
-        />
-        {/* Gradient Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background" />
-        <div className="absolute inset-0 bg-gradient-to-r from-neon-purple/10 via-transparent to-neon-blue/10" />
-        
-        {/* Animated Gradient Orbs */}
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-gradient-to-r from-neon-blue/25 to-neon-cyan/15 rounded-full blur-[100px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-gradient-to-r from-neon-purple/25 to-neon-magenta/15 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-r from-neon-magenta/10 to-neon-purple/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
-      </div>
-
-      {/* Floating Particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-neon-blue/50 rounded-full animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${3 + Math.random() * 4}s`
-            }}
-          />
-        ))}
+      {/* Simple Background */}
+      <div className="absolute inset-0 z-0 bg-background">
+        {/* Subtle gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background" />
       </div>
 
       {/* Main Content */}
