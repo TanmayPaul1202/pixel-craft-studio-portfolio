@@ -61,7 +61,7 @@ export const Preloader = ({ onComplete }: PreloaderProps) => {
               <img 
                 src="/lovable-uploads/pcs-logo.png" 
                 alt="Pixel Craft Studio" 
-                className="w-32 h-32 md:w-40 md:h-40 object-contain"
+                className="w-48 h-48 md:w-64 md:h-64 object-contain"
               />
             </motion.div>
 
