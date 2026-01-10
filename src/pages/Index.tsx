@@ -9,9 +9,11 @@ import { GraphicDesignGallery } from '@/components/GraphicDesignGallery';
 import { ContactSection } from '@/components/ContactSection';
 import { TestimonialsSection } from '@/components/TestimonialsSection';
 import { CustomCursor } from '@/components/CustomCursor';
+import { Preloader } from '@/components/Preloader';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
+  const [isLoading, setIsLoading] = useState(true);
 
   // Handle scroll animation reveals with enhanced effects
   useEffect(() => {
@@ -108,7 +110,9 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-poppins cursor-none">
+    <>
+      {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
+      <div className={`min-h-screen bg-background text-foreground font-poppins cursor-none ${isLoading ? 'overflow-hidden' : ''}`}>
       {/* Custom Cursor */}
       <CustomCursor />
       {/* Navigation */}
@@ -149,7 +153,8 @@ const Index = () => {
           </div>
         </div>
       </footer>
-    </div>
+      </div>
+    </>
   );
 };
 
