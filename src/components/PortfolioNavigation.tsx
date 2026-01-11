@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Sparkles } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Menu, X, Sparkles, LogIn, LogOut, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { useAuth } from '@/hooks/useAuth';
+import { useToast } from '@/hooks/use-toast';
 
 interface PortfolioNavigationProps {
   activeSection: string;
@@ -20,6 +23,9 @@ const navigationItems = [
 export function PortfolioNavigation({ activeSection, onSectionChange }: PortfolioNavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { user, signOut, loading } = useAuth();
+  const navigate = useNavigate();
+  const { toast } = useToast();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +35,22 @@ export function PortfolioNavigation({ activeSection, onSectionChange }: Portfoli
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleSignOut = async () => {
+    const { error } = await signOut();
+    if (error) {
+      toast({
+        variant: 'destructive',
+        title: 'Error signing out',
+        description: error.message,
+      });
+    } else {
+      toast({
+        title: 'Signed out',
+        description: 'You have been signed out successfully.',
+      });
+    }
+  };
 
   const scrollToSection = (sectionId: string) => {
     onSectionChange(sectionId);
@@ -96,16 +118,35 @@ export function PortfolioNavigation({ activeSection, onSectionChange }: Portfoli
             </div>
           </div>
 
-          {/* Theme Toggle & CTA Button - Desktop */}
+          {/* Theme Toggle & Auth Buttons - Desktop */}
           <div className="hidden lg:flex items-center gap-3">
             <ThemeToggle />
-            <Button 
-              onClick={() => scrollToSection('contact')}
-              className="bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta hover:opacity-90 text-background font-semibold px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-neon-purple/30"
-            >
-              <Sparkles className="w-4 h-4 mr-2" />
-              Let's Talk
-            </Button>
+            {!loading && (
+              user ? (
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-muted/30 border border-border/50">
+                    <User className="w-4 h-4 text-neon-purple" />
+                    <span className="text-sm text-foreground">{user.email?.split('@')[0]}</span>
+                  </div>
+                  <Button 
+                    onClick={handleSignOut}
+                    variant="outline"
+                    className="border-border/50 hover:border-neon-magenta/50 hover:bg-neon-magenta/10 rounded-full transition-all duration-300"
+                  >
+                    <LogOut className="w-4 h-4 mr-2" />
+                    Sign Out
+                  </Button>
+                </div>
+              ) : (
+                <Button 
+                  onClick={() => navigate('/auth')}
+                  className="bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta hover:opacity-90 text-background font-semibold px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-neon-purple/30"
+                >
+                  <LogIn className="w-4 h-4 mr-2" />
+                  Sign In
+                </Button>
+              )
+            )}
           </div>
 
           {/* Mobile Menu Button & Theme Toggle */}
@@ -150,15 +191,34 @@ export function PortfolioNavigation({ activeSection, onSectionChange }: Portfoli
               </button>
             ))}
             
-            {/* Mobile CTA */}
-            <div className="pt-4">
-              <Button 
-                onClick={() => scrollToSection('contact')}
-                className="w-full bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta hover:opacity-90 text-background font-semibold py-4 rounded-xl"
-              >
-                <Sparkles className="w-4 h-4 mr-2" />
-                Let's Talk
-              </Button>
+            {/* Mobile Auth */}
+            <div className="pt-4 space-y-3">
+              {!loading && (
+                user ? (
+                  <>
+                    <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-muted/30 border border-border/50">
+                      <User className="w-4 h-4 text-neon-purple" />
+                      <span className="text-sm text-foreground">{user.email}</span>
+                    </div>
+                    <Button 
+                      onClick={handleSignOut}
+                      variant="outline"
+                      className="w-full border-border/50 hover:border-neon-magenta/50 hover:bg-neon-magenta/10 py-4 rounded-xl"
+                    >
+                      <LogOut className="w-4 h-4 mr-2" />
+                      Sign Out
+                    </Button>
+                  </>
+                ) : (
+                  <Button 
+                    onClick={() => navigate('/auth')}
+                    className="w-full bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta hover:opacity-90 text-background font-semibold py-4 rounded-xl"
+                  >
+                    <LogIn className="w-4 h-4 mr-2" />
+                    Sign In
+                  </Button>
+                )
+              )}
             </div>
           </div>
         </div>
