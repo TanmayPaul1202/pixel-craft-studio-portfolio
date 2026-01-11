@@ -124,10 +124,14 @@ export function PortfolioNavigation({ activeSection, onSectionChange }: Portfoli
             {!loading && (
               user ? (
                 <div className="flex items-center gap-3">
-                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-muted/30 border border-border/50">
+                  <Button
+                    variant="ghost"
+                    onClick={() => navigate('/dashboard')}
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-muted/30 border border-border/50 hover:border-neon-purple/50 hover:bg-neon-purple/10"
+                  >
                     <User className="w-4 h-4 text-neon-purple" />
                     <span className="text-sm text-foreground">{user.email?.split('@')[0]}</span>
-                  </div>
+                  </Button>
                   <Button 
                     onClick={handleSignOut}
                     variant="outline"
@@ -196,10 +200,17 @@ export function PortfolioNavigation({ activeSection, onSectionChange }: Portfoli
               {!loading && (
                 user ? (
                   <>
-                    <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-muted/30 border border-border/50">
+                    <Button
+                      variant="ghost"
+                      onClick={() => {
+                        navigate('/dashboard');
+                        setIsMenuOpen(false);
+                      }}
+                      className="w-full flex items-center gap-2 px-4 py-3 rounded-xl bg-muted/30 border border-border/50 hover:border-neon-purple/50 hover:bg-neon-purple/10"
+                    >
                       <User className="w-4 h-4 text-neon-purple" />
                       <span className="text-sm text-foreground">{user.email}</span>
-                    </div>
+                    </Button>
                     <Button 
                       onClick={handleSignOut}
                       variant="outline"
