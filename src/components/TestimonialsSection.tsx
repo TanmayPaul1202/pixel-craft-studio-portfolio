@@ -145,8 +145,8 @@ export const TestimonialsSection = () => {
             <div className="absolute -inset-2 bg-gradient-to-r from-neon-blue/20 via-neon-purple/20 to-neon-magenta/20 rounded-2xl blur-xl opacity-50" />
             <div className="relative grid grid-cols-2 md:grid-cols-4 gap-6 p-8 bg-card/50 backdrop-blur-sm rounded-2xl border border-border/30">
               {[
-                { value: '100+', label: 'Happy Clients', icon: '😊' },
-                { value: '500+', label: 'Projects Done', icon: '🎨' },
+                { value: '50+', label: 'Happy Clients', icon: '😊' },
+                { value: '150+', label: 'Projects Done', icon: '🎨' },
                 { value: '5.0', label: 'Average Rating', icon: '⭐' },
                 { value: '100%', label: 'Satisfaction', icon: '💯' }
               ].map((stat, idx) => (
