@@ -201,13 +201,27 @@
   input,
   textarea,
   select,
-  [contenteditable="true"] {
+  [contenteditable="true"],
+  input:focus,
+  textarea:focus,
+  select:focus {
     cursor: text !important;
+    caret-color: hsl(var(--neon-purple));
   }
   
   input[type="checkbox"],
-  input[type="radio"] {
+  input[type="radio"],
+  button,
+  a,
+  [role="button"] {
     cursor: pointer !important;
+  }
+  
+  /* Ensure auth page has proper cursor */
+  .auth-input {
+    cursor: text !important;
+    position: relative;
+    z-index: 10;
   }
   
   .light body,

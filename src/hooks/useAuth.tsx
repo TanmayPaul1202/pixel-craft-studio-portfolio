@@ -66,6 +66,16 @@ export function useAuth() {
     return { error };
   };
 
+  const signInWithMagicLink = async (email: string) => {
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: {
+        emailRedirectTo: `${window.location.origin}/`,
+      },
+    });
+    return { error };
+  };
+
   return {
     user,
     session,
@@ -74,5 +84,6 @@ export function useAuth() {
     signIn,
     signOut,
     signInWithGoogle,
+    signInWithMagicLink,
   };
 }
