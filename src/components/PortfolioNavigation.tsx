@@ -153,9 +153,18 @@ export function PortfolioNavigation({ activeSection, onSectionChange }: Portfoli
             )}
           </div>
 
-          {/* Mobile Menu Button & Theme Toggle */}
+          {/* Mobile Menu Button, Theme Toggle & Auth */}
           <div className="lg:hidden flex items-center gap-2">
             <ThemeToggle />
+            {!loading && !user && (
+              <Button 
+                onClick={() => navigate('/auth')}
+                size="sm"
+                className="bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta hover:opacity-90 text-background font-semibold px-4 py-2 rounded-full transition-all duration-300"
+              >
+                <LogIn className="w-4 h-4" />
+              </Button>
+            )}
             <Button
               variant="ghost"
               size="icon"

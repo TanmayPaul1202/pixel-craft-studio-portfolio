@@ -197,6 +197,19 @@
     cursor: none;
   }
   
+  /* Show default cursor on form inputs for better UX */
+  input,
+  textarea,
+  select,
+  [contenteditable="true"] {
+    cursor: text !important;
+  }
+  
+  input[type="checkbox"],
+  input[type="radio"] {
+    cursor: pointer !important;
+  }
+  
   .light body,
   .light {
     background: linear-gradient(135deg, hsl(220 30% 95%), hsl(270 25% 95%));
