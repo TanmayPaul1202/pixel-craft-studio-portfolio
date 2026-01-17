@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
-import { Eye, EyeOff, LogIn, UserPlus, ArrowLeft, Sparkles } from 'lucide-react';
+import { Eye, EyeOff, LogIn, UserPlus, ArrowLeft, Sparkles, Mail } from 'lucide-react';
 
 const emailSchema = z.string().email('Please enter a valid email address');
 const passwordSchema = z.string().min(6, 'Password must be at least 6 characters');
@@ -20,9 +20,12 @@ export default function Auth() {
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
+  const [isMagicLinkLoading, setIsMagicLinkLoading] = useState(false);
+  const [magicLinkEmail, setMagicLinkEmail] = useState('');
+  const [showMagicLink, setShowMagicLink] = useState(false);
   const [errors, setErrors] = useState<{ email?: string; password?: string; name?: string }>({});
   
-  const { signIn, signUp, signInWithGoogle, user, loading } = useAuth();
+  const { signIn, signUp, signInWithGoogle, signInWithMagicLink, user, loading } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -174,7 +177,7 @@ export default function Auth() {
                   placeholder="John Doe"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  className="bg-background/50 border-border focus:border-neon-purple"
+                  className="bg-background/50 border-border focus:border-neon-purple auth-input"
                 />
                 {errors.name && (
                   <p className="text-sm text-destructive">{errors.name}</p>
@@ -190,7 +193,7 @@ export default function Auth() {
                 placeholder="you@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-background/50 border-border focus:border-neon-purple"
+                className="bg-background/50 border-border focus:border-neon-purple auth-input"
                 required
               />
               {errors.email && (
@@ -207,7 +210,7 @@ export default function Auth() {
                   placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="bg-background/50 border-border focus:border-neon-purple pr-10"
+                  className="bg-background/50 border-border focus:border-neon-purple pr-10 auth-input"
                   required
                 />
                 <button
@@ -300,7 +303,80 @@ export default function Auth() {
             )}
           </Button>
 
-          {/* Toggle */}
+          {/* Magic Link Sign In */}
+          {!showMagicLink ? (
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => setShowMagicLink(true)}
+              className="w-full mt-3 border-border hover:border-neon-blue/50 hover:bg-neon-blue/10 py-6 rounded-xl transition-all duration-300"
+            >
+              <Mail className="w-5 h-5 mr-2" />
+              Sign in with Email Link
+            </Button>
+          ) : (
+            <div className="mt-3 space-y-3">
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                value={magicLinkEmail}
+                onChange={(e) => setMagicLinkEmail(e.target.value)}
+                className="bg-background/50 border-border focus:border-neon-blue auth-input"
+              />
+              <Button
+                type="button"
+                onClick={async () => {
+                  const emailResult = emailSchema.safeParse(magicLinkEmail);
+                  if (!emailResult.success) {
+                    toast({
+                      variant: 'destructive',
+                      title: 'Invalid Email',
+                      description: 'Please enter a valid email address.',
+                    });
+                    return;
+                  }
+                  setIsMagicLinkLoading(true);
+                  const { error } = await signInWithMagicLink(magicLinkEmail);
+                  setIsMagicLinkLoading(false);
+                  if (error) {
+                    toast({
+                      variant: 'destructive',
+                      title: 'Magic Link Failed',
+                      description: error.message,
+                    });
+                  } else {
+                    toast({
+                      title: 'Check your email!',
+                      description: 'We sent you a magic link to sign in.',
+                    });
+                    setShowMagicLink(false);
+                    setMagicLinkEmail('');
+                  }
+                }}
+                disabled={isMagicLinkLoading}
+                className="w-full bg-gradient-to-r from-neon-blue to-neon-cyan hover:opacity-90 text-background font-semibold py-6 rounded-xl transition-all duration-300"
+              >
+                {isMagicLinkLoading ? (
+                  <div className="w-5 h-5 border-2 border-background border-t-transparent rounded-full animate-spin" />
+                ) : (
+                  <>
+                    <Mail className="w-5 h-5 mr-2" />
+                    Send Magic Link
+                  </>
+                )}
+              </Button>
+              <button
+                type="button"
+                onClick={() => {
+                  setShowMagicLink(false);
+                  setMagicLinkEmail('');
+                }}
+                className="w-full text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Cancel
+              </button>
+            </div>
+          )}
           <div className="mt-6 text-center">
             <p className="text-muted-foreground">
               {isLogin ? "Don't have an account?" : 'Already have an account?'}
