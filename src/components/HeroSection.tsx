@@ -118,15 +118,15 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
           {/* Stats Row */}
           <div className="flex flex-wrap justify-center gap-8 md:gap-16 mb-12 reveal-up" style={{ animationDelay: '0.5s' }}>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple">100+</div>
+              <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple">50+</div>
               <div className="text-sm text-muted-foreground mt-1">Happy Clients</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-purple to-neon-magenta">500+</div>
+              <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-purple to-neon-magenta">150+</div>
               <div className="text-sm text-muted-foreground mt-1">Projects Done</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-magenta to-neon-blue">5+</div>
+              <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-magenta to-neon-blue">2+</div>
               <div className="text-sm text-muted-foreground mt-1">Years Experience</div>
             </div>
           </div>
