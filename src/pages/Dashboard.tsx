@@ -5,6 +5,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { ArrowLeft, User, Mail, Calendar, LogOut, Edit2, Sparkles } from 'lucide-react';
+import { ProfileEditModal } from '@/components/ProfileEditModal';
 
 interface Profile {
   id: string;
@@ -19,6 +20,7 @@ export default function Dashboard() {
   const { user, signOut } = useAuth();
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -66,6 +68,10 @@ export default function Dashboard() {
       month: 'long',
       day: 'numeric',
     });
+  };
+
+  const handleProfileUpdated = (updatedProfile: Profile) => {
+    setProfile(updatedProfile);
   };
 
   return (
@@ -129,7 +135,7 @@ export default function Dashboard() {
                 variant="outline"
                 size="sm"
                 className="border-neon-purple/50 hover:border-neon-purple hover:bg-neon-purple/10"
-                onClick={() => toast({ title: 'Coming soon!', description: 'Profile editing will be available soon.' })}
+                onClick={() => setIsEditModalOpen(true)}
               >
                 <Edit2 className="mr-2 h-4 w-4" />
                 Edit Profile
@@ -145,7 +151,7 @@ export default function Dashboard() {
                 {/* Avatar */}
                 <div className="flex items-center gap-4">
                   <div className="w-20 h-20 rounded-full bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta p-0.5">
-                    <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
+                    <div className="w-full h-full rounded-full bg-background flex items-center justify-center overflow-hidden">
                       {profile?.avatar_url ? (
                         <img
                           src={profile.avatar_url}
@@ -210,6 +216,17 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
+
+      {/* Profile Edit Modal */}
+      {user && (
+        <ProfileEditModal
+          open={isEditModalOpen}
+          onOpenChange={setIsEditModalOpen}
+          profile={profile}
+          userId={user.id}
+          onProfileUpdated={handleProfileUpdated}
+        />
+      )}
     </div>
   );
 }
