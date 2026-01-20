@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Play, Star, Clock, Package, ChevronDown, ChevronUp, Download, FileText, Zap, Palette, Video, Camera, Sparkles, ArrowRight, Check, Gift, MessageCircle } from 'lucide-react';
+import { Play, Star, Clock, Package, ChevronDown, ChevronUp, Download, FileText, Zap, Palette, Video, Camera, Sparkles, ArrowRight, Check, Gift, MessageCircle, Mail } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -558,30 +558,108 @@ export function ServicesSection() {
         </div>
 
         {/* License Agreement Section */}
-        <div className="mt-16 text-center reveal-up">
-          <h3 className="text-2xl font-semibold mb-6 text-neon-yellow">License Agreement</h3>
-          <div className="bg-gradient-card p-6 rounded-lg border border-neon-yellow/20 max-w-4xl mx-auto text-left">
-            <h4 className="font-semibold mb-4 text-center text-neon-yellow">End User License Agreement</h4>
-            <div className="space-y-4 text-sm text-muted-foreground">
-              <p>The Contents are royalty free and may be published, broadcasted and distributed through broadcast channels in completed client and personal, and professional works.</p>
-              <p>Use the items as much as you like, for as many projects as you need.</p>
-              <p><strong className="text-foreground">You may NOT:</strong> sell, redistribute, incorporate in a separate product or give the Contents of this collection to anyone. You may not sell or incorporate the work for distribution on stock footage websites with things like elements, projects files, template, layers, etc.</p>
-              <p>Pixel Craft Studio Packs are developed as a suite of tools for editors, animators, filmmakers, designers and artists of all kinds! Enjoy!</p>
-              <p>All Pixel Craft Studio Packs, Templates, and Pixel Craft Studio Extension for After Effects & Premiere Pro are intellectual property of Pixel Craft Studio, LLC.</p>
-              <p className="text-center pt-4">
-                <strong>For any inquiries, please contact: </strong>
-                <span className="text-neon-yellow">pixcrft.studio@gmail.com</span>
-              </p>
+        <div className="mt-16 reveal-up">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900/80 via-slate-800/60 to-slate-900/80 border border-slate-700/50 backdrop-blur-xl">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-5">
+              <div className="absolute inset-0" style={{ backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px)' }} />
             </div>
-            <div className="text-center mt-4">
-              <Button
-                variant="outline"
-                className="border-neon-yellow text-neon-yellow hover:bg-neon-yellow hover:text-background"
-                onClick={() => window.open('/lovable-uploads/510034e1-c78d-4731-8e8d-9e03104e5323.png', '_blank')}
-              >
-                <FileText className="mr-2 h-4 w-4" />
-                View Full License Agreement
-              </Button>
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-32 bg-gradient-to-b from-amber-500/10 to-transparent blur-3xl" />
+            
+            <div className="relative p-8 md:p-10">
+              {/* Header */}
+              <div className="flex flex-col md:flex-row md:items-center gap-4 mb-8 pb-6 border-b border-slate-700/50">
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center shadow-lg shadow-amber-500/20">
+                    <FileText className="w-7 h-7 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-300 to-orange-300">
+                      License Agreement
+                    </h3>
+                    <p className="text-sm text-slate-400">End User License Agreement (EULA)</p>
+                  </div>
+                </div>
+                <div className="md:ml-auto">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="rounded-full border-amber-500/50 text-amber-400 hover:bg-amber-500/10 hover:border-amber-400"
+                    onClick={() => window.open('/lovable-uploads/510034e1-c78d-4731-8e8d-9e03104e5323.png', '_blank')}
+                  >
+                    <Download className="mr-2 h-4 w-4" />
+                    Download Full License
+                  </Button>
+                </div>
+              </div>
+              
+              {/* License Content */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {/* Permitted Uses */}
+                <div className="p-5 rounded-2xl bg-emerald-500/5 border border-emerald-500/20">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center">
+                      <Check className="w-5 h-5 text-emerald-400" />
+                    </div>
+                    <h4 className="font-semibold text-emerald-400">What You CAN Do</h4>
+                  </div>
+                  <ul className="space-y-3">
+                    {[
+                      'Publish, broadcast and distribute through broadcast channels',
+                      'Use in completed client, personal, and professional works',
+                      'Use items for unlimited projects',
+                      'Royalty-free usage rights included'
+                    ].map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-3 text-sm text-slate-300">
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2 flex-shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                
+                {/* Restrictions */}
+                <div className="p-5 rounded-2xl bg-rose-500/5 border border-rose-500/20">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-8 h-8 rounded-lg bg-rose-500/20 flex items-center justify-center">
+                      <span className="text-rose-400 font-bold">✕</span>
+                    </div>
+                    <h4 className="font-semibold text-rose-400">What You CANNOT Do</h4>
+                  </div>
+                  <ul className="space-y-3">
+                    {[
+                      'Sell, redistribute or give contents to anyone',
+                      'Incorporate in a separate product for resale',
+                      'Distribute on stock footage websites',
+                      'Share elements, project files, or templates'
+                    ].map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-3 text-sm text-slate-300">
+                        <div className="w-1.5 h-1.5 rounded-full bg-rose-400 mt-2 flex-shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              
+              {/* Footer Note */}
+              <div className="mt-6 pt-6 border-t border-slate-700/50">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center">
+                      <Sparkles className="w-5 h-5 text-amber-400" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-slate-500 uppercase tracking-wider">Intellectual Property of</p>
+                      <p className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">Pixel Craft Studio, LLC</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700/50">
+                    <Mail className="w-4 h-4 text-amber-400" />
+                    <span className="text-sm text-slate-300">pixcrft.studio@gmail.com</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
