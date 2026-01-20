@@ -148,7 +148,7 @@ const Index = () => {
               </span>
             </div>
             <div className="text-muted-foreground">
-              <p>&copy; 2025 Pixel Craft Studio. All rights reserved.</p>
+              <p>&copy; 2026 Pixel Craft Studio. All rights reserved.</p>
             </div>
           </div>
         </div>
