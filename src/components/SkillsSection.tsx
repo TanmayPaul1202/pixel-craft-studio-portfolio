@@ -50,7 +50,7 @@ export function SkillsSection() {
   }, []);
 
   return (
-    <section id="skills" className="py-24 relative overflow-hidden">
+    <section id="skills" className="py-16 relative overflow-hidden">
       {/* Dynamic Background */}
       <div className="absolute inset-0">
         <div 
