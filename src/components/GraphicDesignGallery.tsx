@@ -129,7 +129,7 @@ export function GraphicDesignGallery() {
   };
 
   return (
-    <section id="graphic-design" className="py-20 relative">
+    <section id="graphic-design" className="py-16 relative">
       {/* Background Elements */}
       <div className="absolute top-32 right-10 w-40 h-40 rounded-full bg-neon-purple/10 blur-xl float-animation"></div>
       <div className="absolute bottom-32 left-10 w-32 h-32 rounded-full bg-neon-magenta/10 blur-xl float-animation" style={{ animationDelay: '2s' }}></div>
