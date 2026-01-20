@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Play, Star, Clock, Package, ChevronDown, ChevronUp, Download, FileText, Zap, Palette, Video, Camera, Sparkles, ArrowRight, Check, Gift } from 'lucide-react';
+import { Play, Star, Clock, Package, ChevronDown, ChevronUp, Download, FileText, Zap, Palette, Video, Camera, Sparkles, ArrowRight, Check, Gift, MessageCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -338,26 +338,66 @@ export function ServicesSection() {
         </div>
 
         {/* Additional Services */}
-        <div className="mb-20 reveal-up">
-          <div className="text-center mb-10">
-            <h3 className="text-2xl md:text-3xl font-bold mb-2">
-              Additional <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">Services & Add-ons</span>
-            </h3>
-            <p className="text-muted-foreground">Enhance your projects with premium features</p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {additionalServices.map((item, index) => (
-              <div 
-                key={item.service}
-                className="group relative p-4 rounded-2xl bg-gradient-to-br from-amber-500/10 to-orange-500/5 border border-amber-500/20 hover:border-amber-400/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-amber-500/10"
-                style={{ animationDelay: `${index * 0.05}s` }}
-              >
-                <span className="text-2xl mb-2 block">{item.icon}</span>
-                <p className="text-sm font-medium text-foreground mb-1">{item.service}</p>
-                <p className="text-xs font-bold text-amber-400">{item.price}</p>
+        <div className="mb-16 reveal-up">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-amber-500/5 via-orange-500/5 to-rose-500/5 border border-amber-500/20 backdrop-blur-xl p-8 md:p-10">
+            {/* Background Effects */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-amber-500/20 to-transparent rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-orange-500/15 to-transparent rounded-full blur-3xl" />
+            
+            <div className="relative">
+              {/* Header */}
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+                <div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 mb-3">
+                    <Sparkles className="w-4 h-4 text-amber-400" />
+                    <span className="text-xs font-semibold text-amber-400 uppercase tracking-wider">Premium Add-ons</span>
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-bold">
+                    Additional <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400">Services</span>
+                  </h3>
+                </div>
+                <p className="text-muted-foreground text-sm max-w-xs">Enhance your projects with our premium features and add-ons</p>
               </div>
-            ))}
+              
+              {/* Services Grid - Horizontal Scroll on Mobile */}
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {additionalServices.map((item, index) => (
+                  <div 
+                    key={item.service}
+                    className="group relative flex items-center gap-4 p-4 rounded-2xl bg-background/40 backdrop-blur-sm border border-border/50 hover:border-amber-400/50 hover:bg-amber-500/5 transition-all duration-500"
+                    style={{ animationDelay: `${index * 0.08}s` }}
+                  >
+                    {/* Icon */}
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center text-2xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 border border-amber-500/20">
+                      {item.icon}
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="flex-1 min-w-0">
+                      <p className="font-semibold text-foreground text-sm mb-0.5 truncate group-hover:text-amber-300 transition-colors duration-300">{item.service}</p>
+                      <p className="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">{item.price}</p>
+                    </div>
+                    
+                    {/* Hover Arrow */}
+                    <ArrowRight className="w-4 h-4 text-amber-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 flex-shrink-0" />
+                  </div>
+                ))}
+              </div>
+              
+              {/* Bottom CTA */}
+              <div className="mt-6 pt-6 border-t border-border/30 flex flex-col sm:flex-row items-center justify-center gap-3 text-center">
+                <span className="text-muted-foreground text-sm">Need a custom package?</span>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="rounded-full border-amber-500/50 text-amber-400 hover:bg-amber-500/10 hover:text-amber-300"
+                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  <MessageCircle className="w-4 h-4 mr-2" />
+                  Let's Talk
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
 
