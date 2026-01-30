@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
-import { Palette, Heart, FileText, DollarSign, Youtube, Sparkles, Play, Video } from 'lucide-react';
+import { Palette, Heart, FileText, DollarSign, Youtube, Sparkles, Play, Video, Instagram } from 'lucide-react';
 import { ImageLightbox } from './ImageLightbox';
 
 const videoShowcase = [
@@ -108,6 +108,14 @@ const designCategories = [
       '/lovable-uploads/thumbnail-travel.jpg',
       '/lovable-uploads/thumbnail-analysis.jpg'
     ]
+  },
+  {
+    id: 'social-media',
+    title: 'Social Media Design',
+    icon: Instagram,
+    color: 'neon-cyan',
+    description: 'Engaging posts, stories & reels for Instagram, Facebook & more',
+    images: []
   }
 ];
 
