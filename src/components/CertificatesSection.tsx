@@ -13,6 +13,7 @@ const certificates = [
     image: '/lovable-uploads/certificate-canva-essentials.jpg',
     gradient: 'from-purple-500 via-pink-500 to-orange-400',
     bgGradient: 'from-purple-500/20 to-pink-500/10',
+    verifyUrl: 'https://www.canva.com/designschool/courses/canva-essentials/',
   }
 ];
 
@@ -108,7 +109,7 @@ export function CertificatesSection() {
                     {cert.description}
                   </p>
                   
-                  <div className="flex flex-wrap gap-4 text-xs text-muted-foreground">
+                  <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
                     <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-background/50 border border-border/50">
                       <span className="text-foreground/70">Issued:</span>
                       <span className="font-medium text-foreground">{cert.issueDate}</span>
@@ -117,6 +118,18 @@ export function CertificatesSection() {
                       <span className="text-foreground/70">ID:</span>
                       <span className="font-medium font-mono text-foreground">{cert.credentialId}</span>
                     </div>
+                    {cert.verifyUrl && (
+                      <a
+                        href={cert.verifyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-neon-purple/20 to-neon-magenta/20 border border-neon-purple/50 hover:border-neon-purple hover:from-neon-purple/30 hover:to-neon-magenta/30 transition-all duration-300 group/verify"
+                      >
+                        <BadgeCheck className="w-3.5 h-3.5 text-neon-purple" />
+                        <span className="font-medium text-neon-purple">Verify Credential</span>
+                        <ExternalLink className="w-3 h-3 text-neon-purple opacity-0 -translate-x-1 group-hover/verify:opacity-100 group-hover/verify:translate-x-0 transition-all duration-300" />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
