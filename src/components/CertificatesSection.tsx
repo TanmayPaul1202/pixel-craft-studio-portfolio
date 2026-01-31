@@ -136,21 +136,6 @@ export function CertificatesSection() {
             </div>
           ))}
 
-          {/* Add More Certificates Coming Soon Card */}
-          <div className="group reveal-up flex items-center justify-center">
-            <div className="relative w-full h-full min-h-[300px] bg-gradient-to-br from-muted/30 to-muted/10 backdrop-blur-xl rounded-3xl border border-dashed border-border/50 flex flex-col items-center justify-center p-8 hover:border-neon-cyan/50 transition-all duration-500">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-neon-cyan/20 to-neon-blue/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500">
-                <Award className="w-8 h-8 text-neon-cyan" />
-              </div>
-              <h4 className="text-xl font-semibold mb-2 text-center">More Certifications</h4>
-              <p className="text-muted-foreground text-sm text-center">
-                Continuously expanding my expertise with new certifications
-              </p>
-              <div className="mt-4 px-4 py-2 rounded-full bg-neon-cyan/10 border border-neon-cyan/30">
-                <span className="text-xs font-medium text-neon-cyan">Coming Soon</span>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
