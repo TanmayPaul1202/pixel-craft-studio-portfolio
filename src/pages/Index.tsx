@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { PortfolioNavigation } from '@/components/PortfolioNavigation';
 import { HeroSection } from '@/components/HeroSection';
 import { AboutSection } from '@/components/AboutSection';
+import { CertificatesSection } from '@/components/CertificatesSection';
 import { SkillsSection } from '@/components/SkillsSection';
 import { ServicesSection } from '@/components/ServicesSection';
 import { ProjectsSection } from '@/components/ProjectsSection';
@@ -128,6 +129,7 @@ const Index = () => {
           onContact={scrollToContact}
         />
         <AboutSection />
+        <CertificatesSection />
         <SkillsSection />
         <ServicesSection />
         <ProjectsSection />
