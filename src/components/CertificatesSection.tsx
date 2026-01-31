@@ -13,7 +13,7 @@ const certificates = [
     image: '/lovable-uploads/certificate-canva-essentials.jpg',
     gradient: 'from-purple-500 via-pink-500 to-orange-400',
     bgGradient: 'from-purple-500/20 to-pink-500/10',
-    verifyUrl: 'https://www.canva.com/designschool/courses/canva-essentials/',
+    verifyUrl: 'https://www.canva.com/design-school/certification-award/89b49b07-f46b-4a49-97b5-c0cc922bf979',
   }
 ];
 
