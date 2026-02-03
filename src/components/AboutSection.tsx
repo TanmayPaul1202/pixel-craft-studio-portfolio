@@ -20,7 +20,7 @@ export function AboutSection() {
   ];
 
   return (
-    <section id="about" className="py-16 relative overflow-hidden">
+    <section id="about" className="py-10 relative overflow-hidden">
       {/* Animated Background Mesh */}
       <div className="absolute inset-0 opacity-30">
         <div 

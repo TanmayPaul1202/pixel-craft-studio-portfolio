@@ -194,7 +194,6 @@
     overflow-x: hidden;
     background: var(--gradient-background);
     background-attachment: fixed;
-    cursor: none;
   }
   
   /* Show default cursor on form inputs for better UX */
@@ -234,9 +233,7 @@
     background: linear-gradient(135deg, hsl(220 60% 20%), hsl(270 60% 25%));
   }
   
-  a, button, [role="button"], input, textarea, select, .cursor-pointer {
-    cursor: none !important;
-  }
+  /* Default cursor for all elements */
   
   html {
     scroll-behavior: smooth;

@@ -113,7 +113,7 @@ const Index = () => {
   return (
     <>
       {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
-      <div className={`min-h-screen bg-background text-foreground font-poppins cursor-none ${isLoading ? 'overflow-hidden' : ''}`}>
+      <div className={`min-h-screen bg-background text-foreground font-poppins ${isLoading ? 'overflow-hidden' : ''}`}>
       {/* Custom Cursor */}
       <CustomCursor />
       {/* Navigation */}
