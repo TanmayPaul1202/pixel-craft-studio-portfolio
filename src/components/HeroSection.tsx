@@ -131,12 +131,12 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
             </div>
           </div>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons - iOS-style */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center reveal-up mb-12" style={{ animationDelay: '0.6s' }}>
             <Button
               size="lg"
               onClick={onExploreWork}
-              className="group relative bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta hover:opacity-90 text-background font-semibold text-lg px-8 py-6 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-neon-purple/30"
+              className="group relative bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta hover:opacity-90 text-background font-semibold text-lg px-8 py-6 rounded-2xl transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-95 hover:scale-[1.02] hover:shadow-2xl hover:shadow-neon-purple/40"
             >
               <Play className="mr-2 h-5 w-5 transition-transform group-hover:scale-110" />
               View Portfolio
@@ -147,7 +147,7 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
               variant="outline"
               size="lg"
               onClick={onContact}
-              className="group border-2 border-neon-purple/50 text-foreground hover:bg-neon-purple/10 hover:border-neon-purple text-lg px-8 py-6 rounded-full transition-all duration-300 hover:scale-105"
+              className="group border-2 border-white/20 bg-white/5 backdrop-blur-xl text-foreground hover:bg-white/10 hover:border-white/30 text-lg px-8 py-6 rounded-2xl transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-95 hover:scale-[1.02]"
             >
               <MessageCircle className="mr-2 h-5 w-5 transition-transform group-hover:rotate-12" />
               Let's Connect

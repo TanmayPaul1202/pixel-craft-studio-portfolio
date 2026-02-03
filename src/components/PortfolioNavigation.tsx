@@ -62,10 +62,10 @@ export function PortfolioNavigation({ activeSection, onSectionChange }: Portfoli
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
       isScrolled 
-        ? 'bg-background/90 backdrop-blur-md border-b border-border/50' 
-        : 'bg-transparent'
+        ? 'bg-background/70 backdrop-blur-2xl backdrop-saturate-150 border-b border-border/30 shadow-lg shadow-black/5' 
+        : 'bg-transparent backdrop-blur-none'
     }`}>
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between h-20 md:h-24">
@@ -91,26 +91,26 @@ export function PortfolioNavigation({ activeSection, onSectionChange }: Portfoli
             </div>
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - iOS-style pill nav */}
           <div className="hidden lg:flex items-center">
-            <div className="flex items-center gap-1 bg-muted/30 backdrop-blur-md rounded-full px-2 py-2 border border-border/50">
+            <div className="flex items-center gap-1 bg-muted/40 backdrop-blur-xl backdrop-saturate-150 rounded-full px-2 py-2 border border-white/10 shadow-lg shadow-black/5">
               {navigationItems.map((item, index) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`relative px-5 py-2.5 text-sm font-medium rounded-full transition-all duration-300 overflow-hidden group ${
+                  className={`relative px-5 py-2.5 text-sm font-medium rounded-full transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] overflow-hidden group active:scale-95 ${
                     activeSection === item.id 
                       ? 'text-background' 
                       : 'text-muted-foreground hover:text-foreground'
                   }`}
                 >
-                  {/* Active Background */}
+                  {/* Active Background - iOS-style */}
                   {activeSection === item.id && (
-                    <span className="absolute inset-0 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta rounded-full animate-pulse"></span>
+                    <span className="absolute inset-0 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta rounded-full shadow-lg shadow-neon-purple/30 animate-ios-scale-in"></span>
                   )}
                   {/* Hover Effect */}
                   <span className={`absolute inset-0 rounded-full transition-all duration-300 ${
-                    activeSection !== item.id ? 'bg-muted/0 group-hover:bg-muted/50' : ''
+                    activeSection !== item.id ? 'bg-muted/0 group-hover:bg-white/10' : ''
                   }`}></span>
                   <span className="relative z-10">{item.label}</span>
                 </button>
@@ -181,24 +181,26 @@ export function PortfolioNavigation({ activeSection, onSectionChange }: Portfoli
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${
+        {/* Mobile Navigation - iOS-style sheet */}
+        <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
           isMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
         }`}>
-          <div className="py-6 space-y-2 border-t border-border/30">
+          <div className="py-6 space-y-2 border-t border-white/10 bg-background/50 backdrop-blur-2xl rounded-b-3xl mx-2 mb-2 px-4">
             {navigationItems.map((item, index) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 style={{ animationDelay: `${index * 50}ms` }}
-                className={`w-full text-left py-4 px-6 rounded-xl transition-all duration-300 flex items-center gap-3 ${
+                className={`w-full text-left py-4 px-6 rounded-2xl transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] flex items-center gap-3 active:scale-[0.98] ${
+                  isMenuOpen ? 'animate-ios-slide-up' : ''
+                } ${
                   activeSection === item.id
-                    ? 'bg-gradient-to-r from-neon-blue/20 via-neon-purple/20 to-neon-magenta/20 text-foreground border border-neon-purple/30'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted/30 hover:pl-8'
+                    ? 'bg-gradient-to-r from-neon-blue/20 via-neon-purple/20 to-neon-magenta/20 text-foreground border border-white/20 shadow-lg shadow-neon-purple/10'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-white/5 hover:pl-8'
                 }`}
               >
                 {activeSection === item.id && (
-                  <span className="w-2 h-2 rounded-full bg-gradient-to-r from-neon-blue to-neon-purple"></span>
+                  <span className="w-2 h-2 rounded-full bg-gradient-to-r from-neon-blue to-neon-purple shadow-lg shadow-neon-purple/50"></span>
                 )}
                 <span className="font-medium">{item.label}</span>
               </button>

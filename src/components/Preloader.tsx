@@ -32,8 +32,8 @@ export const Preloader = ({ onComplete }: PreloaderProps) => {
       {!isExiting && (
         <motion.div
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, scale: 1.1 }}
-          transition={{ duration: 0.8, ease: 'easeInOut' }}
+          exit={{ opacity: 0, scale: 1.02 }}
+          transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
           className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-background"
         >
           {/* Animated background */}
@@ -45,9 +45,9 @@ export const Preloader = ({ onComplete }: PreloaderProps) => {
 
           {/* Logo container */}
           <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
+            initial={{ scale: 0.9, opacity: 0, y: 20 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
             className="relative z-10 flex flex-col items-center"
           >
             {/* Logo */}
