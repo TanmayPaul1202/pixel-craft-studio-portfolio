@@ -69,9 +69,9 @@ export function AboutSection() {
           <div className="lg:col-span-7 reveal-up">
             <div className="relative group">
               {/* Glow Effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-neon-purple via-neon-magenta to-neon-blue rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-700" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-neon-purple via-neon-magenta to-neon-blue rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
               
-              <div className="relative bg-gradient-to-br from-card/90 to-card/50 backdrop-blur-xl rounded-3xl border border-border/50 p-8 md:p-10 overflow-hidden">
+              <div className="relative bg-card/50 backdrop-blur-2xl backdrop-saturate-150 rounded-3xl border border-white/10 p-8 md:p-10 overflow-hidden shadow-xl shadow-black/10 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:border-white/20 group-hover:shadow-2xl">
                 {/* Decorative Elements */}
                 <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-neon-purple/10 to-transparent rounded-bl-full" />
                 <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-neon-blue/10 to-transparent rounded-tr-full" />
@@ -113,8 +113,8 @@ export function AboutSection() {
           <div className="lg:col-span-5 space-y-6 reveal-up">
             {/* Education Card */}
             <div className="group relative">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
-              <div className="relative bg-gradient-to-br from-card/90 to-card/50 backdrop-blur-xl rounded-2xl border border-border/50 p-6 hover:border-neon-blue/50 transition-all duration-300">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition-opacity duration-300" />
+              <div className="relative bg-card/50 backdrop-blur-2xl backdrop-saturate-150 rounded-2xl border border-white/10 p-6 hover:border-white/20 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] shadow-lg shadow-black/5">
                 <div className="flex items-start gap-4">
                   <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                     <GraduationCap className="w-7 h-7 text-foreground" />
@@ -134,8 +134,8 @@ export function AboutSection() {
 
             {/* Studio Info Card */}
             <div className="group relative">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
-              <div className="relative bg-gradient-to-br from-card/90 to-card/50 backdrop-blur-xl rounded-2xl border border-border/50 p-6 hover:border-neon-purple/50 transition-all duration-300">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition-opacity duration-300" />
+              <div className="relative bg-card/50 backdrop-blur-2xl backdrop-saturate-150 rounded-2xl border border-white/10 p-6 hover:border-white/20 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] shadow-lg shadow-black/5">
                 <div className="flex items-start gap-4">
                   <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                     <Award className="w-7 h-7 text-foreground" />
@@ -155,8 +155,8 @@ export function AboutSection() {
 
             {/* Mission Card */}
             <div className="group relative">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-orange-500 to-rose-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
-              <div className="relative bg-gradient-to-br from-card/90 to-card/50 backdrop-blur-xl rounded-2xl border border-border/50 p-6 hover:border-neon-magenta/50 transition-all duration-300">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-orange-500 to-rose-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition-opacity duration-300" />
+              <div className="relative bg-card/50 backdrop-blur-2xl backdrop-saturate-150 rounded-2xl border border-white/10 p-6 hover:border-white/20 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] shadow-lg shadow-black/5">
                 <div className="flex items-start gap-4">
                   <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-rose-500 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                     <Target className="w-7 h-7 text-foreground" />

@@ -319,25 +319,25 @@ export function ContactSection() {
           </div>
         </div>
 
-        {/* Quick Contact Floating Icons */}
+        {/* Quick Contact Floating Icons - iOS-style */}
         <div className="fixed bottom-6 right-6 flex flex-col space-y-3 z-40">
           <Button
             size="sm"
-            className="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white shadow-lg shadow-green-500/30 hover:shadow-xl hover:shadow-green-500/40 hover:scale-110 transition-all duration-300"
+            className="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white shadow-xl shadow-green-500/30 hover:shadow-2xl hover:shadow-green-500/40 active:scale-90 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] backdrop-blur-xl"
             onClick={() => window.open('https://wa.me/918780790466', '_blank')}
           >
             <MessageCircle className="h-6 w-6" />
           </Button>
           <Button
             size="sm"
-            className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-110 transition-all duration-300"
+            className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white shadow-xl shadow-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/40 active:scale-90 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] backdrop-blur-xl"
             onClick={() => window.open('mailto:pixcraft.studio@gmail.com', '_blank')}
           >
             <Mail className="h-6 w-6" />
           </Button>
           <Button
             size="sm"
-            className="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-orange-500 hover:from-pink-600 hover:to-orange-600 text-white shadow-lg shadow-pink-500/30 hover:shadow-xl hover:shadow-pink-500/40 hover:scale-110 transition-all duration-300"
+            className="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-orange-500 hover:from-pink-600 hover:to-orange-600 text-white shadow-xl shadow-pink-500/30 hover:shadow-2xl hover:shadow-pink-500/40 active:scale-90 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] backdrop-blur-xl"
             onClick={() => window.open('https://instagram.com/pixelcraft.studio_', '_blank')}
           >
             <Instagram className="h-6 w-6" />
