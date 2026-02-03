@@ -30,7 +30,7 @@ export function CertificatesSection() {
   };
 
   return (
-    <section id="certificates" className="py-16 relative overflow-hidden">
+    <section id="certificates" className="py-10 relative overflow-hidden">
       {/* Dynamic Background */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full bg-gradient-to-r from-neon-purple/10 to-neon-magenta/10 blur-3xl animate-pulse" />
