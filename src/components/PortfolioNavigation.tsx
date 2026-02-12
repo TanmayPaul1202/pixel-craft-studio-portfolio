@@ -71,7 +71,7 @@ export function PortfolioNavigation({ activeSection, onSectionChange }: Portfoli
         <div className="flex items-center justify-between h-20 md:h-24">
           {/* Logo Section */}
           <div 
-            className="flex items-center gap-3 group cursor-pointer"
+            className="flex items-center gap-1.5 group cursor-pointer"
             onClick={() => scrollToSection('home')}
           >
             <div className="relative">
