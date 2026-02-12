@@ -91,10 +91,10 @@ export function PortfolioNavigation({ activeSection, onSectionChange }: Portfoli
             </div>
           </div>
 
-          {/* Desktop Navigation - iOS-style pill nav */}
-          <div className="hidden lg:flex items-center">
+          {/* Desktop Navigation - unified bar */}
+          <div className="hidden lg:flex items-center gap-3">
             <div className="flex items-center gap-1 bg-muted/40 backdrop-blur-xl backdrop-saturate-150 rounded-full px-2 py-2 border border-white/10 shadow-lg shadow-black/5">
-              {navigationItems.map((item, index) => (
+              {navigationItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
@@ -104,53 +104,53 @@ export function PortfolioNavigation({ activeSection, onSectionChange }: Portfoli
                       : 'text-muted-foreground hover:text-foreground'
                   }`}
                 >
-                  {/* Active Background - iOS-style */}
                   {activeSection === item.id && (
                     <span className="absolute inset-0 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta rounded-full shadow-lg shadow-neon-purple/30 animate-ios-scale-in"></span>
                   )}
-                  {/* Hover Effect */}
                   <span className={`absolute inset-0 rounded-full transition-all duration-300 ${
                     activeSection !== item.id ? 'bg-muted/0 group-hover:bg-white/10' : ''
                   }`}></span>
                   <span className="relative z-10">{item.label}</span>
                 </button>
               ))}
-            </div>
-          </div>
-
-          {/* Theme Toggle & Auth Buttons - Desktop */}
-          <div className="hidden lg:flex items-center gap-3">
-            <ThemeToggle />
-            {!loading && (
-              user ? (
-                <div className="flex items-center gap-3">
-                  <Button
-                    variant="ghost"
-                    onClick={() => navigate('/dashboard')}
-                    className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-muted/30 border border-border/50 hover:border-neon-purple/50 hover:bg-neon-purple/10"
-                  >
-                    <User className="w-4 h-4 text-neon-purple" />
-                    <span className="text-sm text-foreground">{user.email?.split('@')[0]}</span>
-                  </Button>
+              
+              {/* Separator */}
+              <span className="w-px h-6 bg-white/15 mx-1"></span>
+              
+              {/* Theme toggle inside pill */}
+              <ThemeToggle />
+              
+              {/* Auth inside pill */}
+              {!loading && (
+                user ? (
+                  <>
+                    <Button
+                      variant="ghost"
+                      onClick={() => navigate('/dashboard')}
+                      className="flex items-center gap-2 px-3 py-1.5 rounded-full hover:bg-white/10"
+                    >
+                      <User className="w-4 h-4 text-neon-purple" />
+                      <span className="text-sm text-foreground">{user.email?.split('@')[0]}</span>
+                    </Button>
+                    <Button 
+                      onClick={handleSignOut}
+                      variant="ghost"
+                      className="rounded-full hover:bg-white/10 px-3"
+                    >
+                      <LogOut className="w-4 h-4" />
+                    </Button>
+                  </>
+                ) : (
                   <Button 
-                    onClick={handleSignOut}
-                    variant="outline"
-                    className="border-border/50 hover:border-neon-magenta/50 hover:bg-neon-magenta/10 rounded-full transition-all duration-300"
+                    onClick={() => navigate('/auth')}
+                    className="bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta hover:opacity-90 text-background font-semibold px-5 py-2 rounded-full transition-all duration-300 hover:scale-105"
                   >
-                    <LogOut className="w-4 h-4 mr-2" />
-                    Sign Out
+                    <LogIn className="w-4 h-4 mr-2" />
+                    Sign In
                   </Button>
-                </div>
-              ) : (
-                <Button 
-                  onClick={() => navigate('/auth')}
-                  className="bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta hover:opacity-90 text-background font-semibold px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-neon-purple/30"
-                >
-                  <LogIn className="w-4 h-4 mr-2" />
-                  Sign In
-                </Button>
-              )
-            )}
+                )
+              )}
+            </div>
           </div>
 
           {/* Mobile Menu Button, Theme Toggle & Auth */}
