@@ -27,11 +27,12 @@ const Index = () => {
           if (sectionId) {
             setActiveSection(sectionId);
           }
+          sectionObserver.unobserve(entry.target);
         }
       });
     }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+      threshold: 0.05,
+      rootMargin: '0px 0px 0px 0px'
     });
 
     // Element observer for individual reveal animations
@@ -47,11 +48,13 @@ const Index = () => {
           } else {
             entry.target.classList.add('active');
           }
+          // Once activated, stop observing to prevent issues with layout shifts
+          elementObserver.unobserve(entry.target);
         }
       });
     }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -30px 0px'
+      threshold: 0.05,
+      rootMargin: '0px 0px 0px 0px'
     });
 
     const sections = document.querySelectorAll('section[id]');
