@@ -1,7 +1,7 @@
-import { ExternalLink, Play, Sparkles, ArrowRight, Eye, Layers, Film, Palette, Building2 } from 'lucide-react';
+import { ExternalLink, Play, Sparkles, ArrowRight, ArrowLeft, Eye, Layers, Film, Palette, Building2, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 const projects = [
   {
@@ -94,11 +94,63 @@ const stats = [
 
 export function ProjectsSection() {
   const [activeCategory, setActiveCategory] = useState('All');
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
   const filteredProjects = activeCategory === 'All' 
     ? projects 
     : projects.filter(p => p.category === activeCategory);
+
+  const checkScroll = () => {
+    if (!scrollRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+    setCanScrollLeft(scrollLeft > 10);
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+  };
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (el) {
+      el.addEventListener('scroll', checkScroll, { passive: true });
+      checkScroll();
+      return () => el.removeEventListener('scroll', checkScroll);
+    }
+  }, [filteredProjects]);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (!scrollRef.current) return;
+    const cardWidth = scrollRef.current.querySelector('.snap-center')?.clientWidth || 320;
+    const gap = 24;
+    scrollRef.current.scrollBy({
+      left: direction === 'left' ? -(cardWidth + gap) : (cardWidth + gap),
+      behavior: 'smooth'
+    });
+  };
+
+  // Track active card on scroll
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const handleScroll = () => {
+      const children = el.querySelectorAll('.snap-center');
+      let closest = 0;
+      let minDist = Infinity;
+      const center = el.scrollLeft + el.clientWidth / 2;
+      children.forEach((child, i) => {
+        const childCenter = (child as HTMLElement).offsetLeft + (child as HTMLElement).clientWidth / 2;
+        const dist = Math.abs(center - childCenter);
+        if (dist < minDist) {
+          minDist = dist;
+          closest = i;
+        }
+      });
+      setActiveIndex(closest);
+    };
+    el.addEventListener('scroll', handleScroll, { passive: true });
+    return () => el.removeEventListener('scroll', handleScroll);
+  }, [filteredProjects]);
 
   return (
     <section id="projects" className="py-10 relative overflow-hidden">
@@ -140,14 +192,18 @@ export function ProjectsSection() {
         </div>
 
         {/* Category Filter - Modern Pills */}
-        <div className="flex flex-wrap justify-center gap-3 mb-16 reveal-up">
+        <div className="flex flex-wrap justify-center gap-3 mb-10 reveal-up">
           {categories.map((category) => {
             const Icon = category.icon;
             const isActive = activeCategory === category.name;
             return (
               <button
                 key={category.name}
-                onClick={() => setActiveCategory(category.name)}
+                onClick={() => {
+                  setActiveCategory(category.name);
+                  setActiveIndex(0);
+                  if (scrollRef.current) scrollRef.current.scrollLeft = 0;
+                }}
                 className={`
                   group relative px-6 py-3 rounded-2xl font-medium transition-all duration-500
                   ${isActive 
@@ -171,124 +227,136 @@ export function ProjectsSection() {
           })}
         </div>
 
-        {/* Projects Grid - Bento Style */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
-          {filteredProjects.map((project, index) => (
-            <div
-              key={project.title}
-              className={`
-                group relative rounded-3xl overflow-hidden reveal-up
-                ${index === 0 ? 'md:col-span-2 md:row-span-2' : ''}
-                ${index === 3 ? 'lg:col-span-2' : ''}
-              `}
-              style={{ animationDelay: `${index * 0.1}s` }}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              {/* Card Background */}
-              <div className={`
-                absolute inset-0 bg-gradient-to-br ${project.gradient}
-                transition-all duration-700
-                ${hoveredIndex === index ? 'scale-110 opacity-70' : 'opacity-40'}
-              `} />
-              
-              {/* Glass Card */}
-              <div className="relative h-full min-h-[320px] backdrop-blur-sm bg-card/30 border border-white/10 p-6 flex flex-col transition-all duration-500 group-hover:bg-card/50 group-hover:border-white/20">
-                {/* Project Image */}
-                <div className={`
-                  relative rounded-2xl overflow-hidden mb-6 flex-shrink-0
-                  ${index === 0 ? 'h-64' : 'h-44'}
-                `}>
-                  {project.image.startsWith('/') ? (
-                    <>
-                      <img 
-                        src={project.image} 
-                        alt={project.title}
-                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
-                      />
-                      {/* Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
-                        <div className="absolute bottom-4 left-4 right-4 flex gap-3">
-                          <Button 
-                            size="sm" 
-                            className="flex-1 bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border-0 rounded-xl"
-                          >
-                            <Eye className="h-4 w-4 mr-2" />
-                            Preview
-                          </Button>
-                          <Button 
-                            size="icon" 
-                            variant="outline" 
-                            className="border-white/30 text-white hover:bg-white/20 rounded-xl backdrop-blur-md"
-                          >
-                            <ExternalLink className="h-4 w-4" />
-                          </Button>
+        {/* Carousel Navigation Arrows */}
+        <div className="flex items-center justify-end gap-2 mb-6 reveal-up">
+          <button
+            onClick={() => scroll('left')}
+            disabled={!canScrollLeft}
+            className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-300 ${
+              canScrollLeft
+                ? 'border-neon-magenta/40 bg-card/60 text-foreground hover:bg-neon-magenta/20 hover:border-neon-magenta/60'
+                : 'border-border/30 text-muted-foreground/30 cursor-not-allowed'
+            }`}
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={() => scroll('right')}
+            disabled={!canScrollRight}
+            className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-300 ${
+              canScrollRight
+                ? 'border-neon-cyan/40 bg-card/60 text-foreground hover:bg-neon-cyan/20 hover:border-neon-cyan/60'
+                : 'border-border/30 text-muted-foreground/30 cursor-not-allowed'
+            }`}
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Horizontal Scroll Carousel */}
+        <div className="reveal-up">
+          <div
+            ref={scrollRef}
+            className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-6 -mx-6 px-6"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
+          >
+            <style>{`div::-webkit-scrollbar { display: none; }`}</style>
+            {filteredProjects.map((project, index) => (
+              <div
+                key={project.title}
+                className={`snap-center flex-shrink-0 w-[85vw] sm:w-[400px] md:w-[420px] group relative rounded-3xl overflow-hidden transition-all duration-500 ${
+                  activeIndex === index ? 'scale-100' : 'scale-[0.95] opacity-80'
+                }`}
+              >
+                {/* Card Glow */}
+                <div className={`absolute -inset-1 bg-gradient-to-br ${project.gradient} rounded-3xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-700`} />
+
+                {/* Glass Card */}
+                <div className="relative bg-card/40 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden group-hover:border-white/20 transition-all duration-500">
+                  {/* Project Image */}
+                  <div className="relative h-72 sm:h-80 overflow-hidden">
+                    {project.image.startsWith('/') ? (
+                      <>
+                        <img 
+                          src={project.image} 
+                          alt={project.title}
+                          className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                          loading="lazy"
+                        />
+                        {/* Gradient overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
+                        
+                        {/* Hover overlay with action */}
+                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
+                          <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 transform scale-75 group-hover:scale-100 transition-transform duration-500">
+                            <Eye className="w-7 h-7 text-white" />
+                          </div>
                         </div>
+                      </>
+                    ) : (
+                      <div className={`w-full h-full flex items-center justify-center bg-gradient-to-br ${project.gradient}`}>
+                        <span className="text-7xl group-hover:scale-125 transition-transform duration-500">
+                          {project.image}
+                        </span>
                       </div>
-                    </>
-                  ) : (
-                    <div className={`
-                      w-full h-full flex items-center justify-center bg-gradient-to-br ${project.gradient}
-                      transition-all duration-500
-                    `}>
-                      <span className={`
-                        text-6xl transition-all duration-500
-                        ${hoveredIndex === index ? 'scale-125' : 'scale-100'}
-                      `}>
-                        {project.image}
-                      </span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Content */}
-                <div className="flex-1 flex flex-col">
-                  {/* Category Badge */}
-                  <Badge 
-                    className={`
-                      w-fit mb-3 bg-gradient-to-r ${project.gradient} border-0 
-                      text-foreground font-medium px-3 py-1 rounded-lg
-                    `}
-                  >
-                    {project.category}
-                  </Badge>
-
-                  {/* Title */}
-                  <h3 className={`
-                    font-bold mb-2 transition-all duration-300
-                    ${index === 0 ? 'text-2xl' : 'text-lg'}
-                    group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-neon-magenta group-hover:to-neon-cyan
-                  `}>
-                    {project.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-muted-foreground text-sm mb-4 line-clamp-2 group-hover:text-foreground/80 transition-colors duration-300">
-                    {project.description}
-                  </p>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mt-auto">
-                    {project.tags.slice(0, 3).map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 bg-white/5 rounded-full text-xs text-muted-foreground border border-white/5 group-hover:border-white/10 group-hover:bg-white/10 transition-all duration-300"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                    )}
                   </div>
-                </div>
 
-                {/* Hover Arrow */}
-                <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-4 group-hover:translate-x-0">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-r from-neon-magenta to-neon-cyan flex items-center justify-center">
-                    <ArrowRight className="w-5 h-5 text-background" />
+                  {/* Content */}
+                  <div className="p-6 -mt-8 relative z-10">
+                    {/* Category Badge */}
+                    <Badge className={`mb-3 bg-gradient-to-r ${project.gradient} border-0 text-foreground font-medium px-3 py-1 rounded-lg text-xs`}>
+                      {project.category}
+                    </Badge>
+
+                    {/* Title */}
+                    <h3 className="text-xl font-bold mb-2 transition-colors duration-300 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-neon-magenta group-hover:to-neon-cyan">
+                      {project.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+                      {project.description}
+                    </p>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.slice(0, 3).map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-3 py-1 bg-white/5 rounded-full text-xs text-muted-foreground border border-white/5 group-hover:border-white/15 group-hover:bg-white/10 transition-all duration-300"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {/* Dot Indicators */}
+          <div className="flex justify-center gap-2 mt-6">
+            {filteredProjects.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  const el = scrollRef.current;
+                  if (!el) return;
+                  const children = el.querySelectorAll('.snap-center');
+                  if (children[index]) {
+                    (children[index] as HTMLElement).scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                  }
+                }}
+                className={`h-2 rounded-full transition-all duration-500 ${
+                  activeIndex === index
+                    ? 'w-8 bg-gradient-to-r from-neon-magenta to-neon-cyan'
+                    : 'w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                }`}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Stats Section */}
@@ -313,7 +381,6 @@ export function ProjectsSection() {
         {/* CTA Section */}
         <div className="text-center mt-20 reveal-up">
           <div className="relative inline-block p-8 md:p-12 rounded-3xl bg-gradient-to-br from-card/50 to-card/30 backdrop-blur-sm border border-white/10 overflow-hidden">
-            {/* Glow Effect */}
             <div className="absolute -top-20 -right-20 w-40 h-40 bg-neon-magenta/20 rounded-full blur-3xl" />
             <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-neon-cyan/20 rounded-full blur-3xl" />
             
