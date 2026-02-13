@@ -235,7 +235,7 @@ export function ServicesSection() {
                 </div>
 
                 {/* Expanded Pricing Details */}
-                {expandedService === index && showPricing && (
+                {expandedService === index && (
                   <div className="mt-6 pt-6 border-t border-border/30 animate-fade-in-up">
                     <h4 className="font-semibold mb-4 text-foreground flex items-center gap-2">
                       <FileText className="h-4 w-4 text-primary" />
