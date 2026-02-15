@@ -178,24 +178,6 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
         </div>
       </div>
 
-      {/* Side Decorations */}
-      <div className="absolute left-8 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-4">
-        {['01', '02', '03'].map((num, i) => (
-          <div key={num} className="w-8 h-8 rounded-full border border-border/50 flex items-center justify-center text-xs text-muted-foreground hover:border-neon-blue hover:text-neon-blue transition-colors cursor-pointer">
-            {num}
-          </div>
-        ))}
-      </div>
-
-      <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:block">
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-px h-20 bg-gradient-to-b from-transparent via-muted-foreground/50 to-transparent"></div>
-          <span className="text-xs text-muted-foreground tracking-widest uppercase" style={{ writingMode: 'vertical-rl' }}>
-            Est. 2022
-          </span>
-          <div className="w-px h-20 bg-gradient-to-b from-transparent via-muted-foreground/50 to-transparent"></div>
-        </div>
-      </div>
     </section>
   );
 }
