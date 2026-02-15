@@ -62,7 +62,7 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
           </div>
 
           {/* Logo */}
-          <div className="flex justify-center mb-10 reveal-up" style={{ animationDelay: '0.1s' }}>
+          <div className="flex justify-center mb-4 reveal-up" style={{ animationDelay: '0.1s' }}>
             <div className="relative group">
               <div className="absolute -inset-4 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta rounded-3xl blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
               <img 
