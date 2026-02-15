@@ -73,17 +73,20 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
             </div>
           </div>
 
-          {/* Main Title */}
           <div className="text-center mb-8 reveal-up" style={{ animationDelay: '0.2s' }}>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight font-orbitron">
-              <span className="relative inline-block">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta">
+              <span className="relative inline-block drop-shadow-[0_4px_0_hsl(var(--neon-blue)/0.5)] [text-shadow:_0_2px_0_hsl(var(--neon-blue)/0.4),_0_4px_0_hsl(var(--neon-purple)/0.3),_0_6px_0_hsl(var(--neon-purple)/0.2),_0_8px_8px_rgba(0,0,0,0.3)]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-[hsl(var(--neon-blue))] to-[hsl(var(--neon-blue)/0.6)]">
                   Pixel
                 </span>
               </span>
-              <span className="text-foreground mx-4">Craft</span>
-              <span className="relative inline-block">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-magenta via-neon-purple to-neon-blue">
+              <span className="relative inline-block mx-4 drop-shadow-[0_4px_0_hsl(var(--foreground)/0.3)] [text-shadow:_0_2px_0_hsl(var(--foreground)/0.3),_0_4px_0_hsl(var(--foreground)/0.2),_0_6px_0_hsl(var(--foreground)/0.1),_0_8px_8px_rgba(0,0,0,0.3)]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-foreground">
+                  Craft
+                </span>
+              </span>
+              <span className="relative inline-block drop-shadow-[0_4px_0_hsl(var(--neon-magenta)/0.5)] [text-shadow:_0_2px_0_hsl(var(--neon-magenta)/0.4),_0_4px_0_hsl(var(--neon-purple)/0.3),_0_6px_0_hsl(var(--neon-purple)/0.2),_0_8px_8px_rgba(0,0,0,0.3)]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-[hsl(var(--neon-magenta))] to-[hsl(var(--neon-magenta)/0.6)]">
                   Studio
                 </span>
               </span>
