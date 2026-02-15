@@ -68,30 +68,8 @@ export function PortfolioNavigation({ activeSection, onSectionChange }: Portfoli
         : 'bg-transparent backdrop-blur-none'
     }`}>
       <div className="container mx-auto px-4 md:px-8">
-        <div className="flex items-center justify-between h-20 md:h-24">
-          {/* Logo Section */}
-          <div 
-            className="flex items-center gap-1.5 group cursor-pointer"
-            onClick={() => scrollToSection('home')}
-          >
-            <div className="relative">
-              <div className="absolute -inset-2 bg-gradient-to-r from-neon-blue/20 via-neon-purple/20 to-neon-magenta/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <img 
-                src="/lovable-uploads/pcs-logo.png" 
-                alt="Pixel Craft Studio Logo" 
-                className="relative h-14 md:h-16 w-auto transition-all duration-300 group-hover:scale-110"
-              />
-            </div>
-            <div className="hidden sm:flex flex-col">
-              <span className="text-xl md:text-2xl font-bold font-orbitron tracking-tight">
-                <span className="text-neon-blue">Pixel</span>
-                <span className="text-neon-magenta">Craft</span>
-              </span>
-              <span className="text-xs text-muted-foreground tracking-[0.2em] uppercase">Studio</span>
-            </div>
-          </div>
-
-          {/* Desktop Navigation - unified bar */}
+        <div className="flex items-center justify-center h-20 md:h-24">
+          {/* Desktop Navigation - centered unified bar */}
           <div className="hidden lg:flex items-center gap-3">
             <div className="flex items-center gap-1 bg-muted/40 backdrop-blur-xl backdrop-saturate-150 rounded-full px-2 py-2 border border-white/10 shadow-lg shadow-black/5">
               {navigationItems.map((item) => (
