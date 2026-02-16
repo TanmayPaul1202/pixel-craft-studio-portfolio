@@ -54,7 +54,7 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center min-h-[80vh]">
           
           {/* Left Side — Text Content */}
-          <div className="flex flex-col justify-center order-2 lg:order-1">
+          <div className="flex flex-col justify-center">
             {/* Badge */}
             <div className="mb-6 reveal-up">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-neon-blue/10 border border-neon-blue/20 backdrop-blur-sm">
@@ -142,7 +142,7 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
           </div>
 
           {/* Right Side — Visual */}
-          <div className="flex items-center justify-center order-1 lg:order-2 reveal-up" style={{ animationDelay: '0.2s' }}>
+          <div className="flex items-center justify-center reveal-up" style={{ animationDelay: '0.2s' }}>
             <div className="relative w-full max-w-md lg:max-w-lg">
               {/* Glow behind logo */}
               <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/20 via-neon-purple/15 to-neon-magenta/20 rounded-[3rem] blur-[80px] scale-110" />
