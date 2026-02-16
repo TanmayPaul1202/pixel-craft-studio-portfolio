@@ -75,17 +75,13 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
 
           {/* Main Title */}
           <div className="text-center mb-8 reveal-up" style={{ animationDelay: '0.2s' }}>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight font-orbitron">
-              <span className="relative inline-block">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta">
-                  Pixel
-                </span>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
+              <span className="italic font-medium text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple tracking-tight">
+                Pixel
               </span>
-              <span className="text-foreground mx-4">Craft</span>
-              <span className="relative inline-block">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-magenta via-neon-purple to-neon-blue">
-                  Studio
-                </span>
+              <span className="text-foreground mx-3 md:mx-4 font-light tracking-widest uppercase text-[0.85em]">Craft</span>
+              <span className="italic font-medium text-transparent bg-clip-text bg-gradient-to-r from-neon-magenta to-neon-purple tracking-tight">
+                Studio
               </span>
             </h1>
           </div>
