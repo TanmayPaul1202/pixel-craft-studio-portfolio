@@ -55,6 +55,18 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
           
           {/* Left Side — Text Content */}
           <div className="flex flex-col justify-center">
+            {/* Logo above title */}
+            <div className="mb-6 reveal-up">
+              <div className="relative group inline-block">
+                <div className="absolute -inset-4 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-700" />
+                <img 
+                  src="/lovable-uploads/pcs-logo.png" 
+                  alt="Pixel Craft Studio Logo" 
+                  className="relative h-24 md:h-32 w-auto transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105"
+                />
+              </div>
+            </div>
+
             {/* Badge */}
             <div className="mb-6 reveal-up">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-neon-blue/10 border border-neon-blue/20 backdrop-blur-sm">
@@ -141,49 +153,18 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
             </div>
           </div>
 
-          {/* Right Side — Visual */}
+          {/* Right Side — Image */}
           <div className="flex items-center justify-center reveal-up" style={{ animationDelay: '0.2s' }}>
             <div className="relative w-full max-w-md lg:max-w-lg">
-              {/* Glow behind logo */}
-              <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/20 via-neon-purple/15 to-neon-magenta/20 rounded-[3rem] blur-[80px] scale-110" />
+              {/* Glow behind image */}
+              <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/20 via-neon-purple/15 to-neon-magenta/20 rounded-[2.5rem] blur-[80px] scale-110" />
               
-              {/* Main card */}
-              <div className="relative bg-card/40 backdrop-blur-2xl border border-border/30 rounded-[2.5rem] p-8 md:p-12 shadow-2xl shadow-black/20">
-                {/* Logo */}
-                <div className="flex justify-center mb-8">
-                  <div className="relative group">
-                    <div className="absolute -inset-6 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-magenta rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-700" />
-                    <img 
-                      src="/lovable-uploads/pcs-logo.png" 
-                      alt="Pixel Craft Studio Logo" 
-                      className="relative h-36 md:h-44 w-auto transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105"
-                    />
-                  </div>
-                </div>
-
-                {/* Rating */}
-                <div className="flex flex-col items-center gap-3">
-                  <div className="flex items-center gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 text-neon-yellow fill-neon-yellow" />
-                    ))}
-                  </div>
-                  <p className="text-sm text-muted-foreground text-center">
-                    Rated <span className="text-foreground font-semibold">5.0</span> by our clients
-                  </p>
-                </div>
-
-                {/* Decorative lines */}
-                <div className="absolute top-6 right-8 flex flex-col gap-1.5 opacity-30">
-                  <div className="w-8 h-0.5 bg-gradient-to-r from-neon-blue to-transparent rounded-full" />
-                  <div className="w-5 h-0.5 bg-gradient-to-r from-neon-purple to-transparent rounded-full" />
-                  <div className="w-3 h-0.5 bg-gradient-to-r from-neon-magenta to-transparent rounded-full" />
-                </div>
-                <div className="absolute bottom-6 left-8 flex flex-col gap-1.5 opacity-30">
-                  <div className="w-3 h-0.5 bg-gradient-to-l from-neon-blue to-transparent rounded-full" />
-                  <div className="w-5 h-0.5 bg-gradient-to-l from-neon-purple to-transparent rounded-full" />
-                  <div className="w-8 h-0.5 bg-gradient-to-l from-neon-magenta to-transparent rounded-full" />
-                </div>
+              <div className="relative overflow-hidden rounded-[2.5rem] border border-border/30 shadow-2xl shadow-black/20">
+                <img 
+                  src="/lovable-uploads/hero-right-image.jpg" 
+                  alt="Creative team illustration" 
+                  className="w-full h-auto object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:scale-105"
+                />
               </div>
 
               {/* Floating accent elements */}
