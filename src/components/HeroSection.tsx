@@ -153,24 +153,16 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
             </div>
           </div>
 
-          {/* Right Side — Image */}
-          <div className="flex items-center justify-center reveal-up" style={{ animationDelay: '0.2s' }}>
-            <div className="relative w-full max-w-md lg:max-w-lg">
-              {/* Glow behind image */}
-              <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/20 via-neon-purple/15 to-neon-magenta/20 rounded-[2.5rem] blur-[80px] scale-110" />
-              
-              <div className="relative overflow-hidden rounded-[2.5rem] border border-border/30 shadow-2xl shadow-black/20">
-                <img 
-                  src="/lovable-uploads/hero-right-image.jpg" 
-                  alt="Creative team illustration" 
-                  className="w-full h-auto object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:scale-105"
-                />
-              </div>
+          {/* Right Side — Hero Image */}
+          <div className="flex items-center justify-center reveal-up relative" style={{ animationDelay: '0.2s' }}>
+            {/* Ambient glow */}
+            <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/25 via-neon-purple/20 to-neon-magenta/25 rounded-full blur-[100px] scale-125" />
 
-              {/* Floating accent elements */}
-              <div className="absolute -top-4 -right-4 w-20 h-20 bg-neon-blue/10 rounded-3xl blur-sm border border-neon-blue/20 rotate-12 animate-ios-pulse" />
-              <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-neon-magenta/10 rounded-2xl blur-sm border border-neon-magenta/20 -rotate-12 animate-ios-pulse" style={{ animationDelay: '1.5s' }} />
-            </div>
+            <img 
+              src="/lovable-uploads/hero-memoji.png" 
+              alt="Creative team" 
+              className="relative w-full max-w-xl lg:max-w-2xl h-auto object-contain drop-shadow-2xl transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:scale-105"
+            />
           </div>
         </div>
       </div>
