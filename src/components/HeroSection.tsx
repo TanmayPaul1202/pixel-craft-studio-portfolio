@@ -161,7 +161,7 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
             <img 
               src="/lovable-uploads/hero-memoji.png" 
               alt="Creative team" 
-              className="relative w-full max-w-xl lg:max-w-2xl h-auto object-contain drop-shadow-2xl transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:scale-105"
+              className="relative w-full max-w-3xl lg:max-w-4xl xl:max-w-5xl h-auto object-contain drop-shadow-2xl transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:scale-105 scale-125"
             />
           </div>
         </div>
