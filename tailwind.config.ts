@@ -127,10 +127,15 @@ export default {
 					'0%, 100%': { transform: 'rotate(-1deg)' },
 					'50%': { transform: 'rotate(1deg)' }
 				},
-				'ios-pulse': {
-					'0%, 100%': { opacity: '1' },
-					'50%': { opacity: '0.7' }
-				}
+			'ios-pulse': {
+				'0%, 100%': { opacity: '1' },
+				'50%': { opacity: '0.7' }
+			},
+			'shimmer': {
+				'0%': { backgroundPosition: '0% 50%' },
+				'50%': { backgroundPosition: '100% 50%' },
+				'100%': { backgroundPosition: '0% 50%' }
+			}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
