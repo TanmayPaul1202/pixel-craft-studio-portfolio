@@ -98,7 +98,7 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
         <div className="absolute inset-0 opacity-[0.03]" style={{
           backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 79px, hsl(var(--foreground) / 0.1) 79px, hsl(var(--foreground) / 0.1) 80px)',
         }} />
-      </div>
+      </motion.div>
 
       {/* Floating decorative elements */}
       <div className="absolute inset-0 z-[1] pointer-events-none">
