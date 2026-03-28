@@ -1,7 +1,7 @@
 import { ArrowRight, MessageCircle, Play, Sparkles, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { HeroCanvas } from './HeroCanvas';
 
 interface HeroSectionProps {
