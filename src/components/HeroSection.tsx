@@ -197,9 +197,9 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
             {/* Glow behind title */}
             <div className="absolute inset-0 bg-gradient-to-r from-neon-blue/10 via-neon-purple/10 to-neon-magenta/10 blur-[80px] scale-150" />
             
-            <h1 className="relative text-[4.5rem] sm:text-[6rem] md:text-[7.5rem] lg:text-[9rem] xl:text-[10.5rem] font-black leading-[0.82] tracking-tighter" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <h1 className="relative text-[2.5rem] sm:text-[3.5rem] md:text-[5rem] lg:text-[6.5rem] xl:text-[8rem] font-black leading-none tracking-tighter whitespace-nowrap" style={{ fontFamily: "'Playfair Display', serif" }}>
               <motion.span 
-                className="block italic bg-clip-text text-transparent"
+                className="italic bg-clip-text text-transparent"
                 style={{
                   backgroundImage: 'linear-gradient(135deg, hsl(var(--neon-cyan)), hsl(var(--neon-blue)), hsl(var(--neon-purple)))',
                 }}
@@ -208,11 +208,11 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
               >
                 Pixel
               </motion.span>
-              <span className="block text-foreground/90 font-extralight tracking-[0.35em] uppercase text-[0.38em] my-1 md:my-2">
+              <span className="text-foreground/90 font-extralight tracking-[0.2em] uppercase text-[0.5em] mx-3">
                 Craft
               </span>
               <motion.span 
-                className="block italic bg-clip-text text-transparent"
+                className="italic bg-clip-text text-transparent"
                 style={{
                   backgroundImage: 'linear-gradient(135deg, hsl(var(--neon-magenta)), hsl(var(--neon-purple)), hsl(var(--neon-blue)))',
                 }}
