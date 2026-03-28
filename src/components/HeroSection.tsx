@@ -338,7 +338,7 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
             ))}
           </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Scroll Indicator */}
       <motion.div
