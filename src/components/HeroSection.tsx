@@ -53,7 +53,7 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Deep layered background */}
       <div className="absolute inset-0 z-0 bg-background">
-        {/* Interactive gradient that follows mouse */}
+        <HeroCanvas />
         <div
           className="absolute w-[800px] h-[800px] rounded-full blur-[200px] opacity-20 transition-all duration-[2s] ease-out"
           style={{
