@@ -1,7 +1,7 @@
 import { ArrowRight, MessageCircle, Play, Sparkles, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { HeroCanvas } from './HeroCanvas';
 
 interface HeroSectionProps {
@@ -17,6 +17,12 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
   const [displayedText, setDisplayedText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollY } = useScroll();
+  const bgY = useTransform(scrollY, [0, 800], [0, 250]);
+  const contentY = useTransform(scrollY, [0, 800], [0, -80]);
+  const bgScale = useTransform(scrollY, [0, 800], [1, 1.1]);
+  const bgOpacity = useTransform(scrollY, [0, 600], [1, 0.3]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -50,9 +56,9 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
   }, []);
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Deep layered background */}
-      <div className="absolute inset-0 z-0 bg-background">
+    <section id="home" ref={heroRef} className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Deep layered background with parallax */}
+      <motion.div className="absolute inset-0 z-0 bg-background" style={{ y: bgY, scale: bgScale, opacity: bgOpacity }}>
         <HeroCanvas />
         <div
           className="absolute w-[800px] h-[800px] rounded-full blur-[200px] opacity-20 transition-all duration-[2s] ease-out"
@@ -92,7 +98,7 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
         <div className="absolute inset-0 opacity-[0.03]" style={{
           backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 79px, hsl(var(--foreground) / 0.1) 79px, hsl(var(--foreground) / 0.1) 80px)',
         }} />
-      </div>
+      </motion.div>
 
       {/* Floating decorative elements */}
       <div className="absolute inset-0 z-[1] pointer-events-none">
@@ -163,8 +169,8 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
         ))}
       </div>
 
-      {/* Main Content */}
-      <div className="container mx-auto px-6 relative z-10">
+      {/* Main Content with parallax */}
+      <motion.div className="container mx-auto px-6 relative z-10" style={{ y: contentY }}>
         <div className="flex flex-col items-center text-center">
 
           {/* Badge */}
@@ -332,7 +338,7 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
             ))}
           </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Scroll Indicator */}
       <motion.div
