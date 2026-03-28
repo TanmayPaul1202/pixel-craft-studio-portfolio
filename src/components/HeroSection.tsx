@@ -17,6 +17,12 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
   const [displayedText, setDisplayedText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollY } = useScroll();
+  const bgY = useTransform(scrollY, [0, 800], [0, 250]);
+  const contentY = useTransform(scrollY, [0, 800], [0, -80]);
+  const bgScale = useTransform(scrollY, [0, 800], [1, 1.1]);
+  const bgOpacity = useTransform(scrollY, [0, 600], [1, 0.3]);
 
   useEffect(() => {
     const interval = setInterval(() => {
