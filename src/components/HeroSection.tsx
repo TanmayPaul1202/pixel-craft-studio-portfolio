@@ -169,8 +169,8 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
         ))}
       </div>
 
-      {/* Main Content */}
-      <div className="container mx-auto px-6 relative z-10">
+      {/* Main Content with parallax */}
+      <motion.div className="container mx-auto px-6 relative z-10" style={{ y: contentY }}>
         <div className="flex flex-col items-center text-center">
 
           {/* Badge */}
