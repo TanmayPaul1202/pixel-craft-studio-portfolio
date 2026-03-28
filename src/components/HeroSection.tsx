@@ -208,7 +208,7 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
               >
                 Pixel
               </motion.span>
-              <span className="text-foreground/90 font-extralight tracking-[0.2em] uppercase text-[0.5em] mx-3">
+              <span className="text-foreground/90 italic tracking-[0.2em] text-[0.5em] mx-3" style={{ fontFamily: "'Playfair Display', serif" }}>
                 Craft
               </span>
               <motion.span 
