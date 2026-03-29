@@ -172,7 +172,7 @@ export function ServicesSection() {
             <Button
               variant="outline"
               className="rounded-full px-6 border-neon-magenta/50 text-neon-magenta hover:bg-neon-magenta/10"
-              onClick={() => window.open('/lovable-uploads/a91f2a74-b164-4c9d-b67b-1999638f0ce6.png', '_blank')}
+              onClick={() => window.open('/Comprehensive_Video_Editing_Price_List.pdf', '_blank')}
             >
               <Download className="mr-2 h-4 w-4" />
               Price List
