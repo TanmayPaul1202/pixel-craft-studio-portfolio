@@ -1,4 +1,5 @@
 import { ArrowRight, MessageCircle, Play, Sparkles, Zap } from 'lucide-react';
+import pcsLogo from '@/assets/pcs-logo.png';
 import { Button } from '@/components/ui/button';
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
@@ -180,11 +181,7 @@ export function HeroSection({ onExploreWork, onContact }: HeroSectionProps) {
             transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
             className="mb-10"
           >
-            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-neon-blue/25 bg-neon-blue/5 backdrop-blur-xl shadow-[0_0_20px_rgba(96,165,250,0.08)]">
-              <Sparkles className="w-3.5 h-3.5 text-neon-blue" />
-              <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-neon-blue/90">Creative Studio</span>
-              <Sparkles className="w-3.5 h-3.5 text-neon-purple" />
-            </div>
+            <img src={pcsLogo} alt="Pixel Craft Studio" className="h-10 md:h-12 w-auto opacity-90 drop-shadow-[0_0_15px_rgba(96,165,250,0.15)]" />
           </motion.div>
 
           {/* Title */}
