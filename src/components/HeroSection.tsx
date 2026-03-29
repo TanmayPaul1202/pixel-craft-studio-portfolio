@@ -1,4 +1,5 @@
 import { ArrowRight, MessageCircle, Play, Sparkles, Zap } from 'lucide-react';
+import pcsLogo from '@/assets/pcs-logo.png';
 import { Button } from '@/components/ui/button';
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
