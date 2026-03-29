@@ -169,14 +169,16 @@ export function ServicesSection() {
               {showPricing ? 'Hide Pricing' : 'View Pricing'}
             </Button>
 
-            <Button
-              variant="outline"
-              className="rounded-full px-6 border-neon-magenta/50 text-neon-magenta hover:bg-neon-magenta/10"
-              onClick={() => window.open('/Comprehensive_Video_Editing_Price_List.pdf', '_blank')}
+            <a
+              href="/Comprehensive_Video_Editing_Price_List.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              download="Pixel_Craft_Studio_Price_List.pdf"
+              className="inline-flex items-center justify-center rounded-full px-6 h-10 text-sm font-medium border border-neon-magenta/50 text-neon-magenta hover:bg-neon-magenta/10 transition-colors"
             >
               <Download className="mr-2 h-4 w-4" />
               Price List
-            </Button>
+            </a>
           </div>
         </div>
 
