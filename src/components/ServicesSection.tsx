@@ -28,16 +28,16 @@ const services = [
     title: 'Video Editing',
     description: 'Professional video editing from simple cuts to complex multi-layer productions with advanced effects.',
     features: ['Multi-camera editing', 'Color correction', 'Audio enhancement', 'Motion graphics'],
-    price: 'Starting from ₹350/min',
+    price: 'Starting from ₹500/min',
     color: 'from-blue-500 to-cyan-500',
     bgColor: 'from-blue-500/20 to-cyan-500/10',
     icon: Video,
     detailedPricing: [
-      { service: 'Basic Editing', description: 'Cutting, trimming, transitions, and export', price: '₹350-₹500 per minute' },
-      { service: 'Standard Editing', description: 'Color correction, sound balancing, simple text overlays', price: '₹500-₹800 per minute' },
-      { service: 'Social Media Videos', description: 'Optimized short videos for platforms (15-60 secs)', price: '₹1,000-₹2,500 per video' },
-      { service: 'Event Highlights', description: 'Wedding, birthday, or travel highlight reels', price: '₹2,000-₹5,000 per video' },
-      { service: 'YouTube Video Editing', description: 'Edits for YouTube, including intros, subtitles, and effects', price: '₹1,500-₹3,500 per video' },
+      { service: 'Basic Editing', description: 'Cutting, trimming, transitions, and export', price: '₹500-₹700 per minute' },
+      { service: 'Standard Editing', description: 'Color correction, sound balancing, simple text overlays', price: '₹600-₹800 per minute' },
+      { service: 'Social Media Videos', description: 'Optimized short videos for platforms (15-60 secs)', price: '₹1,200-₹2,500 per video' },
+      { service: 'Event Highlights', description: 'Wedding, birthday, or travel highlight reels', price: '₹2,800-₹6,000 per video' },
+      { service: 'YouTube Video Editing', description: 'Edits for YouTube, including intros, subtitles, and effects', price: '₹3,500-₹7,500 per video' },
       { service: 'Corporate Videos', description: 'Business or promotional content with professional touches', price: '₹3,000-₹8,000 per video' }
     ]
   },
@@ -69,10 +69,10 @@ const services = [
     icon: Zap,
     detailedPricing: [
       { service: 'Corporate Videos', description: 'Business or promotional content with professional touches', price: '₹3,000-₹8,000 per video' },
-      { service: 'Real Estate Videos', description: 'Edits for property showcases with transitions, labels, and music', price: '₹3,000-₹7,000 per video' },
-      { service: 'Explainer Videos', description: 'Animated or live-action educational videos', price: '₹4,000-₹10,000 per minute' },
-      { service: 'Music Videos', description: 'Syncing footage with beats, adding effects and transitions', price: '₹4,000-₹10,000 per video' },
-      { service: 'Short Films', description: 'Storyline edits, scene cuts, sound design, and color grading', price: '₹5,000-₹12,000 per project' }
+      { service: 'Real Estate Videos', description: 'Edits for property showcases with transitions, labels, and music', price: '₹5,000-₹8,000 per video' },
+      { service: 'Explainer Videos', description: 'Animated or live-action educational videos', price: '₹6,000-₹11,000 per minute' },
+      { service: 'Music Videos', description: 'Syncing footage with beats, adding effects and transitions', price: '₹6,000-₹10,000 per video' },
+      { service: 'Short Films', description: 'Storyline edits, scene cuts, sound design, and color grading', price: '₹8,000-₹12,000 per project' }
     ]
   }
 ];
@@ -96,10 +96,10 @@ const personalServices = [
 ];
 
 const additionalServices = [
-  { service: 'Subtitles & Captions', price: '₹200-₹500/min', icon: '💬' },
-  { service: 'Logo Animation', price: '₹1,500-₹5,000', icon: '✨' },
-  { service: 'Intro/Outro Creation', price: '₹1,000-₹3,000', icon: '🎭' },
-  { service: 'Rush Delivery', price: '+20-50%', icon: '⚡' },
+  { service: 'Subtitles & Captions', price: '₹400-₹600/min', icon: '💬' },
+  { service: 'Logo Animation', price: '₹2,500-₹5,000', icon: '✨' },
+  { service: 'Intro/Outro Creation', price: '₹2,000-₹4,000', icon: '🎭' },
+  { service: 'Rush Delivery', price: '+30-60%', icon: '⚡' },
   { service: 'Custom Packages', price: 'Discounted', icon: '🎁' },
   { service: 'Bulk Discounts', price: '10+ projects', icon: '📦' }
 ];
